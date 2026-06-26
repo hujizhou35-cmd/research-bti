@@ -10,10 +10,13 @@ const ORDER: PoleLetter[] = ['C', 'O', 'P', 'T', 'X', 'A', 'R', 'W']
 const MAX = 10
 const RINGS = [2, 4, 6, 8, 10]
 
-// 极字母 -> 极名（label），取自 dimensions.json
+// 极字母 -> 极名（中文），取自 dimensions.json（polarity-graded-5 结构）
 const LABELS: Record<string, string> = (() => {
   const m: Record<string, string> = {}
-  for (const dim of dimensions) for (const p of dim.poles) m[p.letter] = p.label
+  for (const dim of dimensions) {
+    m[dim.firstPole.key] = dim.firstPole.name
+    m[dim.secondPole.key] = dim.secondPole.name
+  }
   return m
 })()
 

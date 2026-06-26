@@ -1,5 +1,6 @@
 // 题库 / 结果库的 TS 类型，与 data/*.json 对齐。
 // 数据是唯一数据源，这里只描述结构，不复制内容。
+// V2.0：题库由「双极迫选 2 选项」升级为「极性五级 5 选项」(polarity-graded-5)。
 
 /** 四个维度的 key */
 export type DimensionKey = 'CX' | 'OA' | 'PR' | 'TW'
@@ -7,55 +8,70 @@ export type DimensionKey = 'CX' | 'OA' | 'PR' | 'TW'
 /** 八个极字母 */
 export type PoleLetter = 'C' | 'X' | 'O' | 'A' | 'P' | 'R' | 'T' | 'W'
 
-/** 选项 */
-export type Choice = 'A' | 'B'
+/** 每维「第一极」字母（指向 value=4 的一端） */
+export type FirstPole = 'C' | 'O' | 'P' | 'T'
+/** 每维「第二极」字母（指向 value=0 的一端） */
+export type SecondPole = 'X' | 'A' | 'R' | 'W'
 
-// ---- data/dimensions.json ----
-export interface Pole {
-  letter: PoleLetter
-  label: string
-  short: string
-  desc: string
+/** 选项的极标签：八极之一，或辩证/健康中间项 */
+export type Pole = PoleLetter | 'mid'
+
+/** 选项指向第一极的分值（4=强第一极 … 0=强第二极） */
+export type OptionValue = 0 | 1 | 2 | 3 | 4
+
+// ---- data/dimensions.json（polarity-graded-5 结构，见 CLAUDE.md §4） ----
+export interface DimensionPole {
+  key: PoleLetter
+  name: string
 }
 
 export interface Dimension {
   key: DimensionKey
   name: string
-  /** [起始题号, 结束题号]，闭区间 */
-  questionRange: [number, number]
-  /** [第一极(aPole), 第二极(bPole)] */
-  poles: [Pole, Pole]
+  firstPole: DimensionPole
+  secondPole: DimensionPole
+  /** OA / TW 维的中间项(value=2)语义：健康边界 / 健康止损 */
+  mid?: string
 }
 
 export interface DimensionsFile {
-  version: string
-  note: string
+  scoringModel: string
+  /** |strength-5| <= borderlineBand 判 borderline */
+  borderlineBand: number
   dimensions: Dimension[]
 }
 
-// ---- data/questions.json ----
+// ---- data/questionsv4.json ----
+export interface Option {
+  text: string
+  pole: Pole
+  /** 指向第一极的分值，计分只看 value，pole 仅用于诊断/分类 */
+  value: OptionValue
+}
+
 export interface Question {
   id: number
   dimension: DimensionKey
-  aPole: PoleLetter
-  bPole: PoleLetter
+  firstPole: FirstPole
+  secondPole: SecondPole
+  theme: string
+  /** priority=1 进入娱乐版(40 题) */
+  priority: 0 | 1
   text: string
-  optionA: string
-  optionB: string
-  // V1.3 起每题带一个主题标签（仅元数据，逻辑不依赖）
-  theme?: string
+  /** 恒 5 项，value 必为 {0,1,2,3,4} 各一 */
+  options: Option[]
 }
 
 export interface QuestionsFile {
   version: string
-  guidance: string
-  // 题库 V1.0 用 scoring 字段；V1.3 改为 scoringModel/scoringNote（均为说明性元数据，逻辑只读 questions）
-  scoring?: string
+  basis?: string
   scoringModel?: string
   scoringNote?: string
-  basis?: string
-  optionOrderRandomization?: string
+  optionPresentationRandomization?: string
+  itemSampling?: string
+  guidance: string
   knownLimitations?: string
+  noModeration?: string
   questions: Question[]
 }
 
@@ -81,24 +97,29 @@ export interface ResultsFile {
   types: ResultType[]
 }
 
-// ---- 计分输出（§6） ----
+// ---- 计分输入/输出（§4 polarity-graded-5） ----
 
-/** 用户作答：题号 -> 'A' | 'B' */
-export type Answers = Record<number, Choice>
+/** 测验版本：娱乐版(每维10题) / 严谨版(每维20题) */
+export type Mode = 'fun' | 'strict'
 
-/** 单维度结果，用于文字/条 */
+/** 用户作答：题号 -> 所选选项的 value(0..4) */
+export type Answers = Record<number, OptionValue>
+
+/** 八极强度，同维两极之和恒为 10，供雷达图用 */
+export type Poles = Record<PoleLetter, number>
+
+/** 单维度计分结果 */
 export interface DimensionScore {
   key: DimensionKey
-  /** 命中的极字母 */
+  /** 本维所有题 value 之和 */
+  raw: number
+  /** 第一极强度 ∈ [0,10] */
+  strength: number
+  /** 命中的极字母（strength>5 取第一极，否则第二极） */
   picked: PoleLetter
-  /** 第一极(A)的个数，0..10 */
-  score: number
-  /** 是否处于 5/5 临界（取更保守一极） */
+  /** |strength-5| <= borderlineBand：倾向辩证、不极端 */
   borderline: boolean
 }
-
-/** 八极原始计数，同维两极之和恒为 10，供雷达图用 */
-export type Poles = Record<PoleLetter, number>
 
 export interface ScoreResult {
   code: string

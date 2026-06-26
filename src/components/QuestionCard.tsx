@@ -1,19 +1,36 @@
-// 单题卡片：题干 + A/B 两个选项。文案照 questions.json 原文，不改题意。
-import type { Question, Choice } from '../lib/types'
+// 单题卡片：题干 + 5 个极性五级选项。文案照 questionsv4.json 原文，不改题意。
+// 选项整组方向翻转随机化（block-reverse）：flip=true 时整组逆序呈现（第二极→第一极），
+// 但**不打乱相对顺序**（序数量表不可乱序）。无论如何呈现，记录的是所选选项的 value。
+import { useMemo } from 'react'
+import type { Question, OptionValue } from '../lib/types'
 
 interface Props {
   question: Question
   index: number
   total: number
-  selected?: Choice
-  onSelect: (choice: Choice) => void
+  /** 是否整组逆序呈现 */
+  flip: boolean
+  selected?: OptionValue
+  onSelect: (value: OptionValue) => void
 }
 
-export default function QuestionCard({ question, index, total, selected, onSelect }: Props) {
-  const options: { key: Choice; text: string }[] = [
-    { key: 'A', text: question.optionA },
-    { key: 'B', text: question.optionB },
-  ]
+// 屏幕序号标签，仅作视觉占位，与计分无关。
+const MARKERS = ['A', 'B', 'C', 'D', 'E']
+
+export default function QuestionCard({
+  question,
+  index,
+  total,
+  flip,
+  selected,
+  onSelect,
+}: Props) {
+  // questionsv4.json 中 options 恒按 value 4→0（第一极→第二极）排列；
+  // flip 时整组逆序为 0→4（第二极→第一极）。仅改变呈现顺序，value 不变。
+  const options = useMemo(() => {
+    const arr = question.options
+    return flip ? [...arr].slice().reverse() : arr
+  }, [question.options, flip])
 
   return (
     <div key={question.id} className="animate-fade-in">
@@ -27,14 +44,15 @@ export default function QuestionCard({ question, index, total, selected, onSelec
 
       <h2 className="font-display text-xl font-bold leading-snug">{question.text}</h2>
 
-      <div className="mt-5 space-y-3">
-        {options.map((opt) => {
-          const active = selected === opt.key
+      <div className="mt-5 space-y-2.5">
+        {options.map((opt, i) => {
+          const active = selected === opt.value
+          const marker = MARKERS[i] ?? String(i + 1)
           return (
             <button
-              key={opt.key}
+              key={opt.value}
               type="button"
-              onClick={() => onSelect(opt.key)}
+              onClick={() => onSelect(opt.value)}
               aria-pressed={active}
               className={`flex w-full items-start gap-3 border-2 px-4 py-3 text-left transition-colors active:translate-y-px ${
                 active
@@ -47,7 +65,7 @@ export default function QuestionCard({ question, index, total, selected, onSelec
                   active ? 'border-white text-white' : 'border-ink text-ink'
                 }`}
               >
-                {opt.key}
+                {marker}
               </span>
               <span className="text-[15px] leading-snug">{opt.text}</span>
             </button>

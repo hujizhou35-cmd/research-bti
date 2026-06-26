@@ -1,0 +1,61 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XAPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XAPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XAPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XAPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XAPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_XAPT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- radar all stuck at middle (mediocre) -->
+          <g transform="translate(512,430)" opacity="0.9">
+            <polygon points="0,-180 156,-90 156,90 0,180 -156,90 -156,-90" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-180" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="156" y2="-90" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="156" y2="90" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="180" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-156" y2="90" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-156" y2="-90" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" fill="#C9C6BC" fill-opacity="0.5" stroke="#8c887d" stroke-width="5" stroke-dasharray="9 7"/>
+          </g>
+          <!-- head, chin up, confident -->
+          <g>
+            <g transform="rotate(-26 372 308)"><ellipse cx="372" cy="308" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="310" rx="32" ry="18" fill="#C3B9A4"/><path d="M350,294 Q376,300 400,312" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 652 308)"><ellipse cx="652" cy="308" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="310" rx="32" ry="18" fill="#C3B9A4"/><path d="M674,294 Q648,300 624,312" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M404,242 Q398,188 420,176 Q446,188 448,236 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,242 Q626,188 604,176 Q578,188 576,236 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="350" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="412" rx="94" ry="70" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="416" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="416" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- smug grin -->
+            <path d="M482,448 Q512,466 542,448" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <!-- confident raised brows + sparkle eyes -->
+            <circle cx="462" cy="330" r="15" fill="#1A1A17"/><circle cx="467" cy="324" r="6" fill="#ECEAE3"/>
+            <circle cx="562" cy="330" r="15" fill="#1A1A17"/><circle cx="567" cy="324" r="6" fill="#ECEAE3"/>
+            <path d="M436,300 Q460,290 484,300" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M540,300 Q564,290 588,300" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M620,300 l18,-10 m-18,24 l22,-6" stroke="#E2A100" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <!-- torso, hands on hips (chest out) -->
+          <path d="M420,520 Q470,478 512,486 Q554,478 604,520 L632,760 L392,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <rect x="476" y="478" width="72" height="34" rx="14" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <path d="M512,500 L470,560 L494,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,500 L554,560 L530,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <g transform="rotate(-6 580 600)"><rect x="552" y="568" width="60" height="72" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="5"/><rect x="552" y="568" width="60" height="18" rx="6" fill="#E2A100"/></g>
+          <path d="M424,560 Q344,580 348,660" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <path d="M372,648 L424,628" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <path d="M600,560 Q680,580 676,660" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <path d="M648,648 L600,628" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <ellipse cx="350" cy="662" rx="26" ry="24" fill="#F1EFE7" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M330,650 Q318,642 322,628" fill="none" stroke="#F1EFE7" stroke-width="16" stroke-linecap="round"/>
+          <ellipse cx="674" cy="662" rx="26" ry="24" fill="#F1EFE7" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M694,650 Q706,642 702,628" fill="none" stroke="#F1EFE7" stroke-width="16" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">自信的平庸者</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XAPT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg>

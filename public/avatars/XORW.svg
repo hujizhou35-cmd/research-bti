@@ -1,0 +1,67 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XORW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XORW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XORW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XORW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#B5322B" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.92"><circle r="64" fill="none" stroke="#B5322B" stroke-width="9"/><circle r="52" fill="none" stroke="#B5322B" stroke-width="4" stroke-dasharray="3 5"/><text y="-4" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="42" fill="#B5322B">QC</text><text y="28" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="18" fill="#B5322B" letter-spacing="1">高危</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XORW)" opacity="0.55"/>
+        <g clip-path="url(#wn_XORW)" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(300,612)">
+            <path d="M0,40 L120,40 L150,80 L30,80 Z" fill="#C2701C" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M0,40 L0,108 L120,108 L120,40" fill="#D8C19A" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M120,40 L150,80 L150,140 L120,108 Z" fill="#B07418" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M0,40 L-26,-6 L96,-10 L120,40 Z" fill="#D8C19A" stroke="#1A1A17" stroke-width="7" opacity="0.95"/>
+          </g>
+          <g transform="translate(-40,18)">
+            <ellipse cx="372" cy="330" rx="56" ry="33" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8" transform="rotate(-24 372 330)"/>
+            <ellipse cx="652" cy="330" rx="56" ry="33" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8" transform="rotate(24 652 330)"/>
+            <path d="M408,256 Q402,206 422,194 Q446,206 448,252 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M616,256 Q622,206 602,194 Q578,206 576,252 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="372" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="446" rx="96" ry="70" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="452" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="540" cy="452" rx="10" ry="14" fill="#A79D8B"/>
+            <path d="M442,362 Q462,374 484,362" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M542,362 Q562,374 584,362" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M430,520 Q470,486 512,492 Q554,486 594,520 L636,760 L388,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+            <rect x="476" y="486" width="72" height="30" rx="13" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M512,506 L474,560 L498,524 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M512,506 L550,560 L526,524 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M452,580 Q470,648 524,668" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+            <path d="M572,580 Q556,648 506,668" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+            <g transform="translate(512,690)"><rect x="-70" y="-20" width="140" height="14" rx="4" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/><rect x="-58" y="-72" width="116" height="54" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="7"/><rect x="-48" y="-64" width="96" height="38" fill="#1A1A17"/></g>
+          </g>
+          <g transform="translate(70,10)" opacity="0.42">
+            <ellipse cx="372" cy="330" rx="56" ry="33" fill="#B5322B" fill-opacity="0.12" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8" transform="rotate(-24 372 330)"/>
+            <ellipse cx="652" cy="330" rx="56" ry="33" fill="#B5322B" fill-opacity="0.12" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8" transform="rotate(24 652 330)"/>
+            <path d="M408,256 Q402,206 422,194 Q446,206 448,252 Z" fill="none" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <path d="M616,256 Q622,206 602,194 Q578,206 576,252 Z" fill="none" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <ellipse cx="512" cy="360" rx="148" ry="142" fill="#B5322B" fill-opacity="0.10" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <ellipse cx="512" cy="430" rx="96" ry="70" fill="none" stroke="#B5322B" stroke-width="5" stroke-dasharray="8 7"/>
+            <circle cx="462" cy="340" r="13" fill="#B5322B" fill-opacity="0.5"/><circle cx="566" cy="340" r="13" fill="#B5322B" fill-opacity="0.5"/>
+            <path d="M484,452 Q512,438 540,452" fill="none" stroke="#B5322B" stroke-width="6"/>
+            <path d="M430,520 Q470,486 512,492 Q554,486 594,520 L636,760 L388,760 Z" fill="#B5322B" fill-opacity="0.08" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <path d="M590,540 Q740,470 880,470" fill="none" stroke="#B5322B" stroke-width="30" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.7"/>
+          </g>
+          <g transform="translate(862,452) rotate(18)">
+            <path d="M-92,-6 Q0,86 92,-6 Z" fill="#1A1A17"/>
+            <path d="M-92,-6 Q0,70 92,-6" fill="none" stroke="#5c574c" stroke-width="5"/>
+            <rect x="86" y="-16" width="64" height="14" rx="7" fill="#1A1A17"/>
+            <rect x="-150" y="-16" width="64" height="14" rx="7" fill="#1A1A17"/>
+          </g>
+          <path d="M690,500 L780,468" stroke="#B5322B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M700,540 L800,512" stroke="#B5322B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M712,580 L792,560" stroke="#B5322B" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">量子甩锅侠</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XORW</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#B5322B" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">高危</text></g>
+      </svg>

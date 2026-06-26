@@ -1,0 +1,60 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_COPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_COPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_COPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_COPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#E2A100" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_COPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_COPT)" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(512,440)" opacity="0.92">
+            <polygon points="0,-190 165,-95 165,95 0,190 -165,95 -165,-95" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-127 110,-63 110,63 0,127 -110,63 -110,-63" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-64 55,-32 55,32 0,64 -55,32 -55,-32" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-190" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="165" y2="-95" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="165" y2="95" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="190" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-165" y2="95" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-165" y2="-95" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-190 165,-95 165,95 0,190 -165,95 -165,-95" fill="#E2A100" fill-opacity="0.22" stroke="#E2A100" stroke-width="5"/>
+          </g>
+          <ellipse cx="512" cy="232" rx="118" ry="30" fill="none" stroke="#E2A100" stroke-width="11"/>
+          <g transform="rotate(-26 372 318)"><ellipse cx="372" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M350,304 Q376,310 400,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+          <g transform="rotate(26 652 318)"><ellipse cx="652" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M674,304 Q648,310 624,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+          <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M462,236 Q470,188 500,200 Q512,176 524,200 Q554,188 562,236 Q536,222 512,228 Q488,222 462,236 Z" fill="#C3B9A4" stroke="#1A1A17" stroke-width="6"/>
+          <ellipse cx="512" cy="360" rx="150" ry="146" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+          <ellipse cx="512" cy="426" rx="98" ry="74" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+          <ellipse cx="484" cy="430" rx="11" ry="15" fill="#A79D8B"/><ellipse cx="540" cy="430" rx="11" ry="15" fill="#A79D8B"/>
+          <path d="M500,468 Q512,478 524,468" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          <circle cx="460" cy="338" r="16" fill="#1A1A17"/><circle cx="464" cy="333" r="5" fill="#ECEAE3"/>
+          <circle cx="564" cy="338" r="16" fill="#1A1A17"/><circle cx="568" cy="333" r="5" fill="#ECEAE3"/>
+          <path d="M438,308 Q460,298 482,308" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M542,308 Q564,298 586,308" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M448,356 Q460,362 472,356" fill="none" stroke="#A79D8B" stroke-width="3"/>
+          <path d="M552,356 Q564,362 576,356" fill="none" stroke="#A79D8B" stroke-width="3"/>
+          <path d="M602,300 Q614,322 602,332 Q590,322 602,300 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          <path d="M430,520 Q470,478 512,486 Q554,478 594,520 L640,760 L384,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <rect x="476" y="478" width="72" height="34" rx="14" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <path d="M512,500 L470,560 L494,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,500 L554,560 L530,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,500 L500,600 L524,600 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <g transform="rotate(-6 588 600)"><rect x="556" y="566" width="64" height="78" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="5"/><rect x="556" y="566" width="64" height="20" rx="6" fill="#B5322B"/><rect x="566" y="596" width="44" height="8" rx="4" fill="#C9C6BC"/><rect x="566" y="612" width="34" height="7" rx="3" fill="#C9C6BC"/></g>
+          <path d="M438,560 Q360,520 322,452" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <g transform="translate(304,398)"><path d="M-14,0 L-14,22 L-34,64 Q-38,80 -22,80 L26,80 Q42,80 38,64 L18,22 L18,0 Z" fill="#fff" stroke="#1A1A17" stroke-width="7"/><rect x="-16" y="-10" width="36" height="12" rx="3" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/><path d="M-26,60 L30,60 L24,76 Q22,80 14,80 L-12,80 Q-20,80 -22,76 Z" fill="#B5322B"/></g>
+          <path d="M588,560 Q668,516 712,452" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <g transform="translate(700,360) rotate(12)"><rect x="-34" y="0" width="76" height="96" rx="4" fill="#fff" stroke="#1A1A17" stroke-width="7"/><line x1="-22" y1="22" x2="30" y2="22" stroke="#C9C6BC" stroke-width="5"/><line x1="-22" y1="40" x2="30" y2="40" stroke="#C9C6BC" stroke-width="5"/><line x1="-22" y1="58" x2="14" y2="58" stroke="#C9C6BC" stroke-width="5"/><text x="4" y="86" font-family="DM Mono" font-size="20" fill="#B5322B" text-anchor="middle">PDF</text></g>
+          <path d="M430,650 Q360,660 300,628" fill="none" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+          <g transform="translate(276,600) rotate(-32)"><rect x="-9" y="0" width="18" height="70" rx="6" fill="#C2701C" stroke="#1A1A17" stroke-width="6"/><rect x="-13" y="-16" width="26" height="20" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/><path d="M-4,70 L4,70 L1,90 L-1,90 Z" fill="#fff" stroke="#1A1A17" stroke-width="5"/></g>
+          <path d="M598,650 Q672,664 728,632" fill="none" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+          <g transform="translate(724,604) rotate(10)"><rect x="-46" y="-30" width="92" height="60" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="7"/><rect x="-36" y="-22" width="72" height="44" fill="#1A1A17"/><rect x="-56" y="30" width="112" height="12" rx="4" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/></g>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">六边形卷王</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">COPT</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#E2A100" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">稀有</text></g>
+      </svg>

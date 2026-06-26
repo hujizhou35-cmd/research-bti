@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XARW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XARW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XARW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XARW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#B5322B" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.92"><circle r="64" fill="none" stroke="#B5322B" stroke-width="9"/><circle r="52" fill="none" stroke="#B5322B" stroke-width="4" stroke-dasharray="3 5"/><text y="-4" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="42" fill="#B5322B">QC</text><text y="28" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="18" fill="#B5322B" letter-spacing="1">高危</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XARW)" opacity="0.55"/>
+        <g clip-path="url(#wn_XARW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- bomb on head with sizzling fuse -->
+          <g transform="translate(512,300)">
+            <circle cx="0" cy="0" r="64" fill="#1A1A17"/>
+            <ellipse cx="-22" cy="-22" rx="14" ry="9" fill="#5c574c"/>
+            <rect x="-16" y="-78" width="32" height="22" rx="4" fill="#3A3631" stroke="#1A1A17" stroke-width="4"/>
+            <path d="M0,-78 Q30,-110 14,-140 Q4,-156 24,-168" fill="none" stroke="#8A6F42" stroke-width="7"/>
+            <!-- spark -->
+            <g transform="translate(24,-168)"><path d="M0,0 l14,-10 m-14,10 l16,4 m-16,-4 l8,-16 m-8,16 l-2,-18 m2,18 l-16,-2" stroke="#E2A100" stroke-width="5" stroke-linecap="round"/><circle r="8" fill="#B5322B"/></g>
+          </g>
+          <!-- slumped puddle 牛马 (摆烂) -->
+          <g>
+            <!-- melted body puddle -->
+            <path d="M260,640 Q260,560 360,556 Q420,552 512,556 Q604,552 664,556 Q764,560 764,640 Q764,700 660,704 L360,704 Q260,700 260,640 Z" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M280,680 Q400,700 512,700 Q624,700 744,680" fill="none" stroke="#C9C6BC" stroke-width="4"/>
+            <!-- head slumped melting into body -->
+            <g transform="rotate(-54 392 472)"><ellipse cx="392" cy="472" rx="54" ry="32" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="404" cy="470" rx="27" ry="15" fill="#C3B9A4"/></g>
+            <g transform="rotate(54 632 472)"><ellipse cx="632" cy="472" rx="54" ry="32" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="620" cy="470" rx="27" ry="15" fill="#C3B9A4"/></g>
+            <ellipse cx="512" cy="520" rx="138" ry="120" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M404,420 Q398,372 418,362 Q442,372 444,416 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,420 Q626,372 606,362 Q582,372 580,416 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="560" rx="90" ry="58" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="488" cy="562" rx="10" ry="13" fill="#A79D8B"/><ellipse cx="540" cy="562" rx="10" ry="13" fill="#A79D8B"/>
+            <!-- dead 'X' / spiral eyes (摆烂) -->
+            <path d="M452,504 l28,28 m0,-28 l-28,28" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M544,504 l28,28 m0,-28 l-28,28" stroke="#1A1A17" stroke-width="7"/>
+            <!-- flat lifeless mouth -->
+            <path d="M480,600 Q512,592 544,600" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- limp arms splayed -->
+            <path d="M380,560 Q300,600 250,600" fill="none" stroke="#D8D2C4" stroke-width="30" stroke-linecap="round"/>
+            <path d="M644,560 Q724,600 774,600" fill="none" stroke="#D8D2C4" stroke-width="30" stroke-linecap="round"/>
+          </g>
+          <!-- sizzle text -->
+          <text x="660" y="250" font-family="DM Mono" font-size="26" fill="#B5322B">tick…tick…</text>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="816" font-family="Noto Sans SC" font-weight="900" font-size="56" fill="#1A1A17">课题组定时炸弹</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XARW</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#B5322B" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">高危</text></g>
+      </svg>

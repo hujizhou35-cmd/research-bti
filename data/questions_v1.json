@@ -1,0 +1,367 @@
+{
+  "version": "1.0",
+  "guidance": "请根据你在科研/学习团队中的真实第一反应作答，选最符合你实际行为的选项，而不是“应该怎么做”。",
+  "scoring": "每题 A 选项计 1 分（偏向 aPole），B 选项计 0 分（偏向 bPole）。每个维度 10 题，A 选项数 > 5 取 aPole，否则取 bPole。",
+  "questions": [
+    {
+      "id": 1,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "实验做不出预期结果，你的第一想法是：",
+      "optionA": "我操作流程哪里出了问题",
+      "optionB": "这套试剂/仪器本身就不稳定"
+    },
+    {
+      "id": 2,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "队友负责的部分交不上来，你认为主要原因是：",
+      "optionA": "我没跟他说清楚截止节点和标准",
+      "optionB": "他本来就能力不行/态度不端正"
+    },
+    {
+      "id": 3,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "导师批评你的论文逻辑混乱，你心里最先冒出的念头是：",
+      "optionA": "我确实没理清主线",
+      "optionB": "导师根本不懂这个前沿方向"
+    },
+    {
+      "id": 4,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "申报了一个比赛但没获奖，你会向队友解释：",
+      "optionA": "我们的作品打磨得还不够",
+      "optionB": "评委眼光不行/对手有后台"
+    },
+    {
+      "id": 5,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "你负责的数据分析出错导致全组返工，你开口的第一句话是：",
+      "optionA": "我弄错了，马上重算",
+      "optionB": "是因为某某给我源数据时没说清楚"
+    },
+    {
+      "id": 6,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "读一篇晦涩的英文文献没看懂，你觉得主要是：",
+      "optionA": "我词汇量和专业背景不够",
+      "optionB": "作者写得本身就逻辑混乱"
+    },
+    {
+      "id": 7,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "组会上你提的 idea 被导师否决，你的反应是：",
+      "optionA": "我的论证不够充分，再去查资料",
+      "optionB": "导师思想太保守，不认可新东西"
+    },
+    {
+      "id": 8,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "你参与的答辩临场被评委问住，下来后你想：",
+      "optionA": "我准备得还是不够全面",
+      "optionB": "那个评委问的问题太偏了，故意刁难"
+    },
+    {
+      "id": 9,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "组里师弟向你请教问题，你讲了他还不会，你认为：",
+      "optionA": "我表达方式有问题",
+      "optionB": "这师弟悟性太差"
+    },
+    {
+      "id": 10,
+      "dimension": "CX",
+      "aPole": "C",
+      "bPole": "X",
+      "text": "论文被拒稿，你的直接归因是：",
+      "optionA": "我的创新点或实验量有硬伤",
+      "optionB": "审稿人没看懂/运气不好分到严苛的审稿人"
+    },
+    {
+      "id": 11,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "团队项目下周截止，某个核心模块队友没做完，你会：",
+      "optionA": "熬夜帮他把这部分做了",
+      "optionB": "明确告诉他这是他的事，做不完他自己承担后果"
+    },
+    {
+      "id": 12,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "课题组仪器坏了，虽然不是你弄坏的，你会：",
+      "optionA": "主动联系维修并跟进进度",
+      "optionB": "告诉管理员或导师，让他们处理"
+    },
+    {
+      "id": 13,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "你发现队友的 PPT 做得很烂，你会：",
+      "optionA": "忍不住自己上手帮他重做",
+      "optionB": "只做自己的部分，他讲得丢人是他的事"
+    },
+    {
+      "id": 14,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "课题组要组织一次学术沙龙，没人主动牵头，你会：",
+      "optionA": "默默把场地、通知、茶点全包了",
+      "optionB": "等导师指定人或等别人去弄"
+    },
+    {
+      "id": 15,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "你觉得团队里“干活多拿钱少”的人通常是：",
+      "optionA": "自己，因为总忍不住去填坑",
+      "optionB": "那些会推脱的聪明人，自己不想成为这种人"
+    },
+    {
+      "id": 16,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "对于“负责人就是来兜底的”这句话，你：",
+      "optionA": "不认同但又无可奈何地这么做",
+      "optionB": "非常认同，不然要负责人干嘛"
+    },
+    {
+      "id": 17,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "遇到一个跨组合作的任务，边界不清晰，你会：",
+      "optionA": "先把活干了再说，怕耽误进度",
+      "optionB": "严格跟对方划清界限，多做一点都要说清楚"
+    },
+    {
+      "id": 18,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "代码跑通后，你发现有个小 bug 不影响大局，但修复很费时，你会：",
+      "optionA": "熬夜修好，不然心里过不去",
+      "optionB": "留着，等出问题了再说"
+    },
+    {
+      "id": 19,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "导师让你带新师弟做实验，你会：",
+      "optionA": "手把手教，甚至直接帮他做初步数据",
+      "optionB": "给他说明书，让他自己试，有问题再问"
+    },
+    {
+      "id": 20,
+      "dimension": "OA",
+      "aPole": "O",
+      "bPole": "A",
+      "text": "项目汇报出错了，虽然主要是队友的问题，你会：",
+      "optionA": "主动在导师面前替他解释并承担部分责任",
+      "optionB": "直接指明是队友那一环节出的错"
+    },
+    {
+      "id": 21,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "你下周三要交报告，但周二突然生病了，你会：",
+      "optionA": "周一就提前跟导师说可能要延期",
+      "optionB": "等周三过了导师催了再说自己病了"
+    },
+    {
+      "id": 22,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "实验做到一半发现试剂买错了，你会：",
+      "optionA": "立刻报告导师并申请重新采购",
+      "optionB": "想办法用替代试剂凑合，实在不行再说"
+    },
+    {
+      "id": 23,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "你同时有两个比赛撞期了，你会：",
+      "optionA": "报名前就排好时间表避免冲突",
+      "optionB": "报完名发现撞了，再找人商量能不能替我"
+    },
+    {
+      "id": 24,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "论文修改意见你只完成了一半，面对导师的催促，你会：",
+      "optionA": "直接说哪一半没做完，遇到了什么困难",
+      "optionB": "说“快好了快好了”，拖一天是一天"
+    },
+    {
+      "id": 25,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "你需要导师签字，但他出差了，你会：",
+      "optionA": "提前一周找他签好",
+      "optionB": "等截止日当天疯狂打电话找他"
+    },
+    {
+      "id": 26,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "答辩 PPT 你觉得自己讲不流利，你会：",
+      "optionA": "提前两周找队友彩排",
+      "optionB": "拖到答辩前一晚才看，讲不好就算了"
+    },
+    {
+      "id": 27,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "别人负责的任务卡住了影响到你，你会：",
+      "optionA": "主动询问进度并提醒风险",
+      "optionB": "等他交不上来连累你时再爆发"
+    },
+    {
+      "id": 28,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "你负责的数据部分有个不确定的值，你会：",
+      "optionA": "在汇报时明确标注“此处待复核”",
+      "optionB": "蒙混过去，希望导师没发现"
+    },
+    {
+      "id": 29,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "你打算请假一周回家，你会：",
+      "optionA": "提前把手头工作交接好并留好文档",
+      "optionB": "等买完票发个微信告诉导师一声"
+    },
+    {
+      "id": 30,
+      "dimension": "PR",
+      "aPole": "P",
+      "bPole": "R",
+      "text": "遇到一个不懂的软件操作，你会：",
+      "optionA": "自己先查搜索引擎/视频站，带着具体问题问人",
+      "optionB": "直接截个图丢群里问“这个怎么弄”"
+    },
+    {
+      "id": 31,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "明天要中期答辩，今晚主讲人突然退出，你是 backup 但没准备，你会：",
+      "optionA": "硬着头皮顶上，通宵背稿",
+      "optionB": "跟导师说我也没准备，申请延期"
+    },
+    {
+      "id": 32,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "答辩现场评委突然让你演示一段你没准备过的代码，你会：",
+      "optionA": "稳住心态，现场敲或讲逻辑",
+      "optionB": "直接说“这个我没带，回去再发您”"
+    },
+    {
+      "id": 33,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "实验数据在一次重要汇报前发现完全对不上，你会：",
+      "optionA": "熬夜排查 bug，就算来不及也要找出原因",
+      "optionB": "换一组旧数据凑合汇报，蒙混过关"
+    },
+    {
+      "id": 34,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "投稿前一天发现论文有个公式写反了，重算要推翻结论，你会：",
+      "optionA": "果断撤稿重写，绝不发错的",
+      "optionB": "修改文字解释圆过去，先投了再说"
+    },
+    {
+      "id": 35,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "组里大文章被别人抢发了，你的第一反应是：",
+      "optionA": "立刻找差异化角度，改写小文章抢救",
+      "optionB": "瘫在椅子上，觉得这几个月白干了"
+    },
+    {
+      "id": 36,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "导师临时加派一个紧急且你不会的任务，你会：",
+      "optionA": "熬夜查文献硬啃下来",
+      "optionB": "跟导师说这不是我的研究方向，做不了"
+    },
+    {
+      "id": 37,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "答辩时 PPT 突然放不出来，全场安静，你会：",
+      "optionA": "拿起白板/纸笔，口述讲完核心",
+      "optionB": "站在台上干等技术人员修，气氛尴尬"
+    },
+    {
+      "id": 38,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "你负责的报销流程因为你的疏漏卡住了，导师卡你，你会：",
+      "optionA": "立刻去财务处跑断腿补救",
+      "optionB": "抱怨财务制度太繁琐，不是我的主观错"
+    },
+    {
+      "id": 39,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "评委在答辩时质疑你的核心创新点，你会：",
+      "optionA": "拿出备用数据据理力争",
+      "optionB": "连连点头说是是是，回去再改"
+    },
+    {
+      "id": 40,
+      "dimension": "TW",
+      "aPole": "T",
+      "bPole": "W",
+      "text": "临近毕业发现补实验来不及了，你会：",
+      "optionA": "换取现有数据最大化分析，调整文章架构",
+      "optionB": "躺平，跟导师说延期就延期吧"
+    }
+  ]
+}

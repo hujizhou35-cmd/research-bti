@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>研究生BTI · 16 型号内容预览</title>
+<style>
+  :root{
+    --paper:#ECEAE3; --paper2:#E2DFD5; --ink:#1A1A17;
+    --stamp:#B5322B; --marker:#E2A100; --grid:#C9C6BC; --ok:#3C7A5A;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ink);
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    color:var(--ink); -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:ui-monospace,"Cascadia Code","JetBrains Mono",Consolas,"Courier New",monospace}
+  .wrap{max-width:1280px;margin:0 auto;padding:36px 24px 80px}
+  header.head{margin-bottom:8px}
+  .head h1{color:var(--paper);font-size:30px;font-weight:900;letter-spacing:1px;margin:0}
+  .head .sub{color:var(--marker);font-family:ui-monospace,Consolas,monospace;font-size:13px;letter-spacing:2px;margin-top:8px}
+  .head .note{color:#A8A498;font-size:13px;margin-top:10px;line-height:1.6}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 26px}
+  .legend span{font-size:12px;font-weight:700;padding:4px 12px;border:2px solid var(--ink);border-radius:14px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+  .card{position:relative;background:var(--paper);border:5px solid var(--ink);padding:18px 20px 20px;overflow:hidden}
+  .ord{position:absolute;top:12px;right:16px;font-family:ui-monospace,Consolas,monospace;font-size:12px;color:#8C887C;letter-spacing:1px}
+  .avatar{width:248px;max-width:64%;margin:4px auto 12px;border:3px solid var(--ink)}
+  .avatar svg{display:block;width:100%;height:auto}
+  .namerow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .name{font-size:26px;font-weight:900;margin:0;letter-spacing:.5px}
+  .vibe{font-size:13px;font-weight:900;padding:3px 12px;border:2px solid var(--ink);border-radius:14px}
+  .code{font-family:ui-monospace,Consolas,monospace;font-size:18px;letter-spacing:6px;color:var(--ink);margin-top:4px}
+  .tagline{font-size:14px;color:#5d584c;margin-top:6px;font-style:italic}
+  .verdict{background:var(--paper2);border-left:5px solid var(--stamp);padding:12px 14px;margin:14px 0;font-size:14.5px;line-height:1.7}
+  .verdict .lbl{display:inline-block;font-size:11px;font-weight:900;letter-spacing:2px;color:var(--stamp);margin-right:8px;vertical-align:1px}
+  .pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  @media(max-width:480px){.pc{grid-template-columns:1fr}}
+  .ch{font-size:13px;font-weight:900;letter-spacing:2px;padding-bottom:6px;margin-bottom:8px;border-bottom:2px solid var(--ink)}
+  .ch.ok{color:var(--ok)} .ch.no{color:var(--stamp)} .ch.mt{color:var(--ink)}
+  ul{list-style:none;margin:0;padding:0}
+  .pc li{font-size:13.5px;line-height:1.6;margin-bottom:7px;display:flex;gap:7px}
+  .mk{font-weight:900;flex:0 0 auto} .mk.ok{color:var(--ok)} .mk.no{color:var(--stamp)}
+  .mentor{background:#F3F1E9;border:2px dashed var(--grid);padding:12px 14px}
+  .strategy{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:8px}
+  .tips li{position:relative;font-size:13.5px;line-height:1.6;padding-left:20px;margin-bottom:6px}
+  .tips li::before{content:"▸";position:absolute;left:2px;color:var(--stamp);font-weight:900}
+  footer.foot{color:#8C887C;font-size:12px;margin-top:30px;line-height:1.7;text-align:center}
+  .stamp{display:inline-block;border:3px solid var(--stamp);color:var(--stamp);border-radius:50%;
+    width:84px;height:84px;line-height:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transform:rotate(-12deg);font-weight:900;margin:0 auto 14px}
+  .stamp b{font-family:ui-monospace,Consolas,monospace;font-size:24px}
+  .stamp i{font-size:12px;font-style:normal;letter-spacing:2px;margin-top:3px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <h1>课题组牛马人格鉴定所 · 16 型号内容预览</h1>
+      <div class="sub">CONTENT REVIEW · 形象 / 鉴定结论 / 优点 / 缺点 / 导师应对措施</div>
+      <div class="note">这是建站前的<strong>内容校对页</strong>（非最终网站）：核对每个型号的形象、文案与优缺点/导师措施是否准确得体。<br>
+      形象图字体若未安装 Noto Sans SC / DM Mono，浏览器会用系统字体回退渲染，正式站会自托管字体修正。</div>
+    </header>
+    <div class="legend">
+      <span style="background:#E2A100">稀有</span>
+      <span style="background:#D2CEC2">常见</span>
+      <span style="background:#B7B3A6">少见</span>
+      <span style="background:#C2701C;color:#ECEAE3">棘手</span>
+      <span style="background:#B5322B;color:#ECEAE3">高危</span>
+    </div>
+    <div class="grid">
+      
+    <article class="card">
+      <div class="ord">NO. 01</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_COPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_COPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_COPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_COPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#E2A100" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_COPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_COPT)" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(512,440)" opacity="0.92">
+            <polygon points="0,-190 165,-95 165,95 0,190 -165,95 -165,-95" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-127 110,-63 110,63 0,127 -110,63 -110,-63" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-64 55,-32 55,32 0,64 -55,32 -55,-32" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-190" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="165" y2="-95" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="165" y2="95" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="190" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-165" y2="95" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-165" y2="-95" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-190 165,-95 165,95 0,190 -165,95 -165,-95" fill="#E2A100" fill-opacity="0.22" stroke="#E2A100" stroke-width="5"/>
+          </g>
+          <ellipse cx="512" cy="232" rx="118" ry="30" fill="none" stroke="#E2A100" stroke-width="11"/>
+          <g transform="rotate(-26 372 318)"><ellipse cx="372" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M350,304 Q376,310 400,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+          <g transform="rotate(26 652 318)"><ellipse cx="652" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M674,304 Q648,310 624,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+          <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M462,236 Q470,188 500,200 Q512,176 524,200 Q554,188 562,236 Q536,222 512,228 Q488,222 462,236 Z" fill="#C3B9A4" stroke="#1A1A17" stroke-width="6"/>
+          <ellipse cx="512" cy="360" rx="150" ry="146" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+          <ellipse cx="512" cy="426" rx="98" ry="74" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+          <ellipse cx="484" cy="430" rx="11" ry="15" fill="#A79D8B"/><ellipse cx="540" cy="430" rx="11" ry="15" fill="#A79D8B"/>
+          <path d="M500,468 Q512,478 524,468" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          <circle cx="460" cy="338" r="16" fill="#1A1A17"/><circle cx="464" cy="333" r="5" fill="#ECEAE3"/>
+          <circle cx="564" cy="338" r="16" fill="#1A1A17"/><circle cx="568" cy="333" r="5" fill="#ECEAE3"/>
+          <path d="M438,308 Q460,298 482,308" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M542,308 Q564,298 586,308" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M448,356 Q460,362 472,356" fill="none" stroke="#A79D8B" stroke-width="3"/>
+          <path d="M552,356 Q564,362 576,356" fill="none" stroke="#A79D8B" stroke-width="3"/>
+          <path d="M602,300 Q614,322 602,332 Q590,322 602,300 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          <path d="M430,520 Q470,478 512,486 Q554,478 594,520 L640,760 L384,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <rect x="476" y="478" width="72" height="34" rx="14" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <path d="M512,500 L470,560 L494,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,500 L554,560 L530,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,500 L500,600 L524,600 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <g transform="rotate(-6 588 600)"><rect x="556" y="566" width="64" height="78" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="5"/><rect x="556" y="566" width="64" height="20" rx="6" fill="#B5322B"/><rect x="566" y="596" width="44" height="8" rx="4" fill="#C9C6BC"/><rect x="566" y="612" width="34" height="7" rx="3" fill="#C9C6BC"/></g>
+          <path d="M438,560 Q360,520 322,452" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <g transform="translate(304,398)"><path d="M-14,0 L-14,22 L-34,64 Q-38,80 -22,80 L26,80 Q42,80 38,64 L18,22 L18,0 Z" fill="#fff" stroke="#1A1A17" stroke-width="7"/><rect x="-16" y="-10" width="36" height="12" rx="3" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/><path d="M-26,60 L30,60 L24,76 Q22,80 14,80 L-12,80 Q-20,80 -22,76 Z" fill="#B5322B"/></g>
+          <path d="M588,560 Q668,516 712,452" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <g transform="translate(700,360) rotate(12)"><rect x="-34" y="0" width="76" height="96" rx="4" fill="#fff" stroke="#1A1A17" stroke-width="7"/><line x1="-22" y1="22" x2="30" y2="22" stroke="#C9C6BC" stroke-width="5"/><line x1="-22" y1="40" x2="30" y2="40" stroke="#C9C6BC" stroke-width="5"/><line x1="-22" y1="58" x2="14" y2="58" stroke="#C9C6BC" stroke-width="5"/><text x="4" y="86" font-family="DM Mono" font-size="20" fill="#B5322B" text-anchor="middle">PDF</text></g>
+          <path d="M430,650 Q360,660 300,628" fill="none" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+          <g transform="translate(276,600) rotate(-32)"><rect x="-9" y="0" width="18" height="70" rx="6" fill="#C2701C" stroke="#1A1A17" stroke-width="6"/><rect x="-13" y="-16" width="26" height="20" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/><path d="M-4,70 L4,70 L1,90 L-1,90 Z" fill="#fff" stroke="#1A1A17" stroke-width="5"/></g>
+          <path d="M598,650 Q672,664 728,632" fill="none" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+          <g transform="translate(724,604) rotate(10)"><rect x="-46" y="-30" width="92" height="60" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="7"/><rect x="-36" y="-22" width="72" height="44" fill="#1A1A17"/><rect x="-56" y="30" width="112" height="12" rx="4" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/></g>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">六边形卷王</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">COPT</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#E2A100" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">稀有</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">六边形卷王</h2>
+          <span class="vibe" style="background:#E2A100;color:#1A1A17">稀有</span>
+        </div>
+        <div class="code">COPT</div>
+        <div class="tagline">课题组の人形发电机</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>完美的科研机器。能干活、会带人、抗造、有责任心，一个人能撑起一个子方向。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>能力全面，一个人能撑起一个子方向</li><li><span class="mk ok">✓</span>责任心强、抗压、主动带方案沟通</li><li><span class="mk ok">✓</span>关键时刻顶得住，靠谱到离谱</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>容易过劳，把自己卷到冒烟</li><li><span class="mk no">✗</span>大包大揽，导致队友插不上手、慢慢变废</li><li><span class="mk no">✗</span>事事亲为时反而成了团队瓶颈</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">珍稀动物。需注意防止其过劳，以及因大包大揽导致团队‘低能化’。给予高度自主权，多做情绪价值肯定。</div>
+        <ul class="tips"><li>给高度自主权 + 显性认可，多供情绪价值</li><li>帮他设负荷上限、强制休息，别让他自燃</li><li>刻意留白部分任务给别人，避免团队被他养&#x27;废&#x27;</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 02</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_COPW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_COPW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_COPW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_COPW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_COPW)" opacity="0.55"/>
+        <g clip-path="url(#wn_COPW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- cardboard body, power pose, peeling -->
+          <g>
+            <g transform="rotate(-26 372 318)"><ellipse cx="372" cy="318" rx="62" ry="37" fill="#C8A877" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="320" rx="32" ry="18" fill="#B08C56"/><path d="M350,304 Q376,310 400,322" fill="none" stroke="#9C7E48" stroke-width="4"/></g>
+            <g transform="rotate(26 652 318)"><ellipse cx="652" cy="318" rx="62" ry="37" fill="#C8A877" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="320" rx="32" ry="18" fill="#B08C56"/><path d="M674,304 Q648,310 624,322" fill="none" stroke="#9C7E48" stroke-width="4"/></g>
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#BC9A66" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#BC9A66" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="360" rx="150" ry="146" fill="#C8A877" stroke="#1A1A17" stroke-width="8"/>
+            <!-- corrugation lines on face = cardboard -->
+            <path d="M398,330 Q512,316 626,330" fill="none" stroke="#B08C56" stroke-width="3" opacity="0.7"/>
+            <path d="M392,400 Q512,388 632,400" fill="none" stroke="#B08C56" stroke-width="3" opacity="0.7"/>
+            <ellipse cx="512" cy="426" rx="98" ry="74" fill="#D8BE92" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="484" cy="430" rx="11" ry="15" fill="#8A6F42"/><ellipse cx="540" cy="430" rx="11" ry="15" fill="#8A6F42"/>
+            <!-- fierce confident mouth -->
+            <path d="M484,462 Q512,452 540,462 Q528,478 512,478 Q496,478 484,462 Z" fill="#8A6F42" stroke="#1A1A17" stroke-width="5"/>
+            <!-- intense eyes + bold brows -->
+            <circle cx="462" cy="338" r="15" fill="#1A1A17"/><circle cx="566" cy="338" r="15" fill="#1A1A17"/>
+            <path d="M436,316 L488,328" fill="none" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M588,316 L536,328" fill="none" stroke="#1A1A17" stroke-width="8"/>
+            <!-- suit torso (cardboard-toned, power) -->
+            <path d="M408,524 Q470,484 512,492 Q554,484 616,524 L660,760 L364,760 Z" fill="#C8A877" stroke="#1A1A17" stroke-width="8"/>
+            <!-- dashed fold creases on body -->
+            <path d="M512,520 L512,760" fill="none" stroke="#8A6F42" stroke-width="3" stroke-dasharray="12 9"/>
+            <path d="M430,560 L600,560" fill="none" stroke="#8A6F42" stroke-width="3" stroke-dasharray="12 9"/>
+            <!-- suit lapels + tie -->
+            <path d="M512,500 L452,640 L500,560 Z" fill="#1A1A17"/>
+            <path d="M512,500 L572,640 L524,560 Z" fill="#1A1A17"/>
+            <path d="M512,512 L498,560 L512,640 L526,560 Z" fill="#B5322B" stroke="#1A1A17" stroke-width="4"/>
+            <rect x="476" y="478" width="72" height="34" rx="14" fill="#C8A877" stroke="#1A1A17" stroke-width="6"/>
+            <!-- arms on hips (power) -->
+            <path d="M412,560 Q330,580 332,660" fill="none" stroke="#C8A877" stroke-width="34" stroke-linecap="round"/>
+            <path d="M412,560 Q330,580 332,660" fill="none" stroke="#1A1A17" stroke-width="40" stroke-linecap="round" opacity="0"/>
+            <path d="M360,648 L412,628" fill="none" stroke="#C8A877" stroke-width="34" stroke-linecap="round"/>
+            <path d="M612,560 Q694,580 692,660" fill="none" stroke="#C8A877" stroke-width="34" stroke-linecap="round"/>
+            <path d="M664,648 L612,628" fill="none" stroke="#C8A877" stroke-width="34" stroke-linecap="round"/>
+            <!-- peeling corner (revealing hollow) bottom-right -->
+            <path d="M636,712 L700,700 L690,762 Z" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M636,712 L676,724" fill="none" stroke="#8A6F42" stroke-width="3"/>
+            <!-- mitt hands on hips -->
+            <ellipse cx="332" cy="662" rx="26" ry="24" fill="#C8A877" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M312,650 Q300,642 304,628" fill="none" stroke="#C8A877" stroke-width="16" stroke-linecap="round"/>
+            <ellipse cx="692" cy="662" rx="26" ry="24" fill="#C8A877" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M712,650 Q724,642 720,628" fill="none" stroke="#C8A877" stroke-width="16" stroke-linecap="round"/>
+            <!-- packing tape across chest -->
+            <rect x="404" y="586" width="216" height="30" fill="#E3CFA0" fill-opacity="0.6" stroke="#9C7E48" stroke-width="2" stroke-dasharray="2 4"/>
+            <!-- FRAGILE / 易碎 stamp -->
+            <g transform="translate(454,694) rotate(-8)"><rect x="-74" y="-25" width="148" height="50" fill="none" stroke="#B5322B" stroke-width="5"/><text x="0" y="9" text-anchor="middle" font-family="Noto Sans SC" font-size="30" font-weight="900" fill="#B5322B" letter-spacing="2">易碎</text></g>
+            <!-- 此面向上 arrows -->
+            <g stroke="#8A6F42" stroke-width="5" fill="none" stroke-linecap="round"><path d="M598,548 L598,514 M586,526 L598,512 L610,526"/></g>
+            <!-- hollow show-through at peel -->
+            <path d="M648,716 L686,708 L680,750 Z" fill="#1A1A17" opacity="0.18"/>
+            <!-- a little 'tip-over' wobble line -->
+            <path d="M724,694 Q752,710 742,742" fill="none" stroke="#C2701C" stroke-width="6" stroke-linecap="round"/>
+            <path d="M736,688 L756,680" fill="none" stroke="#C2701C" stroke-width="6" stroke-linecap="round"/>
+          </g>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">纸老虎卷王</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">COPW</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">纸老虎卷王</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">COPW</div>
+        <div class="tagline">平时王者，关键时刻青铜</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>平时极为努力，规划完美，但一到生死时刻（大奖答辩、重大返修）容易崩溃退缩，不敢拍板。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>平时努力、规划周密、日常执行力强</li><li><span class="mk ok">✓</span>本职可靠，是稳定的主力</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>一到生死时刻（大答辩/重大返修）容易崩</li><li><span class="mk no">✗</span>不敢拍板，关键决策会退缩</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">好用但不可独当一面。关键节点导师需亲自压阵，提供心理支撑，不可让其独自承担高压决策。</div>
+        <ul class="tips"><li>关键节点导师亲自压阵，提供心理支撑</li><li>提前做压力预演与心理建设</li><li>重大决策别让他独自扛，配一个能拍板的搭档</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 03</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_CORT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_CORT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_CORT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_CORT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_CORT)" opacity="0.55"/>
+        <g clip-path="url(#wn_CORT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- stack of work on back -->
+          <g transform="translate(648,470)">
+            <rect x="0" y="120" width="150" height="40" rx="4" fill="#D8C19A" stroke="#1A1A17" stroke-width="6"/>
+            <rect x="10" y="78" width="138" height="42" rx="4" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+            <rect x="4" y="36" width="146" height="42" rx="4" fill="#D8C19A" stroke="#1A1A17" stroke-width="6"/>
+            <rect x="14" y="-6" width="130" height="42" rx="4" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+            <text x="75" y="150" text-anchor="middle" font-family="DM Mono" font-size="20" fill="#8A6F42">TODO</text>
+          </g>
+          <!-- head bowed down -->
+          <g transform="translate(0,40) rotate(8 512 380)">
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="372" rx="150" ry="146" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <!-- headphones -->
+            <path d="M360,372 Q360,210 512,210 Q664,210 664,372" fill="none" stroke="#1A1A17" stroke-width="16"/>
+            <rect x="338" y="350" width="48" height="86" rx="18" fill="#B5322B" stroke="#1A1A17" stroke-width="7"/>
+            <rect x="638" y="350" width="48" height="86" rx="18" fill="#B5322B" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="452" rx="98" ry="72" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="456" rx="11" ry="15" fill="#A79D8B"/><ellipse cx="540" cy="456" rx="11" ry="15" fill="#A79D8B"/>
+            <!-- focused down eyes -->
+            <path d="M444,380 Q466,392 488,380" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M538,380 Q560,392 582,380" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M450,352 Q466,346 482,352" fill="none" stroke="#1A1A17" stroke-width="4"/>
+            <path d="M544,352 Q560,346 576,352" fill="none" stroke="#1A1A17" stroke-width="4"/>
+            <path d="M498,494 L526,494" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          </g>
+          <!-- torso + arms onto laptop -->
+          <path d="M430,544 Q470,508 512,514 Q554,508 594,544 L636,760 L388,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <path d="M512,528 L478,580 L500,544 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,528 L546,580 L524,544 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <g transform="rotate(-6 580 624)"><rect x="548" y="590" width="62" height="74" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="5"/><rect x="548" y="590" width="62" height="18" rx="6" fill="#B5322B"/></g>
+          <path d="M452,602 Q470,668 524,686" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+          <path d="M572,602 Q556,668 506,686" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+          <g transform="translate(512,706)"><rect x="-74" y="-18" width="148" height="14" rx="4" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/><rect x="-60" y="-72" width="120" height="54" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="7"/><rect x="-50" y="-64" width="100" height="38" fill="#1A1A17"/></g>
+          <!-- phone with red unread dots -->
+          <g transform="translate(250,300) rotate(-10)">
+            <rect x="-44" y="-78" width="88" height="156" rx="14" fill="#1A1A17"/>
+            <rect x="-36" y="-66" width="72" height="120" rx="4" fill="#E2DFD5"/>
+            <g fill="#B5322B" stroke="#fff" stroke-width="3"><circle cx="30" cy="-58" r="16"/><circle cx="30" cy="-58" r="16"/></g>
+            <text x="30" y="-51" text-anchor="middle" font-family="DM Mono" font-size="18" fill="#fff">9</text>
+            <rect x="-24" y="-40" width="48" height="8" rx="4" fill="#C9C6BC"/>
+            <rect x="-24" y="-22" width="60" height="8" rx="4" fill="#C9C6BC"/>
+            <rect x="-24" y="-4" width="40" height="8" rx="4" fill="#C9C6BC"/>
+            <text x="0" y="40" text-anchor="middle" font-family="Noto Sans SC" font-size="20" font-weight="700" fill="#B5322B">汇报×99</text>
+          </g>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">闷头老黄牛</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">CORT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">闷头老黄牛</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">CORT</div>
+        <div class="tagline">干完三天才想起来汇报</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>默默把活干完，不主动汇报，出事了能顶住，但平时沟通极度滞后。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>踏实肯干、稳定出活</li><li><span class="mk ok">✓</span>出了事能顶住，不撂挑子</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>沟通极度滞后，干完三天才想起汇报</li><li><span class="mk no">✗</span>闷头容易走错方向到很晚才被发现</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">强制要求周报/组会汇报，建立硬性里程碑节点，防止其闷头走到黑才发现方向错了。</div>
+        <ul class="tips"><li>强制周报/组会汇报，设硬性里程碑</li><li>导师主动定期拉取进度，别等他报</li><li>把&#x27;及时暴露问题&#x27;纳入考核</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 04</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_CORW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_CORW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_CORW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_CORW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_CORW)" opacity="0.55"/>
+        <g clip-path="url(#wn_CORW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- small dark cloud overhead -->
+          <g transform="translate(512,250)" opacity="0.9">
+            <ellipse cx="-44" cy="6" rx="42" ry="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/>
+            <ellipse cx="10" cy="-6" rx="50" ry="34" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/>
+            <ellipse cx="58" cy="8" rx="40" ry="26" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/>
+            <rect x="-86" y="6" width="148" height="26" fill="#C9C6BC"/>
+            <path d="M-20,40 L-30,64" stroke="#7E94A8" stroke-width="5" stroke-linecap="round"/>
+            <path d="M16,42 L8,68" stroke="#7E94A8" stroke-width="5" stroke-linecap="round"/>
+            <path d="M48,40 L40,62" stroke="#7E94A8" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <!-- head -->
+          <g transform="translate(0,16)">
+            <g transform="rotate(-26 374 300)"><ellipse cx="374" cy="300" rx="60" ry="36" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="390" cy="302" rx="31" ry="18" fill="#C3B9A4"/><path d="M352,286 Q378,292 402,304" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 650 300)"><ellipse cx="650" cy="300" rx="60" ry="36" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="634" cy="302" rx="31" ry="18" fill="#C3B9A4"/><path d="M672,286 Q646,292 622,304" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M404,238 Q398,184 420,172 Q446,184 448,232 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,238 Q626,184 604,172 Q578,184 576,232 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="356" rx="146" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="420" rx="94" ry="70" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="424" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="424" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- worried eyes -->
+            <circle cx="462" cy="338" r="15" fill="#1A1A17"/><circle cx="466" cy="333" r="5" fill="#ECEAE3"/>
+            <circle cx="562" cy="338" r="15" fill="#1A1A17"/><circle cx="566" cy="333" r="5" fill="#ECEAE3"/>
+            <path d="M438,316 Q460,322 480,314" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M544,314 Q564,322 586,316" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M494,452 Q512,444 530,452" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          </g>
+          <!-- cabbage-leaf wrapped torso (concentric) -->
+          <g>
+            <path d="M512,506 Q360,540 360,720 L664,720 Q664,540 512,506 Z" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M512,540 Q406,566 404,720 L620,720 Q618,566 512,540 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M512,576 Q446,594 446,720 L578,720 Q578,594 512,576 Z" fill="#ECE7DB" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M512,610 Q482,622 482,720 L542,720 Q542,622 512,610 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="4"/>
+            <!-- veins -->
+            <path d="M512,540 L512,716" stroke="#C9C6BC" stroke-width="3"/>
+            <path d="M470,580 Q460,650 466,712" fill="none" stroke="#C9C6BC" stroke-width="3"/>
+            <path d="M554,580 Q564,650 558,712" fill="none" stroke="#C9C6BC" stroke-width="3"/>
+          </g>
+          <!-- hugging finished work to chest, not daring to submit -->
+          <g transform="translate(512,648)">
+            <rect x="-58" y="-30" width="116" height="78" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="7"/>
+            <line x1="-40" y1="-10" x2="40" y2="-10" stroke="#C9C6BC" stroke-width="5"/>
+            <line x1="-40" y1="8" x2="40" y2="8" stroke="#C9C6BC" stroke-width="5"/>
+            <line x1="-40" y1="26" x2="14" y2="26" stroke="#C9C6BC" stroke-width="5"/>
+            <text x="0" y="-40" text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="700" fill="#C2701C">还不敢交…</text>
+          </g>
+          <!-- arms hugging -->
+          <path d="M430,560 Q420,640 470,660" fill="none" stroke="#D8D2C4" stroke-width="30" stroke-linecap="round"/>
+          <path d="M594,560 Q604,640 554,660" fill="none" stroke="#D8D2C4" stroke-width="30" stroke-linecap="round"/>
+          <ellipse cx="474" cy="662" rx="22" ry="20" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <ellipse cx="550" cy="662" rx="22" ry="20" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="60" fill="#1A1A17">内耗型卷心菜</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">CORW</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">内耗型卷心菜</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">CORW</div>
+        <div class="tagline">干最多的活，做最久的梦</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>干活最多，但不敢说，拖到最后一刻才交，遇到危机就躲，极度内耗。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>产出量大、自我要求高、肯钻</li><li><span class="mk ok">✓</span>活儿质量往往不差</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>极度内耗，干最多的活做最久的梦</li><li><span class="mk no">✗</span>不敢说、拖到最后一刻才交，遇危机就躲</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">心理脆弱的高产者。需温和引导、主动拉取进度，切忌当众严厉批评，否则极易崩溃摆烂。</div>
+        <ul class="tips"><li>温和引导，主动拉进度而非等他上交</li><li>切忌当众严厉批评，否则极易崩溃摆烂</li><li>把大目标拆小，降低其心理负担</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 05</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_CAPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_CAPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_CAPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_CAPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_CAPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_CAPT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- yellow boundary line 分内/分外 -->
+          <line x1="512" y1="214" x2="512" y2="700" stroke="#E2A100" stroke-width="8" stroke-dasharray="20 14"/>
+          <text x="300" y="690" text-anchor="middle" font-family="Noto Sans SC" font-size="30" font-weight="900" fill="#E2A100" opacity="0.85">分内</text>
+          <text x="724" y="690" text-anchor="middle" font-family="Noto Sans SC" font-size="30" font-weight="900" fill="#C9C6BC" opacity="0.9">分外</text>
+          <!-- head -->
+          <g>
+            <g transform="rotate(-26 336 318)"><ellipse cx="336" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="352" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M314,304 Q340,310 364,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 616 318)"><ellipse cx="616" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="600" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M638,304 Q612,310 588,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M368,250 Q362,196 384,184 Q410,196 412,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M584,250 Q590,196 568,184 Q542,196 540,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="476" cy="360" rx="150" ry="146" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="476" cy="426" rx="96" ry="72" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="450" cy="430" rx="11" ry="15" fill="#A79D8B"/><ellipse cx="504" cy="430" rx="11" ry="15" fill="#A79D8B"/>
+            <path d="M466,468 Q478,476 490,468" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- calm, clear eyes -->
+            <circle cx="424" cy="340" r="15" fill="#1A1A17"/><circle cx="428" cy="335" r="5" fill="#ECEAE3"/>
+            <circle cx="528" cy="340" r="15" fill="#1A1A17"/><circle cx="532" cy="335" r="5" fill="#ECEAE3"/>
+            <path d="M402,314 Q424,306 446,314" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M506,314 Q528,306 550,314" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          </g>
+          <!-- suit torso -->
+          <path d="M394,520 Q436,478 478,486 Q520,478 560,520 L600,760 L352,760 Z" fill="#3A3631" stroke="#1A1A17" stroke-width="8"/>
+          <rect x="442" y="478" width="68" height="34" rx="14" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <path d="M478,500 L426,600 L470,540 Z" fill="#2A2620" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M478,500 L530,600 L486,540 Z" fill="#2A2620" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M478,510 L466,560 L478,640 L490,560 Z" fill="#B5322B" stroke="#1A1A17" stroke-width="4"/>
+          <!-- ID badge -->
+          <g transform="rotate(-6 548 590)"><rect x="520" y="560" width="56" height="68" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="5"/><rect x="520" y="560" width="56" height="16" rx="6" fill="#E2A100"/></g>
+          <!-- arm extending contract across the line -->
+          <path d="M548,560 Q650,560 712,584" fill="none" stroke="#3A3631" stroke-width="32" stroke-linecap="round"/>
+          <g transform="translate(740,600) rotate(8)"><rect x="-30" y="-44" width="84" height="104" rx="4" fill="#fff" stroke="#1A1A17" stroke-width="7"/><line x1="-16" y1="-22" x2="40" y2="-22" stroke="#C9C6BC" stroke-width="5"/><line x1="-16" y1="-2" x2="40" y2="-2" stroke="#C9C6BC" stroke-width="5"/><line x1="-16" y1="18" x2="40" y2="18" stroke="#C9C6BC" stroke-width="5"/><path d="M-8,40 Q12,52 32,40" fill="none" stroke="#B5322B" stroke-width="4"/><text x="12" y="-30" text-anchor="middle" font-family="DM Mono" font-size="18" fill="#1A1A17">CONTRACT</text></g>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">理性合伙人</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">CAPT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">少见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">理性合伙人</h2>
+          <span class="vibe" style="background:#B7B3A6;color:#1A1A17">少见</span>
+        </div>
+        <div class="code">CAPT</div>
+        <div class="tagline">分内事天花板，分外事绝缘体</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>理想的职场人。职责分明，提前预警，遇事能扛，但绝不干分外之事。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>职责分明、提前预警、遇事能扛</li><li><span class="mk ok">✓</span>靠谱不越界，理想的职业型选手</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>绝不干分外之事，可能显得有点&#x27;冷&#x27;</li><li><span class="mk no">✗</span>不愿为团队额外多担当</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">适合做项目 PM。用明确的契约管理，论功行赏，不要用情怀绑架。</div>
+        <ul class="tips"><li>适合做项目 PM，用明确契约/分工管理</li><li>论功行赏，别用情怀绑架</li><li>把权责利一次谈清楚，他会回报以稳定</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 06</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_CAPW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_CAPW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_CAPW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_CAPW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_CAPW)" opacity="0.55"/>
+        <g clip-path="url(#wn_CAPW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- small flames behind (left), exit sign (right) -->
+          <g transform="translate(250,560)" opacity="0.9">
+            <path d="M0,80 Q-34,30 -8,-6 Q-2,28 18,2 Q14,-30 36,-46 Q26,8 48,30 Q60,54 38,82 Z" fill="#C2701C" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M8,78 Q-10,44 6,18 Q10,40 24,24 Q22,48 34,78 Z" fill="#E2A100"/>
+          </g>
+          <g transform="translate(796,300)"><rect x="-60" y="-30" width="120" height="60" rx="8" fill="#1A1A17"/><text x="0" y="14" text-anchor="middle" font-family="Noto Sans SC" font-size="34" font-weight="900" fill="#ECEAE3">EXIT</text><path d="M44,0 L72,0 M60,-12 L74,0 L60,12" fill="none" stroke="#ECEAE3" stroke-width="6"/></g>
+          <!-- parachute strapped -->
+          <g transform="translate(512,250)">
+            <path d="M-150,40 Q-150,-80 0,-80 Q150,-80 150,40 Q90,4 60,40 Q30,4 0,40 Q-30,4 -60,40 Q-90,4 -150,40 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M-150,40 L-30,150" stroke="#1A1A17" stroke-width="4"/><path d="M-60,40 L-18,150" stroke="#1A1A17" stroke-width="4"/><path d="M60,40 L18,150" stroke="#1A1A17" stroke-width="4"/><path d="M150,40 L30,150" stroke="#1A1A17" stroke-width="4"/>
+            <path d="M-150,40 Q0,8 150,40" fill="none" stroke="#C9C6BC" stroke-width="3"/>
+          </g>
+          <!-- head (composed, walking right) -->
+          <g>
+            <g transform="rotate(-26 400 330)"><ellipse cx="400" cy="330" rx="60" ry="36" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="416" cy="332" rx="31" ry="18" fill="#C3B9A4"/><path d="M380,316 Q404,322 426,334" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 680 330)"><ellipse cx="680" cy="330" rx="60" ry="36" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="664" cy="332" rx="31" ry="18" fill="#C3B9A4"/><path d="M702,316 Q678,322 656,334" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M414,256 Q408,202 430,190 Q456,202 458,250 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M610,256 Q616,202 596,190 Q570,202 568,250 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="540" cy="372" rx="146" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="556" cy="436" rx="92" ry="68" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="540" cy="440" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="590" cy="440" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- composed half-smile -->
+            <path d="M540,474 Q560,484 584,474" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- looking ahead, unbothered -->
+            <circle cx="524" cy="352" r="14" fill="#1A1A17"/><circle cx="528" cy="347" r="5" fill="#ECEAE3"/>
+            <circle cx="600" cy="352" r="14" fill="#1A1A17"/><circle cx="604" cy="347" r="5" fill="#ECEAE3"/>
+            <path d="M504,328 Q524,322 544,330" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M582,330 Q602,322 620,328" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          </g>
+          <!-- neat suit torso, mid-step -->
+          <path d="M452,524 Q500,486 540,492 Q586,486 622,528 L648,760 L420,760 Z" fill="#3A3631" stroke="#1A1A17" stroke-width="8"/>
+          <rect x="506" y="488" width="64" height="32" rx="13" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <path d="M540,508 L494,600 L534,548 Z" fill="#2A2620" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M540,508 L588,600 L546,548 Z" fill="#2A2620" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M540,518 L528,560 L540,628 L552,560 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          <!-- pocket square -->
+          <path d="M584,556 l24,0 -8,22 z" fill="#B5322B" stroke="#1A1A17" stroke-width="3"/>
+          <!-- striding legs toward exit -->
+          <path d="M500,756 L470,860" stroke="#3A3631" stroke-width="30" stroke-linecap="round"/>
+          <path d="M580,756 L640,852" stroke="#3A3631" stroke-width="30" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="816" font-family="Noto Sans SC" font-weight="900" font-size="52" fill="#1A1A17">精致利己执行官</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">CAPW</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">精致利己执行官</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">CAPW</div>
+        <div class="tagline">大难临头各自飞，先飞的是我</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>本职工作极好，主动沟通，但只做分内事，大难临头先保自己。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>本职工作极好、主动沟通、效率高</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>只做分内事，大难临头先保自己</li><li><span class="mk no">✗</span>不可托付兜底，关键时刻会先撤</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">可用之才，不可交心。明确分工边界，用利益驱动，别谈奉献。</div>
+        <ul class="tips"><li>可用之才，不可交心</li><li>明确分工边界、用利益驱动，别谈奉献</li><li>兜底类任务别指望他，务必留备份</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 07</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_CART"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_CART" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_CART"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_CART)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_CART)" opacity="0.55"/>
+        <g clip-path="url(#wn_CART)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- floating code & circuit motifs -->
+          <g font-family="DM Mono" fill="#C2701C" opacity="0.85">
+            <text x="180" y="280" font-size="26">{ }</text>
+            <text x="170" y="430" font-size="22">&lt;/&gt;</text>
+            <text x="788" y="300" font-size="24">01101</text>
+            <text x="800" y="470" font-size="22">def()</text>
+          </g>
+          <g stroke="#C9C6BC" stroke-width="4" fill="none">
+            <path d="M150,540 h60 v40 h40"/><circle cx="252" cy="580" r="7" fill="#C9C6BC"/>
+            <path d="M874,540 h-60 v40 h-40"/><circle cx="772" cy="580" r="7" fill="#C9C6BC"/>
+          </g>
+          <!-- head w/ hoodie + glasses -->
+          <g>
+            <!-- hood behind -->
+            <path d="M348,420 Q330,250 512,238 Q694,250 676,420 Q620,360 512,360 Q404,360 348,420 Z" fill="#3A3631" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="372" rx="146" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="436" rx="92" ry="68" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="440" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="440" rx="10" ry="14" fill="#A79D8B"/>
+            <path d="M498,476 L526,476" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- frame glasses -->
+            <rect x="430" y="338" width="64" height="48" rx="10" fill="#ECEAE3" fill-opacity="0.5" stroke="#1A1A17" stroke-width="7"/>
+            <rect x="530" y="338" width="64" height="48" rx="10" fill="#ECEAE3" fill-opacity="0.5" stroke="#1A1A17" stroke-width="7"/>
+            <line x1="494" y1="358" x2="530" y2="358" stroke="#1A1A17" stroke-width="7"/>
+            <circle cx="462" cy="362" r="9" fill="#1A1A17"/><circle cx="562" cy="362" r="9" fill="#1A1A17"/>
+          </g>
+          <!-- hoodie torso -->
+          <path d="M412,524 Q470,486 512,492 Q554,486 612,524 L648,760 L376,760 Z" fill="#3A3631" stroke="#1A1A17" stroke-width="8"/>
+          <path d="M460,520 Q512,560 564,520 L556,612 L468,612 Z" fill="#2A2620" stroke="#1A1A17" stroke-width="5"/>
+          <!-- drawstrings -->
+          <path d="M496,540 L490,612" stroke="#C9C6BC" stroke-width="6"/><path d="M528,540 L534,612" stroke="#C9C6BC" stroke-width="6"/>
+          <!-- 'don't talk to me' hand: palm out -->
+          <path d="M576,600 Q668,580 716,520" fill="none" stroke="#3A3631" stroke-width="32" stroke-linecap="round"/>
+          <g transform="translate(736,496)"><ellipse cx="0" cy="0" rx="36" ry="44" fill="#D8D2C4" stroke="#1A1A17" stroke-width="7"/><line x1="-16" y1="-28" x2="-16" y2="22" stroke="#1A1A17" stroke-width="5"/><line x1="0" y1="-32" x2="0" y2="24" stroke="#1A1A17" stroke-width="5"/><line x1="16" y1="-28" x2="16" y2="22" stroke="#1A1A17" stroke-width="5"/></g>
+          <text x="770" y="430" font-family="Noto Sans SC" font-size="26" font-weight="900" fill="#C2701C">勿扰</text>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">闷声技术宅</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">CART</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">少见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">闷声技术宅</h2>
+          <span class="vibe" style="background:#B7B3A6;color:#1A1A17">少见</span>
+        </div>
+        <div class="code">CART</div>
+        <div class="tagline">别找我社交，有 bug 直接说</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>只管自己一亩三分地，不主动找事，但技术硬，遇事能抗雷。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>技术硬、能抗雷、专注自驱</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>不主动找事、人际协调弱、沟通被动</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">放在纯技术攻坚岗位，减少其人际协调工作。</div>
+        <ul class="tips"><li>放纯技术攻坚岗，减少其人际协调工作</li><li>用文档/异步沟通替代频繁开会</li><li>给清晰的技术目标，剩下放手让他啃</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 08</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_CARW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_CARW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_CARW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_CARW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.4"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6" stroke-dasharray="6 8"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">在场?</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_CARW)" opacity="0.55"/>
+        <g clip-path="url(#wn_CARW)" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(512,440)" opacity="0.16">
+            <ellipse cx="0" cy="-40" rx="120" ry="116" fill="#C9C6BC"/>
+            <path d="M-150,210 Q-150,40 0,40 Q150,40 150,210 Z" fill="#C9C6BC"/>
+          </g>
+          <text x="512" y="470" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="120" fill="#C9C6BC" opacity="0.45">?</text>
+          <g transform="translate(742,512) scale(0.62)" opacity="0.85">
+            <ellipse cx="372" cy="320" rx="60" ry="35" fill="none" stroke="#8c887d" stroke-width="7" stroke-dasharray="12 9" transform="rotate(-26 372 320)"/>
+            <ellipse cx="652" cy="320" rx="60" ry="35" fill="none" stroke="#8c887d" stroke-width="7" stroke-dasharray="12 9" transform="rotate(26 652 320)"/>
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="none" stroke="#8c887d" stroke-width="7" stroke-dasharray="12 9"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="none" stroke="#8c887d" stroke-width="7" stroke-dasharray="12 9"/>
+            <ellipse cx="512" cy="360" rx="150" ry="146" fill="#ECEAE3" fill-opacity="0.35" stroke="#8c887d" stroke-width="7" stroke-dasharray="14 10"/>
+            <ellipse cx="512" cy="426" rx="98" ry="74" fill="none" stroke="#8c887d" stroke-width="6" stroke-dasharray="10 9"/>
+            <ellipse cx="484" cy="430" rx="10" ry="14" fill="#8c887d" fill-opacity="0.5"/><ellipse cx="540" cy="430" rx="10" ry="14" fill="#8c887d" fill-opacity="0.5"/>
+            <circle cx="460" cy="340" r="11" fill="#8c887d"/><circle cx="564" cy="340" r="11" fill="#8c887d"/>
+            <path d="M440,316 Q460,308 480,316" fill="none" stroke="#8c887d" stroke-width="5"/>
+            <path d="M544,316 Q564,308 584,316" fill="none" stroke="#8c887d" stroke-width="5"/>
+            <path d="M488,470 Q512,462 536,470" fill="none" stroke="#8c887d" stroke-width="6"/>
+            <path d="M430,520 Q470,486 512,492 Q554,486 594,520 L632,720 L392,720 Z" fill="#ECEAE3" fill-opacity="0.3" stroke="#8c887d" stroke-width="7" stroke-dasharray="14 10"/>
+          </g>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="60" fill="#1A1A17">课题组隐形人</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">CARW</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">课题组隐形人</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">CARW</div>
+        <div class="tagline">查无此人，但人确实在</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>最低限度地完成工作，不主动、不拒绝、不负责，遇到事就缩。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>能完成最低限度本职、不惹事、独立性强</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>不主动、不拒绝、不负责，遇事就缩</li><li><span class="mk no">✗</span>存在感与贡献都偏低，查无此人</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">边缘化处理。安排低风险、独立性强的辅助工作。</div>
+        <ul class="tips"><li>边缘化处理，安排低风险、独立的辅助工作</li><li>用明确小任务 + 硬截止驱动</li><li>定期点名拉一下进度，防止彻底隐身</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 09</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XOPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XOPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XOPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XOPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XOPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_XOPT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- flames at right (the fire) -->
+          <g transform="translate(740,560)" opacity="0.95">
+            <path d="M0,120 Q-54,46 -12,-10 Q-2,42 28,2 Q22,-46 56,-72 Q40,12 76,46 Q96,84 60,124 Z" fill="#C2701C" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M10,116 Q-16,66 8,28 Q14,60 36,36 Q32,74 52,116 Z" fill="#E2A100"/>
+          </g>
+          <!-- wok strapped on back -->
+          <g transform="translate(338,470)">
+            <path d="M-86,0 Q0,86 86,0 Z" fill="#1A1A17"/>
+            <path d="M-86,0 Q0,68 86,0" fill="none" stroke="#5c574c" stroke-width="5"/>
+            <rect x="80" y="-12" width="56" height="13" rx="6" fill="#1A1A17"/>
+            <!-- straps -->
+            <path d="M-40,-6 L20,140" stroke="#B5322B" stroke-width="12"/><path d="M40,-6 L80,140" stroke="#B5322B" stroke-width="12"/>
+          </g>
+          <!-- firefighter head w/ helmet -->
+          <g>
+            <ellipse cx="512" cy="376" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <!-- helmet -->
+            <path d="M360,360 Q360,236 512,236 Q664,236 664,360 L700,360 Q700,372 686,374 L338,374 Q324,372 324,360 Z" fill="#B5322B" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M470,250 L554,250 L548,330 L476,330 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="6"/>
+            <text x="512" y="312" text-anchor="middle" font-family="DM Mono" font-size="40" font-weight="500" fill="#1A1A17">119</text>
+            <ellipse cx="512" cy="446" rx="92" ry="68" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="450" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="450" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- determined eyes + sweat -->
+            <circle cx="462" cy="396" r="15" fill="#1A1A17"/><circle cx="562" cy="396" r="15" fill="#1A1A17"/>
+            <path d="M438,378 L486,388" stroke="#1A1A17" stroke-width="7"/><path d="M586,378 L538,388" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M494,484 Q512,492 530,484" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M384,400 Q372,422 384,432 Q396,422 384,400 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          </g>
+          <!-- coat torso -->
+          <path d="M430,524 Q470,486 512,492 Q554,486 594,524 L636,760 L388,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <path d="M388,640 L636,640" stroke="#E2A100" stroke-width="14"/>
+          <!-- arms holding extinguisher toward fire -->
+          <path d="M560,580 Q650,560 700,520" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+          <g transform="translate(636,470) rotate(40)"><rect x="-26" y="0" width="52" height="120" rx="22" fill="#B5322B" stroke="#1A1A17" stroke-width="7"/><rect x="-12" y="-26" width="24" height="30" fill="#1A1A17"/><path d="M0,-26 Q40,-40 64,-22" fill="none" stroke="#1A1A17" stroke-width="9"/></g>
+          <path d="M460,580 Q430,640 470,680" fill="none" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="64" fill="#1A1A17">背锅救火队长</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XOPT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">背锅救火队长</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">XOPT</div>
+        <div class="tagline">出力最多，复盘最冤</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>干活极其卖力，遇事能顶，但总觉得错在环境，容易出苦力不讨好。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>极其卖力、遇事能顶、主动补位</li><li><span class="mk ok">✓</span>苦劳多，是团队的救火力量</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>总觉得错在环境，归因外向</li><li><span class="mk no">✗</span>容易出力不讨好，复盘爱甩外因</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">肯定其苦劳，但需在复盘时强行纠正其归因方式，帮其建立复盘逻辑。</div>
+        <ul class="tips"><li>先肯定苦劳、稳住情绪</li><li>复盘时强行纠正归因，逼出&#x27;自身可改进项&#x27;清单</li><li>防止其因长期委屈而内耗崩盘</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 10</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XOPW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XOPW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XOPW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XOPW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#B5322B" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.92"><circle r="64" fill="none" stroke="#B5322B" stroke-width="9"/><circle r="52" fill="none" stroke="#B5322B" stroke-width="4" stroke-dasharray="3 5"/><text y="-4" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="42" fill="#B5322B">QC</text><text y="28" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="18" fill="#B5322B" letter-spacing="1">高危</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XOPW)" opacity="0.55"/>
+        <g clip-path="url(#wn_XOPW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- head -->
+          <g>
+            <g transform="rotate(-26 372 318)"><ellipse cx="372" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M350,304 Q376,310 400,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 652 318)"><ellipse cx="652" cy="318" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="320" rx="32" ry="18" fill="#C3B9A4"/><path d="M674,304 Q648,310 624,322" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <!-- single hair curl (baby) -->
+            <path d="M512,232 Q500,196 524,196 Q544,200 528,228" fill="none" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="360" rx="150" ry="146" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="448" cy="406" rx="26" ry="18" fill="#C98C7A" opacity="0.5"/><ellipse cx="576" cy="406" rx="26" ry="18" fill="#C98C7A" opacity="0.5"/>
+            <ellipse cx="512" cy="430" rx="96" ry="72" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="484" cy="434" rx="11" ry="15" fill="#A79D8B"/><ellipse cx="540" cy="434" rx="11" ry="15" fill="#A79D8B"/>
+            <!-- pacifier in mouth -->
+            <circle cx="512" cy="474" r="22" fill="#E2A100" stroke="#1A1A17" stroke-width="6"/><circle cx="512" cy="474" r="9" fill="#fff" stroke="#1A1A17" stroke-width="4"/>
+            <!-- big naive eyes -->
+            <circle cx="462" cy="344" r="20" fill="#1A1A17"/><circle cx="468" cy="338" r="7" fill="#ECEAE3"/>
+            <circle cx="562" cy="344" r="20" fill="#1A1A17"/><circle cx="568" cy="338" r="7" fill="#ECEAE3"/>
+            <path d="M438,316 Q460,308 482,316" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M542,316 Q564,308 586,316" fill="none" stroke="#1A1A17" stroke-width="5"/>
+          </g>
+          <!-- giant baby onesie torso -->
+          <path d="M388,540 Q420,494 512,500 Q604,494 636,540 Q664,640 636,748 L388,748 Q360,640 388,540 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <!-- onesie buttons -->
+          <circle cx="512" cy="600" r="9" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          <circle cx="512" cy="650" r="9" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          <path d="M460,712 Q512,740 564,712" fill="none" stroke="#1A1A17" stroke-width="6"/>
+          <!-- arms full of work (papers + pacifier) -->
+          <path d="M400,560 Q360,640 430,680" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <g transform="translate(440,632) rotate(-12)"><rect x="-50" y="-30" width="100" height="76" rx="4" fill="#fff" stroke="#1A1A17" stroke-width="7"/><line x1="-34" y1="-10" x2="34" y2="-10" stroke="#C9C6BC" stroke-width="5"/><line x1="-34" y1="8" x2="34" y2="8" stroke="#C9C6BC" stroke-width="5"/><line x1="-34" y1="26" x2="6" y2="26" stroke="#C9C6BC" stroke-width="5"/></g>
+          <!-- pointing arm out of frame (blame) -->
+          <path d="M600,560 Q720,540 860,500" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <g transform="translate(862,496) rotate(-16)"><ellipse cx="0" cy="0" rx="20" ry="26" fill="#D8D2C4" stroke="#1A1A17" stroke-width="7"/><path d="M14,-6 L70,-14" stroke="#D8D2C4" stroke-width="22" stroke-linecap="round"/><path d="M14,-6 L70,-14" stroke="#1A1A17" stroke-width="26" stroke-linecap="round" opacity="0"/></g>
+          <text x="760" y="440" font-family="Noto Sans SC" font-size="28" font-weight="900" fill="#B5322B">不是我！</text>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="816" font-family="Noto Sans SC" font-weight="900" font-size="56" fill="#1A1A17">大包大揽的巨婴</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XOPW</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#B5322B" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">高危</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">大包大揽的巨婴</h2>
+          <span class="vibe" style="background:#B5322B;color:#ECEAE3">高危</span>
+        </div>
+        <div class="code">XOPW</div>
+        <div class="tagline">抢着背锅，又抢着甩锅</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>什么活都抢着干，但干砸了全是别人的错，一到关键时刻就逃避。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>抢着干活、参与意愿强、表面很积极</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>干砸了全是别人的错</li><li><span class="mk no">✗</span>一到关键时刻就逃避，越界后留烂摊子</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">非常危险。必须严格限制其越界行为，出了错必须让其承担实质后果。</div>
+        <ul class="tips"><li>非常危险：严格限制其越界行为</li><li>出错必须让其承担实质后果，绝不兜底</li><li>全程书面留痕，封堵事后甩锅</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 11</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XORT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XORT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XORT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XORT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XORT)" opacity="0.55"/>
+        <g clip-path="url(#wn_XORT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- complaint bubbles overhead -->
+          <g font-family="Noto Sans SC" font-weight="700">
+            <g transform="translate(250,280)"><rect x="-78" y="-34" width="156" height="64" rx="22" fill="#fff" stroke="#1A1A17" stroke-width="6"/><path d="M30,28 l8,30 24,-26 z" fill="#fff" stroke="#1A1A17" stroke-width="6"/><text x="0" y="8" text-anchor="middle" font-size="26" fill="#C2701C">全世界针对我</text></g>
+            <g transform="translate(770,330)"><rect x="-64" y="-30" width="128" height="58" rx="20" fill="#fff" stroke="#1A1A17" stroke-width="6"/><text x="0" y="10" text-anchor="middle" font-size="24" fill="#B5322B">又是我背</text></g>
+          </g>
+          <!-- big wok carried on back, walking forward -->
+          <g transform="translate(560,440) rotate(-6)">
+            <path d="M-130,0 Q0,150 130,0 Z" fill="#1A1A17"/>
+            <path d="M-130,0 Q0,120 130,0" fill="none" stroke="#5c574c" stroke-width="6"/>
+            <rect x="120" y="-18" width="80" height="18" rx="9" fill="#1A1A17"/>
+            <rect x="-200" y="-18" width="80" height="18" rx="9" fill="#1A1A17"/>
+            <text x="0" y="56" text-anchor="middle" font-family="Noto Sans SC" font-size="40" font-weight="900" fill="#5c574c">锅</text>
+          </g>
+          <!-- head leaning forward under load -->
+          <g transform="translate(-30,150) rotate(-12 480 380)">
+            <g transform="rotate(-26 356 318)"><ellipse cx="356" cy="318" rx="58" ry="35" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="372" cy="320" rx="30" ry="17" fill="#C3B9A4"/></g>
+            <g transform="rotate(26 604 318)"><ellipse cx="604" cy="318" rx="58" ry="35" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="588" cy="320" rx="30" ry="17" fill="#C3B9A4"/></g>
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="480" cy="372" rx="140" ry="136" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="486" cy="436" rx="88" ry="64" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="462" cy="440" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="512" cy="440" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- grumbling frown -->
+            <path d="M462,474 Q486,464 510,474" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- annoyed eyes -->
+            <path d="M428,360 L470,352" stroke="#1A1A17" stroke-width="7"/><path d="M518,352 L556,360" stroke="#1A1A17" stroke-width="7"/>
+            <circle cx="448" cy="376" r="11" fill="#1A1A17"/><circle cx="538" cy="376" r="11" fill="#1A1A17"/>
+          </g>
+          <!-- legs trudging -->
+          <path d="M470,720 L450,800" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+          <path d="M540,720 L580,792" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+          <path d="M420,560 Q470,500 512,510 Q554,500 600,556 L612,724 L398,724 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8" transform="translate(-30,150)"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="816" font-family="Noto Sans SC" font-weight="900" font-size="56" fill="#1A1A17">满腹牢骚的背锅侠</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XORT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">满腹牢骚的背锅侠</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">XORT</div>
+        <div class="tagline">全世界都在针对我（但我还是扛了）</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>干了最多的活，平时不吱声，出事了硬扛，但满腹牢骚觉得全世界针对自己。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>干活最多、出事硬扛、关键时刻在</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>满腹牢骚，觉得全世界针对自己</li><li><span class="mk no">✗</span>平时不主动沟通，情绪消耗大</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">需导师主动为其撑腰，剥离部分过度责任，教导其向上管理。</div>
+        <ul class="tips"><li>主动为其撑腰，剥离部分过度责任</li><li>教其向上管理、把诉求说出来</li><li>定期疏导情绪，把他的功劳显性化</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 12</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XORW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XORW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XORW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XORW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#B5322B" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.92"><circle r="64" fill="none" stroke="#B5322B" stroke-width="9"/><circle r="52" fill="none" stroke="#B5322B" stroke-width="4" stroke-dasharray="3 5"/><text y="-4" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="42" fill="#B5322B">QC</text><text y="28" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="18" fill="#B5322B" letter-spacing="1">高危</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XORW)" opacity="0.55"/>
+        <g clip-path="url(#wn_XORW)" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(300,612)">
+            <path d="M0,40 L120,40 L150,80 L30,80 Z" fill="#C2701C" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M0,40 L0,108 L120,108 L120,40" fill="#D8C19A" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M120,40 L150,80 L150,140 L120,108 Z" fill="#B07418" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M0,40 L-26,-6 L96,-10 L120,40 Z" fill="#D8C19A" stroke="#1A1A17" stroke-width="7" opacity="0.95"/>
+          </g>
+          <g transform="translate(-40,18)">
+            <ellipse cx="372" cy="330" rx="56" ry="33" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8" transform="rotate(-24 372 330)"/>
+            <ellipse cx="652" cy="330" rx="56" ry="33" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8" transform="rotate(24 652 330)"/>
+            <path d="M408,256 Q402,206 422,194 Q446,206 448,252 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M616,256 Q622,206 602,194 Q578,206 576,252 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="372" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="446" rx="96" ry="70" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="452" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="540" cy="452" rx="10" ry="14" fill="#A79D8B"/>
+            <path d="M442,362 Q462,374 484,362" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M542,362 Q562,374 584,362" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M430,520 Q470,486 512,492 Q554,486 594,520 L636,760 L388,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+            <rect x="476" y="486" width="72" height="30" rx="13" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M512,506 L474,560 L498,524 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M512,506 L550,560 L526,524 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M452,580 Q470,648 524,668" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+            <path d="M572,580 Q556,648 506,668" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+            <g transform="translate(512,690)"><rect x="-70" y="-20" width="140" height="14" rx="4" fill="#C9C6BC" stroke="#1A1A17" stroke-width="6"/><rect x="-58" y="-72" width="116" height="54" rx="5" fill="#E2DFD5" stroke="#1A1A17" stroke-width="7"/><rect x="-48" y="-64" width="96" height="38" fill="#1A1A17"/></g>
+          </g>
+          <g transform="translate(70,10)" opacity="0.42">
+            <ellipse cx="372" cy="330" rx="56" ry="33" fill="#B5322B" fill-opacity="0.12" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8" transform="rotate(-24 372 330)"/>
+            <ellipse cx="652" cy="330" rx="56" ry="33" fill="#B5322B" fill-opacity="0.12" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8" transform="rotate(24 652 330)"/>
+            <path d="M408,256 Q402,206 422,194 Q446,206 448,252 Z" fill="none" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <path d="M616,256 Q622,206 602,194 Q578,206 576,252 Z" fill="none" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <ellipse cx="512" cy="360" rx="148" ry="142" fill="#B5322B" fill-opacity="0.10" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <ellipse cx="512" cy="430" rx="96" ry="70" fill="none" stroke="#B5322B" stroke-width="5" stroke-dasharray="8 7"/>
+            <circle cx="462" cy="340" r="13" fill="#B5322B" fill-opacity="0.5"/><circle cx="566" cy="340" r="13" fill="#B5322B" fill-opacity="0.5"/>
+            <path d="M484,452 Q512,438 540,452" fill="none" stroke="#B5322B" stroke-width="6"/>
+            <path d="M430,520 Q470,486 512,492 Q554,486 594,520 L636,760 L388,760 Z" fill="#B5322B" fill-opacity="0.08" stroke="#B5322B" stroke-width="6" stroke-dasharray="10 8"/>
+            <path d="M590,540 Q740,470 880,470" fill="none" stroke="#B5322B" stroke-width="30" stroke-linecap="round" stroke-dasharray="14 10" opacity="0.7"/>
+          </g>
+          <g transform="translate(862,452) rotate(18)">
+            <path d="M-92,-6 Q0,86 92,-6 Z" fill="#1A1A17"/>
+            <path d="M-92,-6 Q0,70 92,-6" fill="none" stroke="#5c574c" stroke-width="5"/>
+            <rect x="86" y="-16" width="64" height="14" rx="7" fill="#1A1A17"/>
+            <rect x="-150" y="-16" width="64" height="14" rx="7" fill="#1A1A17"/>
+          </g>
+          <path d="M690,500 L780,468" stroke="#B5322B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M700,540 L800,512" stroke="#B5322B" stroke-width="6" stroke-linecap="round"/>
+          <path d="M712,580 L792,560" stroke="#B5322B" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">量子甩锅侠</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XORW</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#B5322B" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">高危</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">量子甩锅侠</h2>
+          <span class="vibe" style="background:#B5322B;color:#ECEAE3">高危</span>
+        </div>
+        <div class="code">XORW</div>
+        <div class="tagline">薛定谔的队友：观测前在干活，观测后在甩锅</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>看似参与很多，实则无实质产出；遇事临阵脱逃，事后全是客观原因；还能理直气壮地要求别人兜底。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>表面参与度高，很会包装存在感</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>几乎无实质产出</li><li><span class="mk no">✗</span>遇事临阵脱逃、事后全推客观原因</li><li><span class="mk no">✗</span>还理直气壮要求别人兜底</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">绝不可放核心岗。切断兜底路径，用冰冷的 Deadline 和硬指标管理。</div>
+        <ul class="tips"><li>绝不可放核心岗</li><li>切断兜底路径，用冰冷的 Deadline 和硬指标管理</li><li>前置交付节点压缩其滞后空间，全程留痕</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 13</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XAPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XAPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XAPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XAPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XAPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_XAPT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- radar all stuck at middle (mediocre) -->
+          <g transform="translate(512,430)" opacity="0.9">
+            <polygon points="0,-180 156,-90 156,90 0,180 -156,90 -156,-90" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" fill="none" stroke="#C9C6BC" stroke-width="2"/>
+            <line x1="0" y1="0" x2="0" y2="-180" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="156" y2="-90" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="156" y2="90" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="0" y2="180" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-156" y2="90" stroke="#C9C6BC" stroke-width="2"/><line x1="0" y1="0" x2="-156" y2="-90" stroke="#C9C6BC" stroke-width="2"/>
+            <polygon points="0,-90 78,-45 78,45 0,90 -78,45 -78,-45" fill="#C9C6BC" fill-opacity="0.5" stroke="#8c887d" stroke-width="5" stroke-dasharray="9 7"/>
+          </g>
+          <!-- head, chin up, confident -->
+          <g>
+            <g transform="rotate(-26 372 308)"><ellipse cx="372" cy="308" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="310" rx="32" ry="18" fill="#C3B9A4"/><path d="M350,294 Q376,300 400,312" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 652 308)"><ellipse cx="652" cy="308" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="310" rx="32" ry="18" fill="#C3B9A4"/><path d="M674,294 Q648,300 624,312" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M404,242 Q398,188 420,176 Q446,188 448,236 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,242 Q626,188 604,176 Q578,188 576,236 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="350" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="412" rx="94" ry="70" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="416" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="416" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- smug grin -->
+            <path d="M482,448 Q512,466 542,448" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <!-- confident raised brows + sparkle eyes -->
+            <circle cx="462" cy="330" r="15" fill="#1A1A17"/><circle cx="467" cy="324" r="6" fill="#ECEAE3"/>
+            <circle cx="562" cy="330" r="15" fill="#1A1A17"/><circle cx="567" cy="324" r="6" fill="#ECEAE3"/>
+            <path d="M436,300 Q460,290 484,300" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M540,300 Q564,290 588,300" fill="none" stroke="#1A1A17" stroke-width="6"/>
+            <path d="M620,300 l18,-10 m-18,24 l22,-6" stroke="#E2A100" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <!-- torso, hands on hips (chest out) -->
+          <path d="M420,520 Q470,478 512,486 Q554,478 604,520 L632,760 L392,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <rect x="476" y="478" width="72" height="34" rx="14" fill="#D8D2C4" stroke="#1A1A17" stroke-width="6"/>
+          <path d="M512,500 L470,560 L494,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,500 L554,560 L530,520 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <g transform="rotate(-6 580 600)"><rect x="552" y="568" width="60" height="72" rx="6" fill="#fff" stroke="#1A1A17" stroke-width="5"/><rect x="552" y="568" width="60" height="18" rx="6" fill="#E2A100"/></g>
+          <path d="M424,560 Q344,580 348,660" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <path d="M372,648 L424,628" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <path d="M600,560 Q680,580 676,660" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <path d="M648,648 L600,628" fill="none" stroke="#F1EFE7" stroke-width="34" stroke-linecap="round"/>
+          <ellipse cx="350" cy="662" rx="26" ry="24" fill="#F1EFE7" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M330,650 Q318,642 322,628" fill="none" stroke="#F1EFE7" stroke-width="16" stroke-linecap="round"/>
+          <ellipse cx="674" cy="662" rx="26" ry="24" fill="#F1EFE7" stroke="#1A1A17" stroke-width="7"/>
+          <path d="M694,650 Q706,642 702,628" fill="none" stroke="#F1EFE7" stroke-width="16" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">自信的平庸者</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XAPT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">自信的平庸者</h2>
+          <span class="vibe" style="background:#D2CEC2;color:#1A1A17">常见</span>
+        </div>
+        <div class="code">XAPT</div>
+        <div class="tagline">活儿一般，气场满级</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>活干得一般且不主动多干，但抗压极强，甩锅理直气壮，生命力旺盛。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>抗压极强、心态稳、生命力旺盛</li><li><span class="mk ok">✓</span>敢沟通，不怵场</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>活干得一般且不主动多干</li><li><span class="mk no">✗</span>甩锅理直气壮，自我评价虚高</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">难以改变，需用强硬的量化 KPI 约束，不能只听其解释。</div>
+        <ul class="tips"><li>难以改变：用强硬量化 KPI 约束，看结果不听解释</li><li>明确最低产出标准并卡死</li><li>别被其自信话术带偏节奏</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 14</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XAPW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XAPW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XAPW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XAPW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#B5322B" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.92"><circle r="64" fill="none" stroke="#B5322B" stroke-width="9"/><circle r="52" fill="none" stroke="#B5322B" stroke-width="4" stroke-dasharray="3 5"/><text y="-4" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="42" fill="#B5322B">QC</text><text y="28" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="18" fill="#B5322B" letter-spacing="1">高危</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XAPW)" opacity="0.55"/>
+        <g clip-path="url(#wn_XAPW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- wall to sneak along (left) -->
+          <rect x="113" y="211" width="120" height="502" fill="#D8D2C4"/>
+          <line x1="173" y1="240" x2="173" y2="700" stroke="#C9C6BC" stroke-width="4"/>
+          <line x1="113" y1="380" x2="233" y2="380" stroke="#C9C6BC" stroke-width="4"/>
+          <line x1="113" y1="540" x2="233" y2="540" stroke="#C9C6BC" stroke-width="4"/>
+          <!-- 'reasons' cards in hand -->
+          <g transform="translate(700,560) rotate(10)">
+            <rect x="-6" y="-6" width="92" height="60" rx="5" fill="#fff" stroke="#1A1A17" stroke-width="5" transform="rotate(8)"/>
+            <rect x="0" y="0" width="92" height="60" rx="5" fill="#fff" stroke="#1A1A17" stroke-width="5"/>
+            <text x="46" y="38" text-anchor="middle" font-family="Noto Sans SC" font-size="22" font-weight="900" fill="#C2701C">借口</text>
+          </g>
+          <!-- head, sunglasses, sneaking -->
+          <g>
+            <g transform="rotate(-26 372 320)"><ellipse cx="372" cy="320" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="388" cy="322" rx="32" ry="18" fill="#C3B9A4"/><path d="M350,306 Q376,312 400,324" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <g transform="rotate(26 652 320)"><ellipse cx="652" cy="320" rx="62" ry="37" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="636" cy="322" rx="32" ry="18" fill="#C3B9A4"/><path d="M674,306 Q648,312 624,324" fill="none" stroke="#B7AC95" stroke-width="4"/></g>
+            <path d="M404,250 Q398,196 420,184 Q446,196 448,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,250 Q626,196 604,184 Q578,196 576,244 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="366" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <ellipse cx="512" cy="430" rx="94" ry="70" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="434" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="434" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- sly smirk -->
+            <path d="M486,468 Q514,460 548,470" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- sunglasses -->
+            <path d="M428,348 L596,348" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M430,348 Q428,392 466,392 Q502,392 500,352 Z" fill="#1A1A17"/>
+            <path d="M524,352 Q522,392 558,392 Q596,392 594,348 Z" fill="#1A1A17"/>
+            <path d="M438,360 l16,16" stroke="#5c574c" stroke-width="4"/><path d="M532,360 l16,16" stroke="#5c574c" stroke-width="4"/>
+          </g>
+          <!-- torso, '6' hand gesture -->
+          <path d="M430,524 Q470,486 512,492 Q554,486 594,524 L636,760 L388,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <path d="M512,506 L474,560 L498,524 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M512,506 L550,560 L526,524 Z" fill="#E2DFD5" stroke="#1A1A17" stroke-width="5"/>
+          <path d="M444,580 Q400,620 408,668" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+          <!-- '6' gesture hand: thumb + pinky -->
+          <g transform="translate(396,684)"><ellipse cx="0" cy="0" rx="30" ry="34" fill="#D8D2C4" stroke="#1A1A17" stroke-width="7"/><path d="M-28,-8 Q-58,-18 -64,-44" fill="none" stroke="#D8D2C4" stroke-width="18" stroke-linecap="round"/><path d="M-28,-8 Q-58,-18 -64,-44" fill="none" stroke="#1A1A17" stroke-width="22" stroke-linecap="round" opacity="0"/><path d="M22,8 Q44,22 44,52" fill="none" stroke="#D8D2C4" stroke-width="18" stroke-linecap="round"/></g>
+          <text x="312" y="640" font-family="Noto Sans SC" font-size="60" font-weight="900" fill="#C2701C">6</text>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="68" fill="#1A1A17">职场老六混子</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XAPW</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#B5322B" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">高危</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">职场老六混子</h2>
+          <span class="vibe" style="background:#B5322B;color:#ECEAE3">高危</span>
+        </div>
+        <div class="code">XAPW</div>
+        <div class="tagline">找借口主动，干活被动</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>主动找借口，遇事就跑，活全推给别人。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>嘴上主动、会来事、表面活跃</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>主动找借口、遇事就跑、活全推给别人</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">劝退或边缘化。</div>
+        <ul class="tips"><li>优先劝退或边缘化</li><li>若留用，压到无关键路径的独立小任务并硬留痕</li><li>盯紧别让其带坏团队风气</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 15</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XART"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XART" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XART"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XART)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C2701C" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">棘手</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XART)" opacity="0.55"/>
+        <g clip-path="url(#wn_XART)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- arrows of criticism stuck around, bouncing off -->
+          <g stroke="#B5322B" stroke-width="9" fill="#B5322B" stroke-linecap="round">
+            <g transform="translate(210,300) rotate(25)"><line x1="0" y1="0" x2="80" y2="0"/><path d="M80,0 l-22,-14 0,28 z"/></g>
+            <g transform="translate(820,300) rotate(155)"><line x1="0" y1="0" x2="80" y2="0"/><path d="M80,0 l-22,-14 0,28 z"/></g>
+            <g transform="translate(220,520) rotate(-20)"><line x1="0" y1="0" x2="70" y2="0"/><path d="M70,0 l-22,-14 0,28 z"/></g>
+            <g transform="translate(820,520) rotate(200)"><line x1="0" y1="0" x2="70" y2="0"/><path d="M70,0 l-22,-14 0,28 z"/></g>
+            <g transform="translate(512,236) rotate(90)"><line x1="0" y1="0" x2="64" y2="0"/><path d="M64,0 l-22,-14 0,28 z"/></g>
+          </g>
+          <!-- bent/bounced arrow tips near body -->
+          <path d="M320,360 q40,20 30,60" fill="none" stroke="#C2701C" stroke-width="6"/>
+          <!-- lumpy 'rolling-pin meat' blob body -->
+          <g>
+            <path d="M340,470 Q330,360 420,330 Q470,316 512,330 Q554,316 604,332 Q694,362 684,470 Q700,560 660,640 Q620,720 512,724 Q404,720 364,640 Q324,560 340,470 Z" fill="#D8C0A8" stroke="#1A1A17" stroke-width="9"/>
+            <!-- bumpy texture dimples -->
+            <ellipse cx="430" cy="430" rx="22" ry="16" fill="#C9A98C" opacity="0.6"/>
+            <ellipse cx="600" cy="450" rx="26" ry="18" fill="#C9A98C" opacity="0.6"/>
+            <ellipse cx="470" cy="560" rx="24" ry="18" fill="#C9A98C" opacity="0.6"/>
+            <ellipse cx="586" cy="580" rx="22" ry="16" fill="#C9A98C" opacity="0.6"/>
+            <ellipse cx="512" cy="500" rx="20" ry="14" fill="#C9A98C" opacity="0.5"/>
+            <!-- marbling lines -->
+            <path d="M380,500 Q450,486 520,500" fill="none" stroke="#E6D2BE" stroke-width="6"/>
+            <path d="M520,540 Q590,556 650,540" fill="none" stroke="#E6D2BE" stroke-width="6"/>
+            <!-- deadpan face -->
+            <line x1="446" y1="470" x2="486" y2="470" stroke="#1A1A17" stroke-width="9"/>
+            <line x1="538" y1="470" x2="578" y2="470" stroke="#1A1A17" stroke-width="9"/>
+            <line x1="476" y1="556" x2="548" y2="556" stroke="#1A1A17" stroke-width="8"/>
+          </g>
+          <!-- '纹丝不动' anchor weight at base -->
+          <text x="512" y="700" text-anchor="middle" font-family="Noto Sans SC" font-size="26" font-weight="900" fill="#8A6F42" opacity="0.7">纹丝不动</text>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="64" fill="#1A1A17">油盐不进滚刀肉</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XART</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C2701C" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">棘手</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">油盐不进滚刀肉</h2>
+          <span class="vibe" style="background:#C2701C;color:#ECEAE3">棘手</span>
+        </div>
+        <div class="code">XART</div>
+        <div class="tagline">骂不还口，就是不改</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>不干活、不沟通，但心理素质极好，骂不还口，就是不改。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>心理素质极好、情绪稳定、骂不还口</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>不干活、不沟通，就是不改</li><li><span class="mk no">✗</span>油盐不进，管理成本极高</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">放弃‘改造’，保障底线、不拖累全组即可。</div>
+        <ul class="tips"><li>放弃&#x27;改造&#x27;，保障底线、不拖累全组即可</li><li>用最低硬指标卡住，达不到即按制度处理</li><li>减少情绪投入，对事不对人地走流程</li></ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="ord">NO. 16</div>
+      <div class="avatar"><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XARW"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XARW" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XARW"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XARW)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#B5322B" stroke-width="7"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.92"><circle r="64" fill="none" stroke="#B5322B" stroke-width="9"/><circle r="52" fill="none" stroke="#B5322B" stroke-width="4" stroke-dasharray="3 5"/><text y="-4" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="42" fill="#B5322B">QC</text><text y="28" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="18" fill="#B5322B" letter-spacing="1">高危</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XARW)" opacity="0.55"/>
+        <g clip-path="url(#wn_XARW)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- bomb on head with sizzling fuse -->
+          <g transform="translate(512,300)">
+            <circle cx="0" cy="0" r="64" fill="#1A1A17"/>
+            <ellipse cx="-22" cy="-22" rx="14" ry="9" fill="#5c574c"/>
+            <rect x="-16" y="-78" width="32" height="22" rx="4" fill="#3A3631" stroke="#1A1A17" stroke-width="4"/>
+            <path d="M0,-78 Q30,-110 14,-140 Q4,-156 24,-168" fill="none" stroke="#8A6F42" stroke-width="7"/>
+            <!-- spark -->
+            <g transform="translate(24,-168)"><path d="M0,0 l14,-10 m-14,10 l16,4 m-16,-4 l8,-16 m-8,16 l-2,-18 m2,18 l-16,-2" stroke="#E2A100" stroke-width="5" stroke-linecap="round"/><circle r="8" fill="#B5322B"/></g>
+          </g>
+          <!-- slumped puddle 牛马 (摆烂) -->
+          <g>
+            <!-- melted body puddle -->
+            <path d="M260,640 Q260,560 360,556 Q420,552 512,556 Q604,552 664,556 Q764,560 764,640 Q764,700 660,704 L360,704 Q260,700 260,640 Z" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M280,680 Q400,700 512,700 Q624,700 744,680" fill="none" stroke="#C9C6BC" stroke-width="4"/>
+            <!-- head slumped melting into body -->
+            <g transform="rotate(-54 392 472)"><ellipse cx="392" cy="472" rx="54" ry="32" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="404" cy="470" rx="27" ry="15" fill="#C3B9A4"/></g>
+            <g transform="rotate(54 632 472)"><ellipse cx="632" cy="472" rx="54" ry="32" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/><ellipse cx="620" cy="470" rx="27" ry="15" fill="#C3B9A4"/></g>
+            <ellipse cx="512" cy="520" rx="138" ry="120" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M404,420 Q398,372 418,362 Q442,372 444,416 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M620,420 Q626,372 606,362 Q582,372 580,416 Z" fill="#CABFA9" stroke="#1A1A17" stroke-width="7"/>
+            <ellipse cx="512" cy="560" rx="90" ry="58" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="488" cy="562" rx="10" ry="13" fill="#A79D8B"/><ellipse cx="540" cy="562" rx="10" ry="13" fill="#A79D8B"/>
+            <!-- dead 'X' / spiral eyes (摆烂) -->
+            <path d="M452,504 l28,28 m0,-28 l-28,28" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M544,504 l28,28 m0,-28 l-28,28" stroke="#1A1A17" stroke-width="7"/>
+            <!-- flat lifeless mouth -->
+            <path d="M480,600 Q512,592 544,600" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <!-- limp arms splayed -->
+            <path d="M380,560 Q300,600 250,600" fill="none" stroke="#D8D2C4" stroke-width="30" stroke-linecap="round"/>
+            <path d="M644,560 Q724,600 774,600" fill="none" stroke="#D8D2C4" stroke-width="30" stroke-linecap="round"/>
+          </g>
+          <!-- sizzle text -->
+          <text x="660" y="250" font-family="DM Mono" font-size="26" fill="#B5322B">tick…tick…</text>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="816" font-family="Noto Sans SC" font-weight="900" font-size="56" fill="#1A1A17">课题组定时炸弹</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XARW</text>
+        <g transform="translate(770,790)"><rect x="-86" y="0" width="118" height="56" rx="28" fill="#B5322B" stroke="#1A1A17" stroke-width="5"/><text x="-27" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#fff">高危</text></g>
+      </svg></div>
+      <div class="meta">
+        <div class="namerow">
+          <h2 class="name">课题组定时炸弹</h2>
+          <span class="vibe" style="background:#B5322B;color:#ECEAE3">高危</span>
+        </div>
+        <div class="code">XARW</div>
+        <div class="tagline">全方位溃败，纯纯摆烂</div>
+      </div>
+      <div class="verdict"><span class="lbl">鉴定结论</span>全方位溃败。不干活，出事就躲，全怪环境。</div>
+      <div class="pc">
+        <div class="col"><div class="ch ok">优点</div><ul><li><span class="mk ok">✓</span>坦白说亮点难找——硬要说，他崩得很坦诚，不会用&#x27;看起来很忙&#x27;误导你</li></ul></div>
+        <div class="col"><div class="ch no">缺点</div><ul><li><span class="mk no">✗</span>全方位溃败：不干活、出事就躲、全怪环境</li></ul></div>
+      </div>
+      <div class="mentor">
+        <div class="ch mt">导师应对措施</div>
+        <div class="strategy">坚决清退，绝不留情。</div>
+        <ul class="tips"><li>坚决清退，绝不留情</li><li>清退前固定书面记录、做好工作交接防爆雷</li><li>绝不分配任何有依赖关系的任务</li></ul>
+      </div>
+    </article>
+    </div>
+    <footer class="foot">
+      <div class="stamp"><b>QC</b><i>预览</i></div>
+      本测评仅供娱乐与自我觉察，非心理学诊断工具；所有型号名均为虚构标签，请勿对号入座到任何真实个人。
+    </footer>
+  </div>
+</body>
+</html>

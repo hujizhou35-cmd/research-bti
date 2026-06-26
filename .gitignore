@@ -1,0 +1,14 @@
+node_modules
+dist
+*.local
+*.tsbuildinfo
+
+# tsc 误emit（构建已改为 --noEmit）
+vite.config.js
+vite.config.d.ts
+
+# 编辑器
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea

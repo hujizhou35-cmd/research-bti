@@ -1,0 +1,57 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="gr_XOPT"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0.55 0"/></filter>
+          <pattern id="gd_XOPT" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#C9C6BC" stroke-width="1.2"/></pattern>
+          <clipPath id="wn_XOPT"><rect x="113" y="211" width="798" height="502"/></clipPath>
+        </defs>
+        <rect width="1024" height="1024" fill="#ECEAE3"/>
+        <rect width="1024" height="1024" fill="#000" filter="url(#gr_XOPT)" opacity="0.06"/>
+        <rect x="40" y="40" width="944" height="944" fill="none" stroke="#1A1A17" stroke-width="11"/>
+        <rect x="54" y="54" width="916" height="916" fill="none" stroke="#C9C6BC" stroke-width="6"/>
+        <text x="84" y="118" font-family="DM Mono" font-size="26" font-weight="500" fill="#1A1A17" letter-spacing="2">TYPE — 型号</text>
+        <g transform="translate(84,134)" fill="#1A1A17"><rect x="0" y="0" width="4" height="34"/><rect x="7" width="2" height="34"/><rect x="12" width="5" height="34"/><rect x="20" width="2" height="34"/><rect x="25" width="3" height="34"/><rect x="31" width="6" height="34"/><rect x="40" width="2" height="34"/><rect x="45" width="4" height="34"/><rect x="52" width="2" height="34"/><rect x="57" width="5" height="34"/><rect x="65" width="3" height="34"/><rect x="71" width="2" height="34"/></g>
+        <g transform="translate(852,150) rotate(-13)" opacity="0.9"><circle r="60" fill="none" stroke="#B5322B" stroke-width="6"/><circle r="50" fill="none" stroke="#B5322B" stroke-width="2.5" stroke-dasharray="3 5"/><text y="-6" text-anchor="middle" font-family="DM Mono" font-weight="500" font-size="40" fill="#B5322B">QC</text><text y="26" text-anchor="middle" font-family="Noto Sans SC" font-weight="700" font-size="17" fill="#B5322B" letter-spacing="2">合格</text></g>
+        <rect x="110" y="208" width="804" height="508" fill="#E2DFD5" stroke="#1A1A17" stroke-width="6"/>
+        <rect x="116" y="214" width="792" height="496" fill="url(#gd_XOPT)" opacity="0.55"/>
+        <g clip-path="url(#wn_XOPT)" stroke-linejoin="round" stroke-linecap="round">
+          <!-- flames at right (the fire) -->
+          <g transform="translate(740,560)" opacity="0.95">
+            <path d="M0,120 Q-54,46 -12,-10 Q-2,42 28,2 Q22,-46 56,-72 Q40,12 76,46 Q96,84 60,124 Z" fill="#C2701C" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M10,116 Q-16,66 8,28 Q14,60 36,36 Q32,74 52,116 Z" fill="#E2A100"/>
+          </g>
+          <!-- wok strapped on back -->
+          <g transform="translate(338,470)">
+            <path d="M-86,0 Q0,86 86,0 Z" fill="#1A1A17"/>
+            <path d="M-86,0 Q0,68 86,0" fill="none" stroke="#5c574c" stroke-width="5"/>
+            <rect x="80" y="-12" width="56" height="13" rx="6" fill="#1A1A17"/>
+            <!-- straps -->
+            <path d="M-40,-6 L20,140" stroke="#B5322B" stroke-width="12"/><path d="M40,-6 L80,140" stroke="#B5322B" stroke-width="12"/>
+          </g>
+          <!-- firefighter head w/ helmet -->
+          <g>
+            <ellipse cx="512" cy="376" rx="148" ry="142" fill="#D8D2C4" stroke="#1A1A17" stroke-width="8"/>
+            <!-- helmet -->
+            <path d="M360,360 Q360,236 512,236 Q664,236 664,360 L700,360 Q700,372 686,374 L338,374 Q324,372 324,360 Z" fill="#B5322B" stroke="#1A1A17" stroke-width="8"/>
+            <path d="M470,250 L554,250 L548,330 L476,330 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="6"/>
+            <text x="512" y="312" text-anchor="middle" font-family="DM Mono" font-size="40" font-weight="500" fill="#1A1A17">119</text>
+            <ellipse cx="512" cy="446" rx="92" ry="68" fill="#ECE7DB" stroke="#1A1A17" stroke-width="6"/>
+            <ellipse cx="486" cy="450" rx="10" ry="14" fill="#A79D8B"/><ellipse cx="538" cy="450" rx="10" ry="14" fill="#A79D8B"/>
+            <!-- determined eyes + sweat -->
+            <circle cx="462" cy="396" r="15" fill="#1A1A17"/><circle cx="562" cy="396" r="15" fill="#1A1A17"/>
+            <path d="M438,378 L486,388" stroke="#1A1A17" stroke-width="7"/><path d="M586,378 L538,388" stroke="#1A1A17" stroke-width="7"/>
+            <path d="M494,484 Q512,492 530,484" fill="none" stroke="#1A1A17" stroke-width="5"/>
+            <path d="M384,400 Q372,422 384,432 Q396,422 384,400 Z" fill="#E2A100" stroke="#1A1A17" stroke-width="4"/>
+          </g>
+          <!-- coat torso -->
+          <path d="M430,524 Q470,486 512,492 Q554,486 594,524 L636,760 L388,760 Z" fill="#F1EFE7" stroke="#1A1A17" stroke-width="8"/>
+          <path d="M388,640 L636,640" stroke="#E2A100" stroke-width="14"/>
+          <!-- arms holding extinguisher toward fire -->
+          <path d="M560,580 Q650,560 700,520" fill="none" stroke="#F1EFE7" stroke-width="32" stroke-linecap="round"/>
+          <g transform="translate(636,470) rotate(40)"><rect x="-26" y="0" width="52" height="120" rx="22" fill="#B5322B" stroke="#1A1A17" stroke-width="7"/><rect x="-12" y="-26" width="24" height="30" fill="#1A1A17"/><path d="M0,-26 Q40,-40 64,-22" fill="none" stroke="#1A1A17" stroke-width="9"/></g>
+          <path d="M460,580 Q430,640 470,680" fill="none" stroke="#F1EFE7" stroke-width="30" stroke-linecap="round"/>
+        </g>
+        <rect x="110" y="742" width="804" height="200" fill="#ECEAE3" stroke="#1A1A17" stroke-width="5"/>
+        <text x="138" y="822" font-family="Noto Sans SC" font-weight="900" font-size="64" fill="#1A1A17">背锅救火队长</text>
+        <text x="140" y="888" font-family="DM Mono" font-weight="500" font-size="46" fill="#1A1A17" letter-spacing="10">XOPT</text>
+        <g transform="translate(782,790)"><rect x="-96" y="0" width="128" height="56" rx="28" fill="#C9C6BC" stroke="#1A1A17" stroke-width="5"/><text x="-32" y="38" text-anchor="middle" font-family="Noto Sans SC" font-weight="900" font-size="34" fill="#1A1A17">常见</text></g>
+      </svg>

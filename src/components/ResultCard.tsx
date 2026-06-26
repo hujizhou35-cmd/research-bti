@@ -1,6 +1,6 @@
 // 鉴定证书主体（可截图区域）。3:4 竖屏，元素自上而下见 §7.5。
 import { forwardRef } from 'react'
-import type { ScoreResult } from '../lib/types'
+import type { Mode, ScoreResult } from '../lib/types'
 import { disclaimer, privacyNote } from '../lib/data'
 import { vibeStyle } from '../lib/vibe'
 import TypeAvatar from './TypeAvatar'
@@ -13,18 +13,21 @@ import Stamp from './Stamp'
 interface Props {
   result: ScoreResult
   serial: string
+  /** 版本：娱乐版 / 严谨版，用于证书徽章 */
+  mode: Mode
   /** 导出 PNG 时：展开折叠区、关闭落章动画，保证截图完整 */
   exporting?: boolean
 }
 
 const ResultCard = forwardRef<HTMLDivElement, Props>(function ResultCard(
-  { result, serial, exporting = false },
+  { result, serial, mode, exporting = false },
   ref,
 ) {
   const { type, poles, dimensions } = result
   const vibe = vibeStyle(type.vibe)
   const pickedSet = new Set(dimensions.map((d) => d.picked))
   const hasBorderline = dimensions.some((d) => d.borderline)
+  const modeLabel = mode === 'fun' ? '娱乐版' : '严谨版'
 
   return (
     <div
@@ -73,6 +76,9 @@ const ResultCard = forwardRef<HTMLDivElement, Props>(function ResultCard(
             >
               {vibe.label}
             </span>
+            <span className="border border-ink bg-paper-2 px-2 py-0.5 font-display text-[11px] font-bold text-ink">
+              {modeLabel}
+            </span>
             <span className="font-mono text-[11px] tracking-wide text-ink/55">
               {result.code}
             </span>
@@ -93,7 +99,7 @@ const ResultCard = forwardRef<HTMLDivElement, Props>(function ResultCard(
             型号扫描图 · OCTA-SCAN
           </h3>
           {hasBorderline && (
-            <span className="font-mono text-[10px] text-marker">含临界维度 (5/5)</span>
+            <span className="font-mono text-[10px] text-marker">含辩证维度 · 倾向不极端</span>
           )}
         </div>
         <div className="mx-auto max-w-[300px]">

@@ -1,30 +1,53 @@
 // 答题：一次一题，顶部进度，可返回上一题，最后一题答完自动出结果。
+// 题集由父级按版本（娱乐/严谨）传入；进度条按题集总数计算。
 import { useState } from 'react'
-import { questions } from '../lib/data'
-import type { Answers, Choice } from '../lib/types'
+import type { Answers, Mode, OptionValue, Question } from '../lib/types'
 import QuestionCard from './QuestionCard'
 
 interface Props {
+  items: Question[]
+  mode: Mode
   answers: Answers
   startIndex?: number
-  onAnswer: (id: number, choice: Choice) => void
+  onAnswer: (id: number, value: OptionValue) => void
   onComplete: () => void
   onExit: () => void
 }
 
-export default function Quiz({ answers, startIndex = 0, onAnswer, onComplete, onExit }: Props) {
-  const total = questions.length
-  const [index, setIndex] = useState(Math.min(startIndex, total - 1))
-  const answeredCount = Object.keys(answers).length
-  const current = questions[index]
+function isAnswered(v: OptionValue | undefined): boolean {
+  return v === 0 || v === 1 || v === 2 || v === 3 || v === 4
+}
 
-  function handleSelect(choice: Choice) {
-    onAnswer(current.id, choice)
-    // 计入本次选择后的已答集合
-    const willBeAnswered = { ...answers, [current.id]: choice }
-    const remaining = questions.findIndex(
-      (q) => willBeAnswered[q.id] !== 'A' && willBeAnswered[q.id] !== 'B',
-    )
+/**
+ * 选项整组方向翻转随机化（block-reverse）：每题随机决定 5 个选项整体按
+ * 「第一极→第二极」(false) 还是「第二极→第一极」(true) 呈现，**不打乱相对顺序**。
+ * 一次答题会话内每题翻转方向固定，避免来回切题时抖动。记录 value 不记位置。
+ */
+function buildFlipMap(items: Question[]): Record<number, boolean> {
+  const m: Record<number, boolean> = {}
+  for (const q of items) m[q.id] = Math.random() < 0.5
+  return m
+}
+
+export default function Quiz({
+  items,
+  mode,
+  answers,
+  startIndex = 0,
+  onAnswer,
+  onComplete,
+  onExit,
+}: Props) {
+  const total = items.length
+  const [index, setIndex] = useState(Math.min(startIndex, total - 1))
+  const [flipMap] = useState(() => buildFlipMap(items))
+  const answeredCount = items.filter((q) => isAnswered(answers[q.id])).length
+  const current = items[index]
+
+  function handleSelect(value: OptionValue) {
+    onAnswer(current.id, value)
+    const willBeAnswered: Answers = { ...answers, [current.id]: value }
+    const remaining = items.findIndex((q) => !isAnswered(willBeAnswered[q.id]))
     window.setTimeout(() => {
       if (remaining === -1) {
         onComplete()
@@ -37,6 +60,7 @@ export default function Quiz({ answers, startIndex = 0, onAnswer, onComplete, on
   }
 
   const progress = Math.round((answeredCount / total) * 100)
+  const modeLabel = mode === 'fun' ? '娱乐版' : '严谨版'
 
   return (
     <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
@@ -50,7 +74,7 @@ export default function Quiz({ answers, startIndex = 0, onAnswer, onComplete, on
           ← 退出
         </button>
         <span className="font-mono text-xs font-bold tracking-wide">
-          进度 {answeredCount}/{total}
+          {modeLabel} · 进度 {answeredCount}/{total}
         </span>
       </div>
 
@@ -68,6 +92,7 @@ export default function Quiz({ answers, startIndex = 0, onAnswer, onComplete, on
             question={current}
             index={index}
             total={total}
+            flip={flipMap[current.id]}
             selected={answers[current.id]}
             onSelect={handleSelect}
           />

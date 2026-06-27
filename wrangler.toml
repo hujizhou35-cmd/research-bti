@@ -13,4 +13,4 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "bti-responses"
-database_id = "0b6c93c4-d8c0-45ea-85ba-c78081bd708b"
+database_id = "bff130d1-ec7f-4b4f-a332-641e6577cc66"

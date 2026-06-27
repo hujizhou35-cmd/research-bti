@@ -32,7 +32,7 @@ export default function ConsentModal({ onAgree }: Props) {
             本测试为娱乐性质的自我评估，结果<strong>不构成</strong>任何医学、心理或能力上的诊断与建议。
           </p>
           <p className="text-ink/60">
-            如对本研究有疑问，可联系：<span className="font-mono">［联系邮箱待填］</span>。
+            如对本研究有疑问，可联系：<span className="font-mono">opusdog@163.com</span>。
           </p>
         </div>
 

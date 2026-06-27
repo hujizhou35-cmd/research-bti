@@ -1,7 +1,9 @@
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { questions, funQuestions } from './lib/data'
 import { computeResult } from './lib/scoring'
-import type { Answers, Mode, OptionValue, ScoreResult } from './lib/types'
+import { submitResponse } from './lib/submitClient'
+import type { Answers, Mode, OptionValue, Question, ScoreResult } from './lib/types'
+import ConsentModal from './components/ConsentModal'
 import Intro from './components/Intro'
 import Quiz from './components/Quiz'
 import ResultCard from './components/ResultCard'
@@ -12,9 +14,47 @@ type View = 'intro' | 'quiz' | 'result'
 // 作答缓存结构随 V2.0（value 计分 + 版本）变更，故 key 升到 v2。
 const STORAGE_KEY = 'gradbti.session.v2'
 
+// 知情同意：硬门槛。改文案时升版本号即可让所有人重新同意。
+const CONSENT_KEY = 'gradbti.consent.v1'
+const CONSENT_VERSION = 'v1'
+
+interface ConsentRecord {
+  version: string
+  at: string
+}
+
+/** 每题选项是否整组翻转呈现（block-reverse）；记录用于方法学核查。 */
+type Flips = Record<number, boolean>
+
 interface SavedSession {
   mode: Mode
   answers: Answers
+  flips?: Flips
+}
+
+function buildFlips(items: Question[]): Flips {
+  const m: Flips = {}
+  for (const q of items) m[q.id] = Math.random() < 0.5
+  return m
+}
+
+function loadConsent(): ConsentRecord | null {
+  try {
+    const raw = localStorage.getItem(CONSENT_KEY)
+    if (!raw) return null
+    const parsed = JSON.parse(raw) as ConsentRecord
+    return parsed && parsed.version === CONSENT_VERSION && typeof parsed.at === 'string' ? parsed : null
+  } catch {
+    return null
+  }
+}
+
+function saveConsent(rec: ConsentRecord) {
+  try {
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(rec))
+  } catch {
+    /* ignore */
+  }
 }
 
 /** 取某版本的题集 */
@@ -90,14 +130,23 @@ function makeSerial(code: string, mode: Mode): string {
 
 export default function App() {
   const saved = useMemo(loadSession, [])
+  const [consent, setConsent] = useState<ConsentRecord | null>(loadConsent)
   const [view, setView] = useState<View>('intro')
   const [mode, setMode] = useState<Mode>(saved?.mode ?? modeFromUrl() ?? 'fun')
   const [answers, setAnswers] = useState<Answers>(saved?.answers ?? {})
+  const [flips, setFlips] = useState<Flips>(saved?.flips ?? {})
   const [startIndex, setStartIndex] = useState(0)
   const [result, setResult] = useState<ScoreResult | null>(null)
   const [serial, setSerial] = useState('')
   const [exporting, setExporting] = useState(false)
   const captureRef = useRef<HTMLDivElement>(null)
+  const submittedRef = useRef(false)
+
+  function handleAgree() {
+    const rec: ConsentRecord = { version: CONSENT_VERSION, at: new Date().toISOString() }
+    saveConsent(rec)
+    setConsent(rec)
+  }
 
   const savedTotal = saved ? itemsForMode(saved.mode).length : 0
   const savedAnswered = saved ? answeredCountOf(saved.answers) : 0
@@ -115,9 +164,12 @@ export default function App() {
 
   function handleStart(selected: Mode) {
     const fresh: Answers = {}
+    const freshFlips = buildFlips(itemsForMode(selected))
+    submittedRef.current = false
     setMode(selected)
     setAnswers(fresh)
-    saveSession({ mode: selected, answers: fresh })
+    setFlips(freshFlips)
+    saveSession({ mode: selected, answers: fresh, flips: freshFlips })
     syncUrl(selected)
     setStartIndex(0)
     setView('quiz')
@@ -125,8 +177,12 @@ export default function App() {
 
   function handleResume() {
     if (!saved) return
+    const resumeFlips = saved.flips ?? buildFlips(itemsForMode(saved.mode))
+    submittedRef.current = false
     setMode(saved.mode)
     setAnswers(saved.answers)
+    setFlips(resumeFlips)
+    saveSession({ mode: saved.mode, answers: saved.answers, flips: resumeFlips })
     syncUrl(saved.mode)
     setStartIndex(firstUnanswered(itemsForMode(saved.mode), saved.answers))
     setView('quiz')
@@ -136,11 +192,11 @@ export default function App() {
     (id: number, value: OptionValue) => {
       setAnswers((prev) => {
         const next = { ...prev, [id]: value }
-        saveSession({ mode, answers: next })
+        saveSession({ mode, answers: next, flips })
         return next
       })
     },
-    [mode],
+    [mode, flips],
   )
 
   const handleComplete = useCallback(() => {
@@ -148,6 +204,20 @@ export default function App() {
       const r = computeResult(items, answers)
       setResult(r)
       setSerial(makeSerial(r.code, mode))
+      // 知情同意后才上报；submittedRef 防止重复提交。
+      if (consent && !submittedRef.current) {
+        submittedRef.current = true
+        submitResponse({
+          items,
+          answers,
+          flips,
+          mode,
+          code: r.code,
+          dimensions: r.dimensions,
+          consentVersion: consent.version,
+          consentAt: consent.at,
+        })
+      }
       clearSaved()
       setView('result')
       window.scrollTo(0, 0)
@@ -155,10 +225,12 @@ export default function App() {
       setStartIndex(firstUnanswered())
       setView('quiz')
     }
-  }, [items, answers, mode, firstUnanswered])
+  }, [items, answers, mode, flips, consent, firstUnanswered])
 
   function handleRetake() {
+    submittedRef.current = false
     setAnswers({})
+    setFlips({})
     clearSaved()
     syncUrl(null)
     setResult(null)
@@ -173,6 +245,7 @@ export default function App() {
           items={items}
           mode={mode}
           answers={answers}
+          flips={flips}
           startIndex={startIndex}
           onAnswer={handleAnswer}
           onComplete={handleComplete}
@@ -214,7 +287,11 @@ export default function App() {
       />
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [view, items, mode, answers, startIndex, result, serial, exporting, hasSaved])
+  }, [view, items, mode, answers, flips, startIndex, result, serial, exporting, hasSaved])
 
-  return <main className="paper-grid min-h-screen">{content}</main>
+  return (
+    <main className="paper-grid min-h-screen">
+      {consent ? content : <ConsentModal onAgree={handleAgree} />}
+    </main>
+  )
 }

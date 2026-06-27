@@ -1,4 +1,4 @@
-// 单题卡片：题干 + 5 个极性五级选项。文案照 questionsv4.json 原文，不改题意。
+// 单题卡片：题干 + 5 个极性五级选项。文案照 questionsv5.json 原文，不改题意。
 // 选项整组方向翻转随机化（block-reverse）：flip=true 时整组逆序呈现（第二极→第一极），
 // 但**不打乱相对顺序**（序数量表不可乱序）。无论如何呈现，记录的是所选选项的 value。
 import { useMemo } from 'react'
@@ -25,7 +25,7 @@ export default function QuestionCard({
   selected,
   onSelect,
 }: Props) {
-  // questionsv4.json 中 options 恒按 value 4→0（第一极→第二极）排列；
+  // questionsv5.json 中 options 恒按 value 4→0（第一极→第二极）排列；
   // flip 时整组逆序为 0→4（第二极→第一极）。仅改变呈现顺序，value 不变。
   const options = useMemo(() => {
     const arr = question.options

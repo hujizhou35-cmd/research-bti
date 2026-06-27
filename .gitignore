@@ -3,6 +3,9 @@ dist
 *.local
 *.tsbuildinfo
 
+# Cloudflare 本地 dev 状态（含本地 D1）
+.wrangler
+
 # tsc 误emit（构建已改为 --noEmit）
 vite.config.js
 vite.config.d.ts

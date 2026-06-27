@@ -28,8 +28,9 @@ npm run preview    # 预览 dist/ 产物
 
 ## 题库与计分（V2.0）
 
-- 题库：`data/questionsv4.json`（**唯一题库源**，80 题，`version 2.0`，`scoringModel polarity-graded-5`）。
-  旧的 `data/questions.json`（V1.3 双极迫选）已弃用并重命名为 `data/_deprecated.questions_v1.3.json`，禁止再引用。
+- 题库：`data/questionsv5.json`（**唯一题库源**，80 题，`version 2.1`，`scoringModel polarity-graded-5`）。
+  v2.1 基于 R1–R16 AI 虚拟测试做了 18 题重写 / 3 题改主题 / 4 项软化，详见 `docs/题库优化报告-v2.1.md`。
+  `data/questionsv4.json`（v2.0）保留作回滚；旧的 `data/questions.json`（V1.3 双极迫选）已弃用并重命名为 `data/_deprecated.questions_v1.3.json`，禁止再引用。
 - 每题 **5 选项极性五级量表**，选项带 `value ∈ {0,1,2,3,4}`（指向该维第一极 C/O/P/T 的分值）。
 - 计分（`src/lib/scoring.ts` 的 `computeResult`）：每维 `strength = raw/(4*n)*10`，
   `picked = strength>5 ? 第一极 : 第二极`，`borderline = |strength-5| <= 0.75`。

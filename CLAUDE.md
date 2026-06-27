@@ -1,237 +1,121 @@
-# CLAUDE.md —— 研究生BTI · 课题组牛马人格鉴定所
+# CLAUDE.md · 研究生BTI 课题组牛马人格鉴定所
 
-> 本文件是 Claude Code 的常驻上下文。每次开工先读它，按这里的约定干活。
+> Claude Code 常驻上下文。每次会话默认加载。完整设计史见 `docs/项目全景备忘录.md`，本文件只放**当前生效**的操作性事实与已锁定决策。
 
-## 0. 一句话项目目标
+---
 
-做一个 **MBTI 式的趣味自评网站**：用户答 40 道情境题，得到 16 种「科研人格」之一，
-拿到一张可截图分享的《科研牛马人格鉴定证书》。纯前端、纯静态、能直接丢到任意静态托管。
+## 0. 项目身份 & 红线
+- **名称**：研究生BTI · 课题组牛马人格鉴定所｜**Slogan**：40 道题，照出你在课题组的原形
+- **性质**：纯前端静态站，娱乐向自评工具，面向中国大陆研究生传播。
+- **产物**：《科研牛马人格鉴定证书》（竖屏 3:4，可导出 PNG 分享）。
+- **红线（不可破）**：全站零真实人名；每个结果出口带免责声明；不引导退学/自伤等自毁行为；涉及经济/情感/师生否定等题，消极极只到"回避/拖延"，不得更重。
 
-定位：**自我觉察 + 团队沟通的娱乐工具**，不是心理学诊断。基调要**轻度自嘲、幽默、带点嘲讽**，
-但不刻薄、不阴阳具体某个人。
+## 1. 技术栈 & 部署
+- Vite + React 18 + TypeScript + Tailwind CSS。数据 JSON import，无后端无数据库。
+- 导出：`html-to-image` 的 `toPng`；**雷达图用 SVG，不用 canvas**。
+- 字体**全部自托管**于 `public/fonts/`，`@font-face` 本地引用，**禁止任何运行时 CDN**（含 Google Fonts）——国内访问约束。开发走 Clash 代理（7890/7897）。
+- **部署：Cloudflare Pages**（`*.pages.dev`）。构建命令 `npm run build`，输出目录 `dist`，push 自动构建。
+- **生产地址（拼写修正后）：`https://research-bti.pages.dev/`**（旧 `resarch-bti` 已废弃，见 §7）。
 
-## 1. 命名与门面（统一用这套）
+## 2. 四维度（锁定）
+| 维度键 | 维度名 | 第一极(firstPole) | 第二极(secondPole) | 中间(value=2)语义 |
+|---|---|---|---|---|
+| CX | 控制点 | C 内控（向内归因） | X 外控（向外归因） | 辩证：自身/客观各半 |
+| OA | 责任倾向 | O 过度负责 | A 逃避推诿 | **健康边界**：做好分内+合理分工 |
+| PR | 沟通模式 | P 主动预警 | R 被动滞后 | 视情况：紧急即说 |
+| TW | 危机应对 | T 韧性担当 | W 规避退缩 | **健康止损**：评估后求助/调整 |
 
-| 用途 | 名称 |
-|---|---|
-| 系统正式名 | 研究生BTI |
-| 站点门面名 | 课题组牛马人格鉴定所 |
-| Slogan | 40 道题，照出你在课题组的原形 |
-| 结果产物 | 《科研牛马人格鉴定证书》（带编号工牌样式） |
+类型 code 格式 `[C|X][O|A][P|R][T|W]`（第3位仅 P/R，第4位仅 T/W）。16 型定义与形象图见 `data/results.json` + `public/avatars/<code>.svg`，**本次不改**。
 
-## 2. 🔒 隐私红线（最高优先级，不可妥协）
-
-- **绝对禁止出现任何真实人名、导师名、同学名、单位名、案例当事人。**
-- 所有 16 个类型名都是**虚构标签**，证书与文案里必须显式声明「请勿对号入座到具体某人」。
-- 不要在代码注释、commit message、占位数据、示例里写任何真人姓名。
-- 如果我（用户）不小心粘进来真实姓名，**主动提醒并替换为通用占位**（如「某队友」「某负责人」）。
-- 测评结果文案只描述**行为风格**，不下「这个人品德/能力不行」的定性结论。
-
-## 3. 技术栈（已锁定，别擅自换）
-
-- **Vite + React 18 + TypeScript + Tailwind CSS**
-- 纯前端 SPA，**无后端、无数据库、无登录**。所有计分在浏览器本地完成。
-- 进度可用 `localStorage` 缓存（真实项目里可用，不是 Claude 制品沙箱）。
-- 证书截图导出用 `html-to-image`（`toPng`），不要引第二个重型库。
-- 包管理用 `npm`。
-
-### 🌏 国内网络约束（重要）
-- 我在中国大陆，走 Clash 代理（端口 7890/7897）。
-- **不要依赖 Google Fonts / 任何需要翻墙的运行时 CDN。** 中文字体用系统字体栈：
-  `font-family: "PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;`
-- 若要一个「证书感」的标题字体，**自托管子集化的开源字体**（如思源宋体子集），放 `public/fonts/`，
-  用 `@font-face` 本地引用，绝不外链。
-- 装包慢是常态；`npm install` 可能要走代理，遇到失败先提示我配代理，别反复重试。
-
-## 4. 目录结构（按此组织）
-
+## 3. 数据文件 & 题库 schema（V2.0，已切换）
 ```
-gradbti/
-├── CLAUDE.md                 # 本文件
-├── PROMPT.md                 # Claude Code 启动提示词
-├── PROMPT_design.md          # Claude Design 提示词（16 形象已产出，留作补图/重绘规范）
-├── data/                     # ⬅️ 题库与结果库（唯一数据源，逻辑里只读这三个文件）
-│   ├── dimensions.json       # 4 个维度定义 + 计分区间
-│   ├── questions.json        # 40 道题（id / dimension / aPole / bPole / 选项）
-│   └── results.json          # 16 型结果（code/name/tagline/portrait/pros/cons/mentorStrategy/mentorTips/vibe）
-├── public/
-│   ├── avatars/              # ✅ 已就绪：16 张型号形象 SVG（<CODE>.svg，如 XORW.svg），1024×1024
-│   └── fonts/                # ⬅️ 自托管字体子集：Noto Sans SC(500/700/900) + DM Mono(400/500)
-├── src/
-│   ├── main.tsx
-│   ├── App.tsx               # 视图状态机：intro → quiz → result
-│   ├── lib/
-│   │   ├── scoring.ts        # 计分引擎（见 §6，必须有单测）
-│   │   └── types.ts          # 题库/结果的 TS 类型，与 data/*.json 对齐
-│   ├── components/
-│   │   ├── Intro.tsx         # 门面页：名称、slogan、免责声明、开始按钮
-│   │   ├── Quiz.tsx          # 答题：单题卡片、进度条、上一题/下一题
-│   │   ├── QuestionCard.tsx
-│   │   ├── ResultCard.tsx    # 鉴定证书主体（可截图区域）：形象图 + 雷达图 + 优缺点 + 导师措施
-│   │   ├── RadarChart.tsx    # ⭐ 八向极坐标「型号扫描图」（见 §7.8，区分 0/5/10）
-│   │   ├── TypeAvatar.tsx    # 加载 public/avatars/<code>.svg 的型号形象
-│   │   ├── ProsConsList.tsx  # 优点 / 缺点
-│   │   ├── MentorTips.tsx    # 导师应对措施（可折叠）
-│   │   └── ShareBar.tsx      # 保存图片 / 复制结果 / 重测
-│   └── styles/index.css      # Tailwind 入口 + @font-face
-├── index.html
-├── tailwind.config.js
-├── vite.config.ts
-└── package.json
+data/
+├── questionsv5.json   # 当前生效题库：80 题，version "2.1"，scoringModel "polarity-graded-5"（v4 保留作回滚）
+├── dimensions.json    # 维度定义（极性五级版，见 §4 末）
+└── results.json       # 16 型结果（pros/cons/mentorTips/vibe），不变
 ```
+> `questionsv4.json` 即原 `questions_v2.json`。**旧的 `questions.json`（V1.3 双极迫选）已弃用**，禁止再引用。
 
-> 把 `data/` 直接 `import` 进来（Vite 支持 JSON import），不要把题目硬编码进组件。
-
-## 5. 四个维度（来自 data/dimensions.json，别改语义）
-
-| 维度 | 题号 | 第一极(A计1分) | 第二极(B计0分) |
-|---|---|---|---|
-| 控制点 CX | 1–10  | C 内控（向内归因） | X 外控（向外归因） |
-| 责任倾向 OA | 11–20 | O 过度负责（大包大揽） | A 逃避推诿（风险隔离） |
-| 沟通模式 PR | 21–30 | P 主动预警（带方案沟通） | R 被动滞后（临阵才说） |
-| 危机应对 TW | 31–40 | T 韧性担当（顶住补救） | W 规避退缩（寻求兜底） |
-
-**类型 code 拼写规则（务必遵守，否则计分对不上结果库）：**
-`code = [C|X][O|A][P|R][T|W]`，即第 3 位只用 **P/R**、第 4 位只用 **T/W**。
-（注：草稿里 16 型旧编号曾把第 3/4 位字母写串，已统一规整为这套自洽编码；`results.json` 里就是正确版，照它来。）
-
-## 6. 计分引擎规格（scoring.ts，写死这套逻辑 + 单测）
-
-> 题库 V1.3 起按**极性计分**（不是按 A/B 位置），因为答题页会**随机化 A/B 展示顺序**来破除「默认选 A=积极极」的位置/顺从偏差。
-
-```
-输入：answers: Record<questionId, pole>      // 记录所选的“极”(C/X/O/A/P/R/T/W)，不是 'A'/'B'
-注意：渲染每题时随机决定 optionA/optionB 的上下顺序；用户点选后，存它对应的 aPole 或 bPole。
-步骤：
-  1. 每个维度取其 10 题，s = 落在第一极(C/O/P/T)的作答数（0..10）。
-  2. s > 5 → 第一极；s < 5 → 第二极；s === 5 → 第二极（更保守一极）并 borderline=true。
-     （等价于 V1.2 文档的 ≥6 / ≤4 / =5临界；自动出单一结果时 5 必须有确定归属，故取保守极。）
-  3. 拼出 4 字母 code（顺序 CX→OA→PR→TW），到 results.json 查对应类型。
-  4. 输出：{
-       code, type,
-       dimensions: [{key, picked, score, borderline}],   // score = 第一极作答数 0..10
-       poles: { C,X,O,A,P,R,T,W }                          // 八极原始计数；同维两极之和恒为 10
-     }
-返回找不到 code 必须抛错（理论上 16 型全覆盖，覆盖性单测要保证）。
-```
-
-单测至少覆盖：每维全选第一极 → COPT(六边形卷王)；每维全选第二极 → XARW(课题组定时炸弹)；
-每个维度恰好 5 分的临界判定；**A/B 展示顺序打乱后计分结果不变**（按极性而非位置）；随机若干组合命中 results.json。
-
-## 7. 设计系统（已固化 · 直接照用，无需再读 frontend-design skill）
-
-> 下面这套 token 已按 frontend-design 方法论推导并定稿：**「牛马质检报告所」=工业质检报告单 + 钢印 + 记号笔批注**。
-> 把人当成被 QC 质检盖章、贴上「型号」的科研牛马——正经的检验单排版配离谱内容，形成反差。
-> **不要再自行换方向或调色板**；要改先问我。
-
-### 7.1 刻意避开的三种「AI 默认脸」（自查用）
-1. 暖奶油底 + 高对比衬线大标题 + 赤陶色 → 我们用**冷调检验单纸**（非奶油）、**工业黑体重字**（非优雅衬线）、**钢印正红**（非赤陶）。
-2. 近黑底 + 荧光绿/朱红单点 → 我们是**浅纸底**，强调色是钢印红/记号黄，**无荧光绿**。
-3. 报纸式细线多栏 → 我们是**单据/表单字段**布局 + 钢印签名；直角边是「表单本就方角」的合理选择，不是默认。
-> 写代码前对照这三条自查一遍；任何一处像默认脸就停下来调。
-
-### 7.2 调色板（CSS 变量，全站只用这些）
-```css
-:root{
-  --paper:   #ECEAE3;  /* 检验单纸张：冷灰白，不是奶油色 */
-  --paper-2: #E2DFD5;  /* 次级纸面 / 卡片分区底 */
-  --ink:     #1A1A17;  /* 墨黑正文与边框 */
-  --stamp:   #B5322B;  /* 钢印正红：唯一的大胆色，用于盖章/高危/主行动 */
-  --marker:  #E2A100;  /* 记号笔黄：批注高亮 / 稀有标注，克制使用 */
-  --grid:    #C9C6BC;  /* 网格线 / 表单分隔线 / 条码淡色 */
+**题目结构（每题 5 选项的极性五级量表）：**
+```jsonc
+{
+  "id": 1, "dimension": "CX", "firstPole": "C", "secondPole": "X",
+  "theme": "实验挫折", "priority": 1,          // priority=1 进入娱乐版40题
+  "text": "……，你会：",
+  "options": [                                  // 恒 5 项，value 必为 {0,1,2,3,4} 各一
+    {"text": "...", "pole": "C",   "value": 4}, // 强第一极
+    {"text": "...", "pole": "C",   "value": 3}, // 偏第一极
+    {"text": "...", "pole": "mid", "value": 2}, // 辩证/健康中间
+    {"text": "...", "pole": "X",   "value": 1}, // 偏第二极
+    {"text": "...", "pole": "X",   "value": 0}  // 强第二极
+  ]
 }
 ```
-`vibe` 徽章语义色：**高危→--stamp 红**、**稀有→--marker 金**、**棘手→#C2701C 橙**、**常见/少见→--grid 灰**。
+- `value` = 指向**第一极**的分值；`pole` 仅用于诊断/雷达分类，**计分只看 value**。
+- 每维 20 题；其中 `priority===1` 各维恰 10 题（娱乐版用）。
 
-### 7.3 字体（3 个角色，全部自托管或系统，禁外链 CDN）
-- **Display / 报告抬头 + 型号名**：思源黑体 Heavy（Source Han Sans / Noto Sans SC Black）自托管子集——工业、钢印感，**刻意不用优雅衬线**。
-- **Body / 正文**：系统中文栈 `"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif`。
-- **Mono / 流水号·维度分数·条码下编号**：`"JetBrains Mono","DM Mono","Courier New",ui-monospace,monospace`——检验单数据感。
+## 4. 计分模型：极性五级（polarity-graded-5）—— 已替换 V1.3 计数法
+```ts
+// 单维度计分；items = 本维度被作答的题；answers[id] = 所选选项的 value(0..4)
+function scoreDimension(items, answers, firstPole, secondPole) {
+  const n   = items.length;                       // 娱乐版=10, 严谨版=20
+  const raw = items.reduce((s, q) => s + answers[q.id], 0);
+  const strength = (raw / (4 * n)) * 10;          // 第一极强度 ∈ [0,10]
+  const picked   = strength > 5 ? firstPole : secondPole;  // =5 归第二极(保守极)
+  const borderline = Math.abs(strength - 5) <= 0.75;
+  return {
+    raw, strength, picked, borderline,
+    poles: { [firstPole]: strength, [secondPole]: 10 - strength } // 同维两极和恒=10
+  };
+}
+```
+- **公式对 n=10 与 n=20 通用** → 娱乐版/严谨版共用同一套计分与雷达，无需分叉。
+- code = 四维 picked 按 CX→OA→PR→TW 拼接。
+- **选项呈现随机化 = 整组方向翻转**（不可乱序，会破坏序数量表）：每题随机决定 5 项按"第一极→第二极"或反向呈现，作答记 value 不记位置。
 
-> ⚠️ **形象图字体**：`public/avatars/*.svg` 里的文字用 `Noto Sans SC`(500/700/900) 与 `DM Mono`(400/500)。
-> 源文件「型号形象全集」是用 Google Fonts CDN + `<x-dc>/support.js` 包壳导出的——**这两样都要去掉**：
-> 把 Noto Sans SC / DM Mono **自托管子集**放 `public/fonts/` 并 `@font-face` 本地引用，绝不外链；SVG 本身已是干净的 `<svg>`，无需 support.js。
-
-### 7.4 布局与签名元素
-- **整体**：直角单据框（`border-radius:0`，仅徽章可微圆）、`--ink` 实线边、表单字段式排布（左标签右值）。
-- **🔑 签名元素（全站记忆点，只此一处放大）**：**钢印落章**。出结果时一枚 `--stamp` 红色检验钢印「啪」地盖到证书上，
-  章面是 4 字母 code + 「QC PASSED / 牛马型号」字样；配一条**一维条码**承载 code，下方等宽流水号 `NO. GB-XORW-0042`。
-- 其余一律克制：除钢印外不再加花哨装饰（Chanel 法则——出门前减一件）。
-
-### 7.5 结果证书（核心交付物）
-固定竖屏卡片（约 3:4，适合微信截图），元素自上而下：
-1. 报告抬头：所名 + 流水号 `NO. GB-<code>-xxxx` + 一维条码 + 右上钢印。
-2. **型号形象图**（`public/avatars/<code>.svg`，证件照位）+ **型号名** + tagline。
-3. **型号扫描图（八向雷达图）**（见 §7.8）—— 直观展示四维强度，**这是结果页必备**。
-4. 一句「鉴定结论」(`portrait`)。
-5. **优点 / 缺点**两栏（`pros` / `cons`，用 ✓ / ✗ 或正负色区分；优点偏正色、缺点偏 `--stamp` 红）。
-6. **导师应对措施**（`mentorTips`，可折叠；标题写「带教/协作建议」，措辞中性，不写成针对个人的差评）。
-7. 底部免责声明 + 站点名 + 钢印。
-
-- **可截图导出 PNG**：整张证书用 `html-to-image` 的 `toPng`。雷达图必须是 DOM/SVG（不要 canvas 库截不全），
-  字体走 §7.3 自托管字体，保证导出图里中文/编号不掉字。
-- **形象图已就绪**：16 张 SVG 已从「型号形象全集」拆好放进 `public/avatars/`，**不要再让 Claude Design 重画**；
-  `TypeAvatar.tsx` 直接按 code 加载对应 SVG 即可（`<img src>` 或内联）。
-
-### 7.6 动效（克制，尊重 prefers-reduced-motion）
-答题切换淡入 + 进度条平滑；出证书时**钢印落章**一个动作（缩放+轻微旋转+落地微震）即可，不堆叠特效。
-雷达图可做一次「描点扫描」的入场（多边形从中心展开），仅一次，reduced-motion 下直接定格。
-
-### 7.7 质量底线
-响应式到移动端、键盘可聚焦且焦点可见、`prefers-reduced-motion` 下关掉落章/扫描动画改为直接出现。
-
-### 7.8 ⭐ 型号扫描图（八向雷达图，必做）
-**为什么不用简单的「四维条 + 偏向标签」**：只显示 picked 极 + 强度时，0/10 与 5/10 这类极端容易看起来一样
-（同一个 code 下，险胜和碾压被画成同一个样；甚至两极被折叠成同一根条）。所以结果页**必须**用能区分原始计数的雷达图。
-
-**做法（八向极坐标，octagon）**：
-- 8 根轴对应 8 个极，固定环形顺序：`C → O → P → T → X → A → R → W`（让同维两极在圆上正对）。
-- 每根轴的半径 = 该极的原始计数（`poles` 里的值，0..10），同维两极半径之和恒为 10。
-- 连成一个 8 边多边形并填色（描边 `--ink`，填充 `--stamp` 22% 透明）；底网格画 0/2/4/6/8/10 同心八边形（`--grid`）。
-- 轴标签：外圈标 8 个极字母 + 极名（如 `C 内控` / `X 外控`），picked 的那一极字母加粗。
-- **判别性保证**：因为画的是原始计数而非折叠强度，
-  - 全 C（10/0）→ 形状强烈拉向 C/O/P/T 一侧；
-  - 平衡（5/5）→ 接近正八边形；
-  - 全 X（0/10）→ 拉向 X/A/R/W 一侧；
-  三者形状显著不同。**单测/目测都要确认 0、5、10 三种输入画出三种不同多边形。**
-- 视觉呼应检验单：轴线用细 `--grid`，半径刻度用等宽小字，整体像一台「牛马体征扫描仪」。
-
-## 8. 页面流程
-
-1. **Intro**：门面名 + slogan + 一句免责声明 +「开始鉴定」按钮。可显示「40 题 · 约 5 分钟」。
-2. **Quiz**：一次一题，卡片式；顶部进度（如 12/40）；可返回上一题；最后一题答完自动出结果。
-   - 不强制答完才显示，但未答完不允许出证书。
-   - **每题随机化 A/B 展示顺序**（破除“默认选 A”偏差）；记录所选「极」而非位置，计分按极性（见 §6）。
-3. **Result**：鉴定证书卡片（型号形象图 + **八向雷达图** + 鉴定结论 portrait + **优点/缺点** + 折叠的**导师应对措施** mentorTips）
-   + ShareBar（保存图片/复制文案/重新鉴定）。措辞中性化，底部带免责声明。
-
-## 9. 文案语气
-
-- 题目与维度定义：**保持客观准确**，照 `questions.json`/`dimensions.json` 原文，别自由发挥改题意。
-- 类型名、tagline、按钮、空状态、加载提示：**可以沙雕**（牛马、卷王、甩锅、量子叠加态……），
-  但点到为止，不攻击具体群体或个人。
-- 每个出口都带一行免责：本测评仅供娱乐与自我觉察，非心理学诊断，请勿对号入座。
-
-## 10. 常用命令
-
-```bash
-npm install          # 首次（国内走代理，慢/失败先查代理）
-npm run dev          # 本地开发
-npm run build        # 产出 dist/ 静态文件
-npm run preview      # 预览构建产物
-npm test             # 跑 scoring 单测（用 vitest）
+**dimensions.json 应为：**
+```json
+{
+  "scoringModel": "polarity-graded-5", "borderlineBand": 0.75,
+  "dimensions": [
+    {"key":"CX","name":"控制点","firstPole":{"key":"C","name":"内控"},"secondPole":{"key":"X","name":"外控"}},
+    {"key":"OA","name":"责任倾向","firstPole":{"key":"O","name":"过度负责"},"secondPole":{"key":"A","name":"逃避推诿"},"mid":"健康边界"},
+    {"key":"PR","name":"沟通模式","firstPole":{"key":"P","name":"主动预警"},"secondPole":{"key":"R","name":"被动滞后"}},
+    {"key":"TW","name":"危机应对","firstPole":{"key":"T","name":"韧性担当"},"secondPole":{"key":"W","name":"规避退缩"},"mid":"健康止损"}
+  ]
+}
 ```
 
-## 11. 验收清单（做完逐条自查）
+## 5. 双版本系统（娱乐版 / 严谨版）
+- **起始页两按钮**，用户选其一后进入答题：
+  - 🎢 **娱乐版 · 40 题**（约 5 分钟）：`questions.filter(q => q.priority === 1)`，每维 10 题。
+  - 🔬 **严谨版 · 80 题**（约 12 分钟）：全部 80 题，每维 20 题。
+- 选择存入全局 state（如 `mode: 'fun' | 'strict'`），驱动取题与计分的 n。
+- **两版共用同一结果页、同一雷达图、同一 16 型结果**（计分已归一化，n 自动适配）。
+- 证书上标注版本徽章（娱乐版/严谨版），流水号编码版本位：`NO. GB-<code>-F0042`（F=娱乐）/`-S0042`（S=严谨）。
 
-- [ ] 40 题全部来自 `questions.json`（V1.3），无遗漏、无改题。
-- [ ] **答题页随机化 A/B 顺序，计分按极性**；打乱顺序后同一组作答结果不变。
-- [ ] 16 型结果全部来自 `results.json`，code 自洽，计分能命中全部 16 型。
-- [ ] 每维全选第一极→六边形卷王(COPT)，全选第二极→课题组定时炸弹(XARW) 验证通过。
-- [ ] 结果页含**型号形象图**（`public/avatars/<code>.svg`）+ **优点/缺点** + **导师应对措施**。
-- [ ] **八向雷达图已实现，且 0/10/5 三种极端画出三种不同形状**（不能让 0/10 与 5/10 看起来一样）。
-- [ ] 16 张 SVG 形象与 16 个 code 一一对应、无错位；中文标签字体（Noto Sans SC/DM Mono）已自托管、导出 PNG 不掉字。
-- [ ] 全站**零真实人名**，每个结果出口都有免责声明。
-- [ ] 证书可一键导出 PNG，竖屏截图清晰、含流水号与站点名。
-- [ ] 移动端布局正常；不依赖任何需翻墙的 CDN/字体。
-- [ ] `npm run build` 通过，`dist/` 可直接静态部署。
+## 6. 八向雷达图（两版均有，规格不变）
+- 8 轴顺时针：**C → O → P → T → X → A → R → W**；半径 = 对应极强度 0..10；同维两极正对、半径之和=10。
+- 底层同心八边形网格（刻度 0/2/4/6/8/10，`--grid`）；数据多边形描边 `--ink`、填充 `--stamp` 22%。
+- picked 极轴线加粗、字母加粗。判别性：全 4 分拉向 C/O/P/T 侧，全 2 分≈正八边形，全 0 分拉向 X/A/R/W 侧。
+- 雷达数据直接取自 §4 各维 `poles`，**娱乐版与严谨版调用完全相同的组件**。
+
+## 7. 命名拼写修正（resarch → research）—— 已知历史错误
+- **代码内**：全仓 `grep -ri "resarch"` 必须 0 命中（package.json name、README、`<title>`/OG/meta、任何硬编码 URL、注释、CI 配置）。
+- **GitHub 仓库**：`resarch-bti` → 改名 `research-bti`（Settings→Rename，旧链接自动 301）；本地 `git remote set-url origin <新地址>`。
+- **Cloudflare Pages**：`*.pages.dev` 子域**不能改名**（官方已知限制）→ **删除旧 `resarch-bti` 项目，新建 `research-bti` 项目**连到改名后的仓库，得到 `https://research-bti.pages.dev/`。
+- 站内任何展示/分享用的 URL、二维码、OG image 链接一并更新为新址。
+
+## 8. 设计系统（锁定）
+```css
+:root{ --paper:#ECEAE3; --paper-2:#E2DFD5; --ink:#1A1A17; --stamp:#B5322B; --marker:#E2A100; --grid:#C9C6BC; }
+```
+- vibe 徽章色：高危→`--stamp`，稀有→`--marker`，棘手→#C2701C，常见/少见→`--grid`。
+- 字体：抬头=思源黑体 Heavy；正文=系统中文栈；流水号/分数=等宽（JetBrains/DM Mono）。均自托管。
+- 证书结构：抬头(所名+流水号+条码+钢印) → 形象图+型名+tagline → 八向雷达 → 鉴定结论 → 优/缺两栏(✓绿/✗红) → 折叠的导师应对 → 免责声明。
+- 签名动效：出结果时 `--stamp` 红钢印"啪"地落章，章面 4 字母 code + "QC PASSED"。
+
+## 9. 已锁定决策（勿擅动）
+- 计分按**极性 value** 而非选项位置；选项**整组翻转**随机化（非乱序）。
+- 中间项(value=2)是健康边界/止损的**正当出口**，结果页 borderline 文案须解释为"倾向辩证、不极端"，而非"被迫落临界"。
+- results.json / 16 型 / 形象图 / 证书版式 / 雷达 SVG **本轮不改**，只接新数据与新计分。

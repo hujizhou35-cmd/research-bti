@@ -41,7 +41,7 @@ export interface DimensionsFile {
   dimensions: Dimension[]
 }
 
-// ---- data/questionsv4.json ----
+// ---- data/questionsv5.json ----
 export interface Option {
   text: string
   pole: Pole

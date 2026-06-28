@@ -28,6 +28,8 @@ export interface AnswerDetail {
 
 export interface SubmitPayload {
   questionsVersion: string
+  /** 匿名浏览器随机串，用于去重 / 识别重复提交（非个人信息） */
+  clientId: string
   mode: Mode
   consentVersion: string
   consentAt: string
@@ -51,6 +53,7 @@ export function buildSubmitPayload(args: {
   dimensions: DimensionScore[]
   selfReport: SelfReport
   questionsVersion: string
+  clientId: string
   consentVersion: string
   consentAt: string
 }): SubmitPayload {
@@ -78,6 +81,7 @@ export function buildSubmitPayload(args: {
 
   return {
     questionsVersion: args.questionsVersion,
+    clientId: args.clientId,
     mode: args.mode,
     consentVersion: args.consentVersion,
     consentAt: args.consentAt,
@@ -99,6 +103,7 @@ export function validatePayload(body: unknown): Validated {
 
   if (b.mode !== 'fun' && b.mode !== 'strict') return fail('mode 非法')
   if (typeof b.questionsVersion !== 'string' || !b.questionsVersion) return fail('questionsVersion 缺失')
+  if (typeof b.clientId !== 'string' || !b.clientId || b.clientId.length > 64) return fail('clientId 非法')
   if (typeof b.code !== 'string' || b.code.length !== 4) return fail('code 非法')
   if (typeof b.consentVersion !== 'string' || !b.consentVersion) return fail('未记录知情同意版本')
   if (typeof b.consentAt !== 'string' || !b.consentAt) return fail('未记录同意时间')
@@ -137,6 +142,7 @@ export function validatePayload(body: unknown): Validated {
 /** D1 行（与 schema.sql 对齐） */
 export interface ResponseRow {
   id: string
+  client_id: string | null
   created_at: string
   questions_version: string
   mode: string
@@ -164,7 +170,7 @@ function csvCell(x: unknown): string {
 export function buildCsv(rows: ResponseRow[]): string {
   const qNums = Array.from({ length: 80 }, (_, i) => i + 1)
   const header = [
-    'id', 'created_at', 'questions_version', 'mode', 'consent_version', 'consent_at', 'code',
+    'id', 'client_id', 'created_at', 'questions_version', 'mode', 'consent_version', 'consent_at', 'code',
     'strength_cx', 'strength_oa', 'strength_pr', 'strength_tw',
     'duration_ms', 'self_report',
     ...qNums.map((n) => 'q' + n),
@@ -184,7 +190,7 @@ export function buildCsv(rows: ResponseRow[]): string {
       return d && typeof d.v === 'number' ? String(d.v) : ''
     })
     const row = [
-      r.id, r.created_at, r.questions_version, r.mode, r.consent_version, r.consent_at, r.code,
+      r.id, r.client_id, r.created_at, r.questions_version, r.mode, r.consent_version, r.consent_at, r.code,
       r.strength_cx, r.strength_oa, r.strength_pr, r.strength_tw,
       r.duration_ms, r.self_report,
       ...qVals,

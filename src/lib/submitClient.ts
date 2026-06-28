@@ -2,6 +2,7 @@
 // 失败静默（不打扰用户体验）；用 keepalive 让出结果页/跳转也能送达。
 import { buildSubmitPayload, type SelfReport } from './collect'
 import { questionsVersion } from './data'
+import { getClientId } from './clientId'
 import type { Answers, DimensionScore, Mode, Question } from './types'
 
 export interface SubmitArgs {
@@ -19,7 +20,7 @@ export interface SubmitArgs {
 
 export function submitResponse(args: SubmitArgs): void {
   try {
-    const payload = buildSubmitPayload({ ...args, questionsVersion })
+    const payload = buildSubmitPayload({ ...args, questionsVersion, clientId: getClientId() })
     void fetch('/api/submit', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

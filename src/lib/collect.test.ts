@@ -56,6 +56,7 @@ describe('buildSubmitPayload', () => {
     dimensions: dims,
     selfReport: 'serious',
     questionsVersion: '2.1',
+    clientId: 'client-abc',
     consentVersion: 'v1',
     consentAt: '2026-06-28T00:00:00.000Z',
   })
@@ -80,6 +81,7 @@ describe('validatePayload', () => {
     for (let i = 1; i <= 40; i++) answers[String(i)] = { v: 2, pole: 'mid', flipped: false, pos: 'C' }
     return {
       questionsVersion: '2.1',
+      clientId: 'client-abc',
       mode: 'fun',
       consentVersion: 'v1',
       consentAt: '2026-06-28T00:00:00.000Z',
@@ -120,6 +122,11 @@ describe('validatePayload', () => {
     b.durationMs = -1
     expect(validatePayload(b).ok).toBe(false)
   })
+  it('clientId 缺失被拒', () => {
+    const b = good() as Record<string, unknown>
+    b.clientId = ''
+    expect(validatePayload(b).ok).toBe(false)
+  })
   it('非对象被拒', () => {
     expect(validatePayload(null).ok).toBe(false)
     expect(validatePayload('x').ok).toBe(false)
@@ -129,6 +136,7 @@ describe('validatePayload', () => {
 describe('buildCsv', () => {
   const row: ResponseRow = {
     id: 'abc',
+    client_id: 'client-xyz',
     created_at: '2026-06-28T00:00:00.000Z',
     questions_version: '2.1',
     mode: 'fun',
@@ -149,6 +157,7 @@ describe('buildCsv', () => {
     const header = csv.split('\r\n')[0]
     expect(header).toContain('"q1"')
     expect(header).toContain('"q80"')
+    expect(header).toContain('"client_id"')
     expect(header).toContain('"duration_ms"')
     expect(header).toContain('"self_report"')
     expect(header).toContain('"answers_json"')
@@ -159,8 +168,8 @@ describe('buildCsv', () => {
     const cells = dataLine.split('","')
     // 第 1 列 id
     expect(dataLine.startsWith('"abc"')).toBe(true)
-    // 13 个 meta 列（含 duration_ms/self_report）后是 q1
-    const q1Index = 13
+    // 14 个 meta 列（id,client_id,…,duration_ms,self_report）后是 q1
+    const q1Index = 14
     expect(cells[q1Index]).toBe('4')
     expect(cells[q1Index + 1]).toBe('')
   })

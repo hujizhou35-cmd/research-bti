@@ -27,12 +27,13 @@ export async function onRequestPost(context: {
   try {
     await env.DB.prepare(
       `INSERT INTO responses
-        (id, created_at, questions_version, mode, consent_version, consent_at, code,
+        (id, client_id, created_at, questions_version, mode, consent_version, consent_at, code,
          strength_cx, strength_oa, strength_pr, strength_tw, duration_ms, self_report, answers)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         id,
+        p.clientId,
         createdAt,
         p.questionsVersion,
         p.mode,

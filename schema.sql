@@ -3,6 +3,7 @@
 -- 或在 Cloudflare 后台 D1 控制台粘贴执行。
 CREATE TABLE IF NOT EXISTS responses (
   id                TEXT PRIMARY KEY,   -- uuid
+  client_id         TEXT,               -- 匿名浏览器随机串，用于去重/识别重复提交（非个人信息）
   created_at        TEXT NOT NULL,      -- 服务端写入时间 ISO8601
   questions_version TEXT NOT NULL,      -- 题库版本，如 2.1
   mode              TEXT NOT NULL,      -- fun(娱乐40) | strict(严谨80)
@@ -19,3 +20,4 @@ CREATE TABLE IF NOT EXISTS responses (
 );
 
 CREATE INDEX IF NOT EXISTS idx_responses_created_at ON responses(created_at);
+CREATE INDEX IF NOT EXISTS idx_responses_client_id ON responses(client_id);

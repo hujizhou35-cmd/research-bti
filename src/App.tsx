@@ -250,7 +250,7 @@ export default function App() {
 
   // 自评提交后 → 计分、上报、出结果。
   const handleEffort = useCallback(
-    (selfReport: SelfReport) => {
+    (selfReport: SelfReport, turnstileToken: string) => {
       try {
         const r = computeResult(items, answers)
         setResult(r)
@@ -266,6 +266,7 @@ export default function App() {
             code: r.code,
             dimensions: r.dimensions,
             selfReport,
+            turnstileToken,
             consentVersion: consent.version,
             consentAt: consent.at,
           })

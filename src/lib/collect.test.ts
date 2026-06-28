@@ -127,6 +127,12 @@ describe('validatePayload', () => {
     b.clientId = ''
     expect(validatePayload(b).ok).toBe(false)
   })
+  it('pos 不自洽被拒（伪造载荷）', () => {
+    const b = good()
+    // v=2,flipped=false 应为 pos C；改成 A 即不自洽
+    ;(b.answers as Record<string, { pos: string }>)['1'].pos = 'A'
+    expect(validatePayload(b).ok).toBe(false)
+  })
   it('非对象被拒', () => {
     expect(validatePayload(null).ok).toBe(false)
     expect(validatePayload('x').ok).toBe(false)
@@ -149,10 +155,11 @@ describe('buildCsv', () => {
     strength_tw: 5,
     duration_ms: 90000,
     self_report: 'serious',
+    turnstile: 'pass',
     answers: JSON.stringify({ '1': { v: 4, pole: 'C', flipped: false, pos: 'A', t: 3000 }, '21': { v: 0, pole: 'A', flipped: true, pos: 'A', t: 1200 } }),
   }
 
-  it('表头含 q1..q80、duration_ms/self_report 与 answers_json', () => {
+  it('表头含 q1..q80、client_id/duration_ms/self_report/turnstile 与 answers_json', () => {
     const csv = buildCsv([row])
     const header = csv.split('\r\n')[0]
     expect(header).toContain('"q1"')
@@ -160,6 +167,7 @@ describe('buildCsv', () => {
     expect(header).toContain('"client_id"')
     expect(header).toContain('"duration_ms"')
     expect(header).toContain('"self_report"')
+    expect(header).toContain('"turnstile"')
     expect(header).toContain('"answers_json"')
   })
   it('q 列填入 value，未答留空', () => {
@@ -168,8 +176,8 @@ describe('buildCsv', () => {
     const cells = dataLine.split('","')
     // 第 1 列 id
     expect(dataLine.startsWith('"abc"')).toBe(true)
-    // 14 个 meta 列（id,client_id,…,duration_ms,self_report）后是 q1
-    const q1Index = 14
+    // 15 个 meta 列（id,client_id,…,duration_ms,self_report,turnstile）后是 q1
+    const q1Index = 15
     expect(cells[q1Index]).toBe('4')
     expect(cells[q1Index + 1]).toBe('')
   })

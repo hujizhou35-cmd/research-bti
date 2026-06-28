@@ -39,6 +39,8 @@ export interface SubmitPayload {
   durationMs: number
   /** 结尾自评认真度（防污染） */
   selfReport: SelfReport
+  /** Cloudflare Turnstile 令牌（防机器人）；仅用于服务端校验，不入库原文 */
+  turnstileToken?: string
   answers: Record<string, AnswerDetail>
 }
 
@@ -52,6 +54,7 @@ export function buildSubmitPayload(args: {
   code: string
   dimensions: DimensionScore[]
   selfReport: SelfReport
+  turnstileToken?: string
   questionsVersion: string
   clientId: string
   consentVersion: string
@@ -89,6 +92,7 @@ export function buildSubmitPayload(args: {
     strengths,
     durationMs: Math.round(durationMs),
     selfReport: args.selfReport,
+    ...(args.turnstileToken ? { turnstileToken: args.turnstileToken } : {}),
     answers,
   }
 }
@@ -111,6 +115,7 @@ export function validatePayload(body: unknown): Validated {
     return fail('durationMs 非法')
   if (typeof b.selfReport !== 'string' || !SELF_REPORTS.includes(b.selfReport as SelfReport))
     return fail('selfReport 非法')
+  if (b.turnstileToken !== undefined && typeof b.turnstileToken !== 'string') return fail('turnstileToken 非法')
 
   const s = b.strengths
   if (typeof s !== 'object' || s === null) return fail('strengths 缺失')
@@ -134,6 +139,8 @@ export function validatePayload(body: unknown): Validated {
     if (typeof dd.pos !== 'string' || dd.pos.length !== 1 || !'ABCDE'.includes(dd.pos)) return fail('pos 非法:' + id)
     if (typeof dd.pole !== 'string') return fail('pole 非法:' + id)
     if (dd.t !== undefined && (typeof dd.t !== 'number' || !Number.isFinite(dd.t))) return fail('t 非法:' + id)
+    // pos 自洽校验：屏幕位置必须与 value+flipped 推出的一致，挡掉伪造载荷。
+    if (dd.pos !== posOf(dd.v as number, dd.flipped as boolean)) return fail('pos 不自洽:' + id)
   }
 
   return { ok: true, value: b as unknown as SubmitPayload }
@@ -155,6 +162,8 @@ export interface ResponseRow {
   strength_tw: number
   duration_ms: number | null
   self_report: string | null
+  /** Turnstile 校验结果：pass|fail|absent|disabled（防机器人信号） */
+  turnstile: string | null
   answers: string // JSON 字符串
 }
 
@@ -172,7 +181,7 @@ export function buildCsv(rows: ResponseRow[]): string {
   const header = [
     'id', 'client_id', 'created_at', 'questions_version', 'mode', 'consent_version', 'consent_at', 'code',
     'strength_cx', 'strength_oa', 'strength_pr', 'strength_tw',
-    'duration_ms', 'self_report',
+    'duration_ms', 'self_report', 'turnstile',
     ...qNums.map((n) => 'q' + n),
     'answers_json',
   ]
@@ -192,7 +201,7 @@ export function buildCsv(rows: ResponseRow[]): string {
     const row = [
       r.id, r.client_id, r.created_at, r.questions_version, r.mode, r.consent_version, r.consent_at, r.code,
       r.strength_cx, r.strength_oa, r.strength_pr, r.strength_tw,
-      r.duration_ms, r.self_report,
+      r.duration_ms, r.self_report, r.turnstile,
       ...qVals,
       r.answers,
     ]

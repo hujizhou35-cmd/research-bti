@@ -14,6 +14,7 @@ export interface SubmitArgs {
   code: string
   dimensions: DimensionScore[]
   selfReport: SelfReport
+  turnstileToken?: string
   consentVersion: string
   consentAt: string
 }

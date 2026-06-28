@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS responses (
   strength_tw       REAL NOT NULL,      -- 危机应对
   duration_ms       INTEGER,            -- 作答总用时(ms)，防污染：筛速答者
   self_report       TEXT,               -- 结尾认真度自评 serious|partial|careless
+  turnstile         TEXT,               -- Turnstile 防机器人结果 pass|fail|absent|disabled
   answers           TEXT NOT NULL       -- JSON：{题号:{v,pole,flipped,pos,t}}（方法学核查，t=每题用时ms）
 );
 

@@ -28,8 +28,8 @@ export async function onRequestPost(context: {
     await env.DB.prepare(
       `INSERT INTO responses
         (id, created_at, questions_version, mode, consent_version, consent_at, code,
-         strength_cx, strength_oa, strength_pr, strength_tw, answers)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+         strength_cx, strength_oa, strength_pr, strength_tw, duration_ms, self_report, answers)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
       .bind(
         id,
@@ -43,6 +43,8 @@ export async function onRequestPost(context: {
         p.strengths.OA,
         p.strengths.PR,
         p.strengths.TW,
+        p.durationMs,
+        p.selfReport,
         JSON.stringify(p.answers),
       )
       .run()

@@ -13,7 +13,9 @@ CREATE TABLE IF NOT EXISTS responses (
   strength_oa       REAL NOT NULL,      -- 责任倾向
   strength_pr       REAL NOT NULL,      -- 沟通模式
   strength_tw       REAL NOT NULL,      -- 危机应对
-  answers           TEXT NOT NULL       -- JSON：{题号:{v,pole,flipped,pos}}（方法学核查）
+  duration_ms       INTEGER,            -- 作答总用时(ms)，防污染：筛速答者
+  self_report       TEXT,               -- 结尾认真度自评 serious|partial|careless
+  answers           TEXT NOT NULL       -- JSON：{题号:{v,pole,flipped,pos,t}}（方法学核查，t=每题用时ms）
 );
 
 CREATE INDEX IF NOT EXISTS idx_responses_created_at ON responses(created_at);

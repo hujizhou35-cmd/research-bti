@@ -1,6 +1,6 @@
 // 前端上报：把作答打包后 fire-and-forget POST 到 /api/submit。
 // 失败静默（不打扰用户体验）；用 keepalive 让出结果页/跳转也能送达。
-import { buildSubmitPayload } from './collect'
+import { buildSubmitPayload, type SelfReport } from './collect'
 import { questionsVersion } from './data'
 import type { Answers, DimensionScore, Mode, Question } from './types'
 
@@ -8,9 +8,11 @@ export interface SubmitArgs {
   items: Question[]
   answers: Answers
   flips: Record<number, boolean>
+  times: Record<number, number>
   mode: Mode
   code: string
   dimensions: DimensionScore[]
+  selfReport: SelfReport
   consentVersion: string
   consentAt: string
 }

@@ -2,19 +2,21 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 import { questions, funQuestions } from './lib/data'
 import { computeResult } from './lib/scoring'
 import { submitResponse } from './lib/submitClient'
+import type { SelfReport } from './lib/collect'
 import type { Answers, Mode, OptionValue, Question, ScoreResult } from './lib/types'
 import ConsentModal from './components/ConsentModal'
+import EffortCheck from './components/EffortCheck'
 import Intro from './components/Intro'
 import Quiz from './components/Quiz'
 import ResultCard from './components/ResultCard'
 import ShareBar from './components/ShareBar'
 
-type View = 'intro' | 'quiz' | 'result'
+type View = 'intro' | 'quiz' | 'effort' | 'result'
 
 // 作答缓存结构随 V2.0（value 计分 + 版本）变更，故 key 升到 v2。
 const STORAGE_KEY = 'gradbti.session.v2'
 
-// 知情同意：硬门槛。改文案时升版本号即可让所有人重新同意。
+// 知情同意：硬门槛（点击开始测试后弹出）。改文案时升版本号即可让所有人重新同意。
 const CONSENT_KEY = 'gradbti.consent.v1'
 const CONSENT_VERSION = 'v1'
 
@@ -25,11 +27,20 @@ interface ConsentRecord {
 
 /** 每题选项是否整组翻转呈现（block-reverse）；记录用于方法学核查。 */
 type Flips = Record<number, boolean>
+/** 每题用时(ms)；记录用于防污染（筛速答者）。 */
+type Times = Record<number, number>
 
 interface SavedSession {
   mode: Mode
   answers: Answers
   flips?: Flips
+  times?: Times
+}
+
+/** 待处理的开始动作：等用户同意知情同意后再执行。 */
+interface Pending {
+  mode: Mode
+  resume: boolean
 }
 
 function buildFlips(items: Question[]): Flips {
@@ -131,22 +142,18 @@ function makeSerial(code: string, mode: Mode): string {
 export default function App() {
   const saved = useMemo(loadSession, [])
   const [consent, setConsent] = useState<ConsentRecord | null>(loadConsent)
+  const [pending, setPending] = useState<Pending | null>(null)
   const [view, setView] = useState<View>('intro')
   const [mode, setMode] = useState<Mode>(saved?.mode ?? modeFromUrl() ?? 'fun')
   const [answers, setAnswers] = useState<Answers>(saved?.answers ?? {})
   const [flips, setFlips] = useState<Flips>(saved?.flips ?? {})
+  const [times, setTimes] = useState<Times>(saved?.times ?? {})
   const [startIndex, setStartIndex] = useState(0)
   const [result, setResult] = useState<ScoreResult | null>(null)
   const [serial, setSerial] = useState('')
   const [exporting, setExporting] = useState(false)
   const captureRef = useRef<HTMLDivElement>(null)
   const submittedRef = useRef(false)
-
-  function handleAgree() {
-    const rec: ConsentRecord = { version: CONSENT_VERSION, at: new Date().toISOString() }
-    saveConsent(rec)
-    setConsent(rec)
-  }
 
   const savedTotal = saved ? itemsForMode(saved.mode).length : 0
   const savedAnswered = saved ? answeredCountOf(saved.answers) : 0
@@ -162,75 +169,123 @@ export default function App() {
     [items, answers],
   )
 
-  function handleStart(selected: Mode) {
+  function doStart(selected: Mode) {
     const fresh: Answers = {}
     const freshFlips = buildFlips(itemsForMode(selected))
+    const freshTimes: Times = {}
     submittedRef.current = false
     setMode(selected)
     setAnswers(fresh)
     setFlips(freshFlips)
-    saveSession({ mode: selected, answers: fresh, flips: freshFlips })
+    setTimes(freshTimes)
+    saveSession({ mode: selected, answers: fresh, flips: freshFlips, times: freshTimes })
     syncUrl(selected)
     setStartIndex(0)
     setView('quiz')
   }
 
-  function handleResume() {
+  function doResume() {
     if (!saved) return
     const resumeFlips = saved.flips ?? buildFlips(itemsForMode(saved.mode))
+    const resumeTimes = saved.times ?? {}
     submittedRef.current = false
     setMode(saved.mode)
     setAnswers(saved.answers)
     setFlips(resumeFlips)
-    saveSession({ mode: saved.mode, answers: saved.answers, flips: resumeFlips })
+    setTimes(resumeTimes)
+    saveSession({ mode: saved.mode, answers: saved.answers, flips: resumeFlips, times: resumeTimes })
     syncUrl(saved.mode)
     setStartIndex(firstUnanswered(itemsForMode(saved.mode), saved.answers))
     setView('quiz')
   }
 
+  // 点「娱乐版/严谨版」：先过知情同意硬门槛，再开始。
+  function requestStart(selected: Mode) {
+    if (consent) doStart(selected)
+    else setPending({ mode: selected, resume: false })
+  }
+
+  function requestResume() {
+    if (!saved) return
+    if (consent) doResume()
+    else setPending({ mode: saved.mode, resume: true })
+  }
+
+  function handleAgree() {
+    const rec: ConsentRecord = { version: CONSENT_VERSION, at: new Date().toISOString() }
+    saveConsent(rec)
+    setConsent(rec)
+    const p = pending
+    setPending(null)
+    if (p) {
+      if (p.resume) doResume()
+      else doStart(p.mode)
+    }
+  }
+
+  function handleCancelConsent() {
+    setPending(null)
+  }
+
   const handleAnswer = useCallback(
-    (id: number, value: OptionValue) => {
-      setAnswers((prev) => {
-        const next = { ...prev, [id]: value }
-        saveSession({ mode, answers: next, flips })
-        return next
+    (id: number, value: OptionValue, ms: number) => {
+      setTimes((prevTimes) => {
+        const nextTimes = { ...prevTimes, [id]: ms }
+        setAnswers((prev) => {
+          const next = { ...prev, [id]: value }
+          saveSession({ mode, answers: next, flips, times: nextTimes })
+          return next
+        })
+        return nextTimes
       })
     },
     [mode, flips],
   )
 
-  const handleComplete = useCallback(() => {
-    try {
-      const r = computeResult(items, answers)
-      setResult(r)
-      setSerial(makeSerial(r.code, mode))
-      // 知情同意后才上报；submittedRef 防止重复提交。
-      if (consent && !submittedRef.current) {
-        submittedRef.current = true
-        submitResponse({
-          items,
-          answers,
-          flips,
-          mode,
-          code: r.code,
-          dimensions: r.dimensions,
-          consentVersion: consent.version,
-          consentAt: consent.at,
-        })
+  // 答完所有题 → 进入「认真度自评」步骤（此时还不计分、不上报）。
+  const handleQuizComplete = useCallback(() => {
+    setView('effort')
+    window.scrollTo(0, 0)
+  }, [])
+
+  // 自评提交后 → 计分、上报、出结果。
+  const handleEffort = useCallback(
+    (selfReport: SelfReport) => {
+      try {
+        const r = computeResult(items, answers)
+        setResult(r)
+        setSerial(makeSerial(r.code, mode))
+        if (consent && !submittedRef.current) {
+          submittedRef.current = true
+          submitResponse({
+            items,
+            answers,
+            flips,
+            times,
+            mode,
+            code: r.code,
+            dimensions: r.dimensions,
+            selfReport,
+            consentVersion: consent.version,
+            consentAt: consent.at,
+          })
+        }
+        clearSaved()
+        setView('result')
+        window.scrollTo(0, 0)
+      } catch {
+        setStartIndex(firstUnanswered())
+        setView('quiz')
       }
-      clearSaved()
-      setView('result')
-      window.scrollTo(0, 0)
-    } catch {
-      setStartIndex(firstUnanswered())
-      setView('quiz')
-    }
-  }, [items, answers, mode, flips, consent, firstUnanswered])
+    },
+    [items, answers, mode, flips, times, consent, firstUnanswered],
+  )
 
   function handleRetake() {
     submittedRef.current = false
     setAnswers({})
     setFlips({})
+    setTimes({})
     clearSaved()
     syncUrl(null)
     setResult(null)
@@ -248,13 +303,16 @@ export default function App() {
           flips={flips}
           startIndex={startIndex}
           onAnswer={handleAnswer}
-          onComplete={handleComplete}
+          onComplete={handleQuizComplete}
           onExit={() => {
             syncUrl(null)
             setView('intro')
           }}
         />
       )
+    }
+    if (view === 'effort') {
+      return <EffortCheck onSelect={handleEffort} />
     }
     if (view === 'result' && result) {
       return (
@@ -278,20 +336,23 @@ export default function App() {
     }
     return (
       <Intro
-        onStart={handleStart}
+        onStart={requestStart}
         hasSaved={hasSaved}
         savedMode={saved?.mode}
         savedAnswered={savedAnswered}
         savedTotal={savedTotal}
-        onResume={handleResume}
+        onResume={requestResume}
       />
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [view, items, mode, answers, flips, startIndex, result, serial, exporting, hasSaved])
+  }, [view, items, mode, answers, flips, startIndex, result, serial, exporting, hasSaved, consent, pending])
 
   return (
     <main className="paper-grid min-h-screen">
-      {consent ? content : <ConsentModal onAgree={handleAgree} />}
+      {content}
+      {pending && !consent && (
+        <ConsentModal onAgree={handleAgree} onCancel={handleCancelConsent} />
+      )}
     </main>
   )
 }

@@ -1,6 +1,6 @@
 // 答题：一次一题，顶部进度，可返回上一题，最后一题答完自动出结果。
 // 题集由父级按版本（娱乐/严谨）传入；进度条按题集总数计算。
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { Answers, Mode, OptionValue, Question } from '../lib/types'
 import QuestionCard from './QuestionCard'
 
@@ -11,7 +11,8 @@ interface Props {
   /** 每题是否整组翻转呈现（block-reverse），由父级生成并持久化，用于方法学核查 */
   flips: Record<number, boolean>
   startIndex?: number
-  onAnswer: (id: number, value: OptionValue) => void
+  /** ms = 本题从呈现到作答的用时（防污染：筛速答者） */
+  onAnswer: (id: number, value: OptionValue, ms: number) => void
   onComplete: () => void
   onExit: () => void
 }
@@ -35,8 +36,15 @@ export default function Quiz({
   const answeredCount = items.filter((q) => isAnswered(answers[q.id])).length
   const current = items[index]
 
+  // 计时：每当切到一道新题，重置「呈现时刻」；作答时算出本题用时。
+  const shownAtRef = useRef<number>(Date.now())
+  useEffect(() => {
+    shownAtRef.current = Date.now()
+  }, [current.id])
+
   function handleSelect(value: OptionValue) {
-    onAnswer(current.id, value)
+    const ms = Date.now() - shownAtRef.current
+    onAnswer(current.id, value, ms)
     const willBeAnswered: Answers = { ...answers, [current.id]: value }
     const remaining = items.findIndex((q) => !isAnswered(willBeAnswered[q.id]))
     window.setTimeout(() => {

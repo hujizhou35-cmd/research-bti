@@ -50,21 +50,27 @@ describe('buildSubmitPayload', () => {
     items,
     answers: { 1: 4, 2: 0 },
     flips: { 1: false, 2: true },
+    times: { 1: 3000, 2: 1500 },
     mode: 'fun',
     code: 'CXXW',
     dimensions: dims,
+    selfReport: 'serious',
     questionsVersion: '2.1',
     consentVersion: 'v1',
     consentAt: '2026-06-28T00:00:00.000Z',
   })
 
-  it('记录 value/pole/flipped/pos，pos 与翻转一致', () => {
-    expect(payload.answers['1']).toEqual({ v: 4, pole: 'C', flipped: false, pos: 'A' })
-    expect(payload.answers['2']).toEqual({ v: 0, pole: 'W', flipped: true, pos: 'A' })
+  it('记录 value/pole/flipped/pos/t，pos 与翻转一致', () => {
+    expect(payload.answers['1']).toEqual({ v: 4, pole: 'C', flipped: false, pos: 'A', t: 3000 })
+    expect(payload.answers['2']).toEqual({ v: 0, pole: 'W', flipped: true, pos: 'A', t: 1500 })
   })
   it('strengths 从维度结果映射', () => {
     expect(payload.strengths.CX).toBe(10)
     expect(payload.strengths.TW).toBe(0)
+  })
+  it('durationMs 为各题用时之和；selfReport 透传', () => {
+    expect(payload.durationMs).toBe(4500)
+    expect(payload.selfReport).toBe('serious')
   })
 })
 
@@ -79,6 +85,8 @@ describe('validatePayload', () => {
       consentAt: '2026-06-28T00:00:00.000Z',
       code: 'COPT',
       strengths: { CX: 5, OA: 5, PR: 5, TW: 5 },
+      durationMs: 120000,
+      selfReport: 'serious',
       answers,
     }
   }
@@ -102,6 +110,16 @@ describe('validatePayload', () => {
     ;(b.answers as Record<string, { v: number }>)['1'].v = 9
     expect(validatePayload(b).ok).toBe(false)
   })
+  it('selfReport 非法被拒', () => {
+    const b = good() as Record<string, unknown>
+    b.selfReport = 'lazy'
+    expect(validatePayload(b).ok).toBe(false)
+  })
+  it('durationMs 缺失/非法被拒', () => {
+    const b = good() as Record<string, unknown>
+    b.durationMs = -1
+    expect(validatePayload(b).ok).toBe(false)
+  })
   it('非对象被拒', () => {
     expect(validatePayload(null).ok).toBe(false)
     expect(validatePayload('x').ok).toBe(false)
@@ -121,14 +139,18 @@ describe('buildCsv', () => {
     strength_oa: 5,
     strength_pr: 5,
     strength_tw: 5,
-    answers: JSON.stringify({ '1': { v: 4, pole: 'C', flipped: false, pos: 'A' }, '21': { v: 0, pole: 'A', flipped: true, pos: 'A' } }),
+    duration_ms: 90000,
+    self_report: 'serious',
+    answers: JSON.stringify({ '1': { v: 4, pole: 'C', flipped: false, pos: 'A', t: 3000 }, '21': { v: 0, pole: 'A', flipped: true, pos: 'A', t: 1200 } }),
   }
 
-  it('表头含 q1..q80 与 answers_json', () => {
+  it('表头含 q1..q80、duration_ms/self_report 与 answers_json', () => {
     const csv = buildCsv([row])
     const header = csv.split('\r\n')[0]
     expect(header).toContain('"q1"')
     expect(header).toContain('"q80"')
+    expect(header).toContain('"duration_ms"')
+    expect(header).toContain('"self_report"')
     expect(header).toContain('"answers_json"')
   })
   it('q 列填入 value，未答留空', () => {
@@ -137,8 +159,8 @@ describe('buildCsv', () => {
     const cells = dataLine.split('","')
     // 第 1 列 id
     expect(dataLine.startsWith('"abc"')).toBe(true)
-    // q1 应为 4，q2 应为空
-    const q1Index = 11 // 11 个 meta 列后是 q1
+    // 13 个 meta 列（含 duration_ms/self_report）后是 q1
+    const q1Index = 13
     expect(cells[q1Index]).toBe('4')
     expect(cells[q1Index + 1]).toBe('')
   })

@@ -1,13 +1,12 @@
-// 知情同意「硬门槛」：未同意不能进入测试。同意后记录版本与时间。
-import { useState } from 'react'
+// 知情同意「硬门槛」：点击开始测试后弹出，未同意不能开始作答。
+// 同意后记录版本与时间；不同意则关闭返回首页（不开始、不采集）。
 
 interface Props {
   onAgree: () => void
+  onCancel: () => void
 }
 
-export default function ConsentModal({ onAgree }: Props) {
-  const [declined, setDeclined] = useState(false)
-
+export default function ConsentModal({ onAgree, onCancel }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-ink/55 px-4 py-8">
       <div className="w-full max-w-lg border-2 border-ink bg-paper p-6 shadow-xl sm:p-7">
@@ -36,12 +35,6 @@ export default function ConsentModal({ onAgree }: Props) {
           </p>
         </div>
 
-        {declined && (
-          <div className="mt-4 border-2 border-stamp bg-stamp/10 px-3 py-2 text-[13px] text-stamp">
-            本测试需在你同意后才能开始。如不同意，请直接关闭本页面。
-          </div>
-        )}
-
         <div className="mt-5 flex flex-col gap-2 sm:flex-row-reverse">
           <button
             type="button"
@@ -52,10 +45,10 @@ export default function ConsentModal({ onAgree }: Props) {
           </button>
           <button
             type="button"
-            onClick={() => setDeclined(true)}
+            onClick={onCancel}
             className="border-2 border-ink bg-paper px-4 py-2.5 font-display text-sm font-bold"
           >
-            不同意
+            暂不参与
           </button>
         </div>
       </div>

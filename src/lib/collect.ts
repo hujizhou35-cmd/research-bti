@@ -13,12 +13,17 @@ export function posOf(value: number, flipped: boolean): string {
   return MARKERS[idx] ?? '?'
 }
 
-/** 单题上报明细：v=所选 value，pole=该选项极标签，flipped=是否翻转，pos=屏幕位置 */
+/** 自评作答认真度（防污染信号，不计分） */
+export type SelfReport = 'serious' | 'partial' | 'careless'
+const SELF_REPORTS: SelfReport[] = ['serious', 'partial', 'careless']
+
+/** 单题上报明细：v=所选 value，pole=极标签，flipped=是否翻转，pos=屏幕位置，t=该题用时(ms) */
 export interface AnswerDetail {
   v: number
   pole: string
   flipped: boolean
   pos: string
+  t?: number
 }
 
 export interface SubmitPayload {
@@ -28,6 +33,10 @@ export interface SubmitPayload {
   consentAt: string
   code: string
   strengths: { CX: number; OA: number; PR: number; TW: number }
+  /** 作答总用时(ms)，各题用时之和（防污染：筛速答者） */
+  durationMs: number
+  /** 结尾自评认真度（防污染） */
+  selfReport: SelfReport
   answers: Record<string, AnswerDetail>
 }
 
@@ -36,9 +45,11 @@ export function buildSubmitPayload(args: {
   items: Question[]
   answers: Answers
   flips: Record<number, boolean>
+  times: Record<number, number>
   mode: Mode
   code: string
   dimensions: DimensionScore[]
+  selfReport: SelfReport
   questionsVersion: string
   consentVersion: string
   consentAt: string
@@ -49,15 +60,19 @@ export function buildSubmitPayload(args: {
   }
 
   const answers: Record<string, AnswerDetail> = {}
+  let durationMs = 0
   for (const q of args.items) {
     const v = args.answers[q.id]
     const opt = q.options.find((o) => o.value === v)
     const flipped = !!args.flips[q.id]
+    const t = args.times[q.id]
+    if (typeof t === 'number' && Number.isFinite(t)) durationMs += t
     answers[String(q.id)] = {
       v,
       pole: opt ? opt.pole : 'mid',
       flipped,
       pos: posOf(v, flipped),
+      ...(typeof t === 'number' && Number.isFinite(t) ? { t: Math.round(t) } : {}),
     }
   }
 
@@ -68,6 +83,8 @@ export function buildSubmitPayload(args: {
     consentAt: args.consentAt,
     code: args.code,
     strengths,
+    durationMs: Math.round(durationMs),
+    selfReport: args.selfReport,
     answers,
   }
 }
@@ -85,6 +102,10 @@ export function validatePayload(body: unknown): Validated {
   if (typeof b.code !== 'string' || b.code.length !== 4) return fail('code 非法')
   if (typeof b.consentVersion !== 'string' || !b.consentVersion) return fail('未记录知情同意版本')
   if (typeof b.consentAt !== 'string' || !b.consentAt) return fail('未记录同意时间')
+  if (typeof b.durationMs !== 'number' || !Number.isFinite(b.durationMs) || b.durationMs < 0)
+    return fail('durationMs 非法')
+  if (typeof b.selfReport !== 'string' || !SELF_REPORTS.includes(b.selfReport as SelfReport))
+    return fail('selfReport 非法')
 
   const s = b.strengths
   if (typeof s !== 'object' || s === null) return fail('strengths 缺失')
@@ -107,6 +128,7 @@ export function validatePayload(body: unknown): Validated {
     if (typeof dd.flipped !== 'boolean') return fail('flipped 非法:' + id)
     if (typeof dd.pos !== 'string' || dd.pos.length !== 1 || !'ABCDE'.includes(dd.pos)) return fail('pos 非法:' + id)
     if (typeof dd.pole !== 'string') return fail('pole 非法:' + id)
+    if (dd.t !== undefined && (typeof dd.t !== 'number' || !Number.isFinite(dd.t))) return fail('t 非法:' + id)
   }
 
   return { ok: true, value: b as unknown as SubmitPayload }
@@ -125,6 +147,8 @@ export interface ResponseRow {
   strength_oa: number
   strength_pr: number
   strength_tw: number
+  duration_ms: number | null
+  self_report: string | null
   answers: string // JSON 字符串
 }
 
@@ -142,6 +166,7 @@ export function buildCsv(rows: ResponseRow[]): string {
   const header = [
     'id', 'created_at', 'questions_version', 'mode', 'consent_version', 'consent_at', 'code',
     'strength_cx', 'strength_oa', 'strength_pr', 'strength_tw',
+    'duration_ms', 'self_report',
     ...qNums.map((n) => 'q' + n),
     'answers_json',
   ]
@@ -161,6 +186,7 @@ export function buildCsv(rows: ResponseRow[]): string {
     const row = [
       r.id, r.created_at, r.questions_version, r.mode, r.consent_version, r.consent_at, r.code,
       r.strength_cx, r.strength_oa, r.strength_pr, r.strength_tw,
+      r.duration_ms, r.self_report,
       ...qVals,
       r.answers,
     ]

@@ -104,6 +104,14 @@ export default function ShareBar({ result, serial, captureRef, onPrepareExport, 
           重新鉴定
         </button>
       </div>
+      <a
+        href={`${import.meta.env.BASE_URL}preview.html`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 block w-full border-2 border-ink bg-paper px-3 py-2.5 text-center font-display text-sm font-bold transition-transform active:translate-y-px hover:bg-paper-2"
+      >
+        📖 查看其它 15 型人格
+      </a>
       <p className="mt-2 h-4 text-center font-mono text-xs text-ink/60" aria-live="polite">
         {status}
       </p>

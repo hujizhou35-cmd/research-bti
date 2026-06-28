@@ -96,6 +96,15 @@ export default function Intro({
               继续上次（{savedMode === 'fun' ? '娱乐版' : '严谨版'} {savedAnswered}/{savedTotal}）
             </button>
           )}
+
+          <a
+            href={`${import.meta.env.BASE_URL}preview.html`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full border-2 border-ink bg-paper px-4 py-2.5 text-center font-display text-sm font-bold tracking-wide transition-transform active:translate-y-px hover:bg-paper-2"
+          >
+            📖 先看看 16 型人格图鉴
+          </a>
         </div>
 
         {/* 免责声明 */}

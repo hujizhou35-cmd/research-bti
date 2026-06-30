@@ -16,6 +16,7 @@
 - 字体**全部自托管**于 `public/fonts/`，`@font-face` 本地引用，**禁止任何运行时 CDN**（含 Google Fonts）——国内访问约束。开发走 Clash 代理（7890/7897）。
 - **部署：Cloudflare Pages**（`*.pages.dev`）。构建命令 `npm run build`，输出目录 `dist`，push 自动构建。
 - **生产地址（拼写修正后）：`https://research-bti.pages.dev/`**（旧 `resarch-bti` 已废弃，见 §7）。
+- **人机验证：GeeTest v4**（已替换 Cloudflare Turnstile）。前端读 `VITE_GEETEST_CAPTCHA_ID`，后端私钥为 `GEETEST_KEY`（Cloudflare Pages 加密环境变量）。注册地址：https://www.geetest.com/。数据列 `turnstile` 语义不变（pass/fail/absent/disabled）。
 
 ## 2. 四维度（锁定）
 | 维度键 | 维度名 | 第一极(firstPole) | 第二极(secondPole) | 中间(value=2)语义 |

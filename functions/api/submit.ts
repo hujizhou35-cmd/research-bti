@@ -1,6 +1,6 @@
 // POST /api/submit —— 接收一次完整作答，校验后写入 D1。
 import { validatePayload } from '../../src/lib/collect'
-import { json, sameOrigin, verifyTurnstile, type Env } from '../_shared'
+import { json, sameOrigin, verifyGeetest, type Env } from '../_shared'
 
 export async function onRequestPost(context: {
   request: Request
@@ -21,18 +21,18 @@ export async function onRequestPost(context: {
   if (!res.ok) return json({ ok: false, error: res.error }, 400)
   const p = res.value
 
-  // Turnstile 防机器人：设了私钥才校验。默认 flag 模式（仅记录结果）；
-  // 设 TURNSTILE_ENFORCE=1 时硬拦非 pass（注意国内加载失败可能误杀）。
+  // GeeTest v4 防机器人：设了私钥才校验。默认 flag 模式（仅记录结果）；
+  // 设 TURNSTILE_ENFORCE=1 时硬拦非 pass（注意极验加载失败可能误杀）。
   let turnstile = 'disabled'
-  if (env.TURNSTILE_SECRET) {
+  if (env.GEETEST_KEY) {
     if (!p.turnstileToken) {
       turnstile = 'absent'
     } else {
-      const ok = await verifyTurnstile(p.turnstileToken, env.TURNSTILE_SECRET, request.headers.get('CF-Connecting-IP'))
+      const ok = await verifyGeetest(p.turnstileToken, env.GEETEST_KEY)
       turnstile = ok ? 'pass' : 'fail'
     }
     if (env.TURNSTILE_ENFORCE === '1' && turnstile !== 'pass') {
-      return json({ ok: false, error: 'turnstile failed' }, 403)
+      return json({ ok: false, error: 'captcha failed' }, 403)
     }
   }
 

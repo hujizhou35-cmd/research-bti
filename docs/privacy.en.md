@@ -16,6 +16,6 @@ This is a playful self-assessment, not a medical, psychological or ability asses
 
 Contact: [opusdog@163.com](mailto:opusdog@163.com)
 
-[Cloudflare privacy](https://www.cloudflare.com/privacypolicy/) · [GeeTest privacy](https://www.geetest.com/en/Privacy)
+[Cloudflare privacy](https://www.cloudflare.com/privacypolicy/) · [GeeTest privacy](https://www.geetest.com/en/legal/privacy-policy/captcha-v4)
 
 2026-10-15 · v2

@@ -5,7 +5,7 @@ export function ParticipationInfo() {
   return <div className="mt-4 space-y-3 text-[13.5px] leading-relaxed text-ink/85">
     {(['consentIntro','consentData','consentUse','consentService','consentRights','consentDisclaimer'] as const).map(key => <p key={key}>{t(key)}</p>)}
     <p>{t('contact')}: <a className="underline" href="mailto:opusdog@163.com">opusdog@163.com</a></p>
-    <p className="text-xs"><a className="underline" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a> · <a className="underline" href="https://www.geetest.com/en/Privacy" target="_blank" rel="noopener noreferrer">GeeTest</a></p>
+    <p className="text-xs"><a className="underline" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare</a> · <a className="underline" href="https://www.geetest.com/en/legal/privacy-policy/captcha-v4" target="_blank" rel="noopener noreferrer">GeeTest</a></p>
   </div>
 }
 export default function ConsentModal({ onAgree, onCancel, privacyOnly = false }: { onAgree?: () => void; onCancel: () => void; privacyOnly?: boolean }) {

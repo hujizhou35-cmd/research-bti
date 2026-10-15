@@ -16,7 +16,36 @@ try {
   await first.getByRole('button', { name: 'English', exact: true }).click()
   await first.getByRole('button', { name: /Quick mode.*40/ }).waitFor()
   await first.close()
-  for (const lang of ['zh-CN', 'en', 'ja']) {
+  const legacyContext = await browser.newContext({ viewport: { width: 320, height: 720 } })
+  const legacy = await legacyContext.newPage()
+  const sourceQuestions = JSON.parse(await fs.readFile('data/questionsv5.json','utf8')).questions.filter(q=>q.priority===1)
+  await legacy.addInitScript(questions => {
+    localStorage.setItem('gradbti.session.v2', JSON.stringify({ mode:'fun', answers:{[questions[0].id]:2}, flips:Object.fromEntries(questions.map(q=>[q.id,false])), times:{[questions[0].id]:3000} }))
+    localStorage.setItem('gradbti.consent.v1', JSON.stringify({version:'v1',at:'2026-06-29T00:00:00Z'}))
+  },sourceQuestions)
+  let legacyPosts=0
+  await legacy.route('**/api/submit',route=>{legacyPosts++;return route.abort()})
+  await legacy.goto(base+'?lang=ja')
+  await legacy.getByRole('button',{name:new RegExp(ui.ja.resume)}).click()
+  await legacy.getByRole('dialog').waitFor()
+  assert.equal(await legacy.locator('html').getAttribute('lang'),'zh-CN')
+  await legacy.getByRole('button',{name:ui['zh-CN'].agree,exact:true}).click()
+  assert.equal(await legacy.locator('[data-question-id]').getAttribute('data-question-id'),String(sourceQuestions[1].id))
+  await legacy.getByRole('button',{name:'← '+ui['zh-CN'].previous,exact:true}).click()
+  assert.equal(await legacy.locator('[data-option-value="2"]').getAttribute('aria-pressed'),'true')
+  await legacy.getByRole('button',{name:'← '+ui['zh-CN'].exit,exact:true}).click()
+  await legacy.getByRole('button',{name:'English',exact:true}).click()
+  await legacy.getByText(ui.en.languageRestart,{exact:true}).waitFor()
+  await legacy.getByRole('button',{name:/^🎢 Quick mode/}).click()
+  await legacy.locator('[data-question-id]').waitFor()
+  const fresh = await legacy.evaluate(()=>JSON.parse(localStorage.getItem('gradbti.session.v2')))
+  assert.equal(fresh.locale,'en')
+  assert.equal(Object.keys(fresh.answers).length,0)
+  assert.equal(legacyPosts,0)
+  assert.equal(await legacy.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false)
+  await legacyContext.close()
+  console.log('PASS legacy Chinese resume, renewed consent, language lock and fresh English session at 320px')
+  for (const lang of (process.argv.includes('--legacy-only') ? [] : ['zh-CN', 'en', 'ja'])) {
     for (const mode of ['fun', 'strict']) {
       const context = await browser.newContext({ viewport: mode === 'fun' ? { width: 390, height: 844 } : { width: 1280, height: 960 }, acceptDownloads: true, reducedMotion: 'reduce' })
       const page = await context.newPage()
@@ -91,5 +120,5 @@ try {
     await gallery.screenshot({ path: path.join(out, 'gallery-' + lang + '.png'), fullPage: true })
     await gallery.close()
   }
-  await fs.writeFile(path.join(out, 'report.json'), JSON.stringify(results, null, 2))
+  await fs.writeFile(path.join(out, process.argv.includes('--legacy-only') ? 'report-legacy.json' : 'report.json'), JSON.stringify({legacy:true,flows:results}, null, 2))
 } finally { await browser.close() }

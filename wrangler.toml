@@ -1,15 +1,13 @@
-# Cloudflare Pages + Functions + D1 配置。
-# 主要用于本地开发（wrangler pages dev）与直接 wrangler 部署。
-# 注意：本项目走 GitHub 集成自动构建，线上的 D1 绑定需在
-# Cloudflare 后台「Pages 项目 → Settings → Functions → Bindings」另行配置，
-# 导出口令 EXPORT_KEY 在「Settings → Environment variables」配置。
+# Cloudflare Pages + Functions + D1. Git integration builds branch main.
+# Keep this binding aligned with the existing production project.
+# EXPORT_KEY, GEETEST_KEY and VITE_GEETEST_CAPTCHA_ID are configured in
+# Cloudflare Pages environment settings, never committed as credentials.
 name = "research-bti"
 compatibility_date = "2025-05-05"
 pages_build_output_dir = "dist"
 
-# D1 绑定：代码里通过 env.DB 访问。
-# 线上走 GitHub 集成 + 后台绑定，本 database_id 不参与生产；它只用于本地 dev /
-# 直接 wrangler 部署。部署前可换成 `wrangler d1 create bti-responses` 返回的真实 id。
+# This ID matches the existing production DB. Forks must use their own DB.
+# Local Pages development simulates D1 unless remote access is explicitly used.
 [[d1_databases]]
 binding = "DB"
 database_name = "bti-responses"

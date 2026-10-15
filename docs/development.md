@@ -48,7 +48,7 @@ The self-hosted font subsets are committed and normal builds do not fetch fonts.
 
 ## Pilot analysis
 
-Install `scripts/requirements-analysis.txt` into a separate Python environment. `scripts/analyze_responses.py --help` describes the private snapshot, hash manifest and private audit directory inputs. It writes only aggregate public findings. Then run `python scripts/render_analysis.py` to render the report and figure. Raw responses and individual exclusion logs must remain outside this repository.
+Install `scripts/requirements-analysis.txt` into a separate Python 3.11+ environment. `scripts/analyze_responses.py --help` describes the private snapshot, hash manifest and private audit directory inputs. It writes only aggregate public findings. Then run `python scripts/render_analysis.py` to render the report and figure. Raw responses and individual exclusion logs must remain outside this repository.
 
 Use `npm run docs:assets` against a local Vite server and `npm run docs:readmes` to rebuild documentation assets and multilingual summaries. Certificate examples are captured from isolated demo answers, not participant records.
 

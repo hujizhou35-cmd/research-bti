@@ -1,3 +1,4 @@
+import { useLocale } from '../lib/LocaleContext'
 // 单题卡片：题干 + 5 个极性五级选项。文案照 questionsv5.json 原文，不改题意。
 // 选项整组方向翻转随机化（block-reverse）：flip=true 时整组逆序呈现（第二极→第一极），
 // 但**不打乱相对顺序**（序数量表不可乱序）。无论如何呈现，记录的是所选选项的 value。
@@ -25,6 +26,7 @@ export default function QuestionCard({
   selected,
   onSelect,
 }: Props) {
+  const { t } = useLocale()
   // questionsv5.json 中 options 恒按 value 4→0（第一极→第二极）排列；
   // flip 时整组逆序为 0→4（第二极→第一极）。仅改变呈现顺序，value 不变。
   const options = useMemo(() => {
@@ -33,13 +35,13 @@ export default function QuestionCard({
   }, [question.options, flip])
 
   return (
-    <div key={question.id} className="animate-fade-in">
+    <div key={question.id} data-question-id={question.id} className="animate-fade-in">
       {/* 题号字段 */}
       <div className="mb-3 flex items-center gap-2 font-mono text-xs text-ink/55">
         <span className="border border-ink px-1.5 py-0.5 font-bold text-ink">
           ITEM {String(index + 1).padStart(2, '0')}/{total}
         </span>
-        <span>维度 {question.dimension}</span>
+        <span>{t('dimension')} {question.dimension}</span>
       </div>
 
       <h2 className="font-display text-xl font-bold leading-snug">{question.text}</h2>
@@ -51,6 +53,7 @@ export default function QuestionCard({
           return (
             <button
               key={opt.value}
+              data-option-value={opt.value}
               type="button"
               onClick={() => onSelect(opt.value)}
               aria-pressed={active}

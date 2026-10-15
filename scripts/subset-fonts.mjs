@@ -34,6 +34,21 @@ corpus +=
 corpus += '·—…“”‘’《》【】、，。：；？！（）±★→←↑↓§✓✗⚠'
 
 const chars = Array.from(new Set(Array.from(corpus))).join('')
+
+// Optional full variable font from the official google/fonts repository. The
+// generated subset is committed; end users never fetch fonts from a CDN.
+const jpIndex = process.argv.indexOf('--jp-source')
+if (jpIndex !== -1) {
+  const source = process.argv[jpIndex + 1]
+  if (!source) throw new Error('--jp-source needs a local font path')
+  const jpCorpus = readAll(resolve(root, 'data/locales/ja'), ['.json']) +
+    JSON.stringify(JSON.parse(readFileSync(resolve(root, 'data/locales/ui.json'), 'utf8')).ja) +
+    JSON.stringify(JSON.parse(readFileSync(resolve(root, 'data/locales/avatars.json'), 'utf8')).ja) +
+    'Choose your language 中文 English 日本語 0123456789 ·—…“”‘’《》【】、，。：；？！（）±★→←↑↓§✓✗⚠'
+  const jpChars = Array.from(new Set(Array.from(jpCorpus))).join('')
+  writeFileSync(resolve(OUT, 'noto-jp-variable.woff2'), await subsetFont(readFileSync(source), jpChars, { targetFormat: 'woff2' }))
+  console.log('✓ Self-hosted Japanese variable subset')
+}
 console.log(`收集到唯一字符 ${Array.from(new Set(Array.from(corpus))).length} 个`)
 
 // 2. 子集化 Noto Sans SC 的简体中文全集（CJK 部分）
@@ -56,4 +71,4 @@ const dmFiles = resolve(NM, 'dm-mono/files')
 for (const w of [400, 500]) {
   copyFileSync(resolve(dmFiles, `dm-mono-latin-${w}-normal.woff2`), resolve(OUT, `dm-mono-${w}.woff2`))
 }
-console.log('字体子集化完成 → public/fonts/')
+console.log('字体子集化完成 → src/assets/fonts/')

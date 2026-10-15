@@ -4,8 +4,11 @@ import { buildSubmitPayload, type SelfReport } from './collect'
 import { questionsVersion } from './data'
 import { getClientId } from './clientId'
 import type { Answers, DimensionScore, Mode, Question } from './types'
+import type { Locale } from './locale'
 
 export interface SubmitArgs {
+  locale: Locale
+  translationVersion: string
   items: Question[]
   answers: Answers
   flips: Record<number, boolean>

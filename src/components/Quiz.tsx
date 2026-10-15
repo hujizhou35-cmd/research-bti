@@ -1,3 +1,4 @@
+import { useLocale } from '../lib/LocaleContext'
 // 答题：一次一题，顶部进度，可返回上一题，最后一题答完自动出结果。
 // 题集由父级按版本（娱乐/严谨）传入；进度条按题集总数计算。
 import { useEffect, useRef, useState } from 'react'
@@ -31,6 +32,7 @@ export default function Quiz({
   onComplete,
   onExit,
 }: Props) {
+  const { t } = useLocale()
   const total = items.length
   const [index, setIndex] = useState(Math.min(startIndex, total - 1))
   const answeredCount = items.filter((q) => isAnswered(answers[q.id])).length
@@ -59,7 +61,7 @@ export default function Quiz({
   }
 
   const progress = Math.round((answeredCount / total) * 100)
-  const modeLabel = mode === 'fun' ? '娱乐版' : '严谨版'
+  const modeLabel = mode === 'fun' ? t('fun') : t('strict')
 
   return (
     <div className="mx-auto flex min-h-screen max-w-xl flex-col px-5 py-6">
@@ -70,10 +72,10 @@ export default function Quiz({
           onClick={onExit}
           className="font-mono text-xs text-ink/60 hover:text-ink"
         >
-          ← 退出
+          ← {t('exit')}
         </button>
         <span className="font-mono text-xs font-bold tracking-wide">
-          {modeLabel} · 进度 {answeredCount}/{total}
+          {modeLabel} · {t('progress')} {answeredCount}/{total}
         </span>
       </div>
 
@@ -106,7 +108,7 @@ export default function Quiz({
           disabled={index === 0}
           className="border-2 border-ink bg-paper px-4 py-2 font-display text-sm font-bold disabled:opacity-35"
         >
-          ← 上一题
+          ← {t('previous')}
         </button>
 
         {answeredCount === total ? (
@@ -115,7 +117,7 @@ export default function Quiz({
             onClick={onComplete}
             className="border-2 border-ink bg-stamp px-4 py-2 font-display text-sm font-bold text-white"
           >
-            出具鉴定证书 →
+            {t('certificateAction')} →
           </button>
         ) : (
           <button
@@ -124,13 +126,13 @@ export default function Quiz({
             disabled={index === total - 1}
             className="border-2 border-ink bg-paper px-4 py-2 font-display text-sm font-bold disabled:opacity-35"
           >
-            下一题 →
+            {t('next')} →
           </button>
         )}
       </div>
 
       <p className="mt-4 text-center text-[11px] text-ink/45">
-        请按真实第一反应作答 · 未答完无法出证书
+        {t('answerHint')}
       </p>
     </div>
   )

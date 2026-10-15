@@ -1,9 +1,9 @@
+import { useLocale } from '../lib/LocaleContext'
 // §7.8 型号扫描图：八向极坐标雷达图（octagon）。
 // 轴序固定 C → O → P → T → X → A → R → W（让同维两极在圆上正对）。
 // 每轴半径 = 该极的原始计数 poles[letter]（0..10）。画原始计数而非折叠强度，
 // 保证 0/10、5/5、10/0 三种输入画出三种明显不同的形状。
 import { useMemo } from 'react'
-import { dimensions } from '../lib/data'
 import type { Poles, PoleLetter } from '../lib/types'
 
 const ORDER: PoleLetter[] = ['C', 'O', 'P', 'T', 'X', 'A', 'R', 'W']
@@ -11,14 +11,7 @@ const MAX = 10
 const RINGS = [2, 4, 6, 8, 10]
 
 // 极字母 -> 极名（中文），取自 dimensions.json（polarity-graded-5 结构）
-const LABELS: Record<string, string> = (() => {
-  const m: Record<string, string> = {}
-  for (const dim of dimensions) {
-    m[dim.firstPole.key] = dim.firstPole.name
-    m[dim.secondPole.key] = dim.secondPole.name
-  }
-  return m
-})()
+
 
 interface Props {
   poles: Poles
@@ -64,6 +57,7 @@ function octagonPath(cx: number, cy: number, radius: number) {
 }
 
 export default function RadarChart({ poles, picked, size = 340 }: Props) {
+  const { locale, t } = useLocale()
   const cx = size / 2
   const cy = size / 2
   const R = size * 0.265 // 数据半径，刻意收小，给外圈中文极名留足边距，避免标签被裁切
@@ -84,7 +78,7 @@ export default function RadarChart({ poles, picked, size = 340 }: Props) {
       viewBox={`0 0 ${size} ${size}`}
       width="100%"
       role="img"
-      aria-label="型号八向扫描图"
+      aria-label={t('radarAlt')}
       className="block"
     >
       {/* 同心八边形网格 0/2/4/6/8/10 */}
@@ -118,7 +112,7 @@ export default function RadarChart({ poles, picked, size = 340 }: Props) {
               y={labelPos.y}
               textAnchor="middle"
               dominantBaseline="middle"
-              fontSize={size * 0.05}
+              fontSize={size * (locale === 'en' ? 0.036 : 0.05)}
               fill="var(--ink)"
             >
               <tspan
@@ -129,11 +123,11 @@ export default function RadarChart({ poles, picked, size = 340 }: Props) {
                 {letter}
               </tspan>
               <tspan
-                fontFamily='"Noto Sans SC",sans-serif'
+                fontFamily={locale === 'ja' ? '"Noto Sans JP",sans-serif' : '"Noto Sans SC",sans-serif'}
                 fontWeight={isPicked ? 700 : 400}
                 dx={size * 0.012}
               >
-                {LABELS[letter]}
+                {t(('pole' + letter) as 'poleC')}
               </tspan>
             </text>
           </g>

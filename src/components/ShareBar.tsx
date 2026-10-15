@@ -1,8 +1,9 @@
+import { useLocale } from '../lib/LocaleContext'
+import { localizeResult, message, urlFor, type Locale } from '../lib/locale'
 // 保存图片 / 复制结果 / 重测。
 import { useState, type RefObject } from 'react'
 import { toPng } from 'html-to-image'
-import type { ScoreResult } from '../lib/types'
-import { disclaimer } from '../lib/data'
+import type { Mode, ScoreResult } from '../lib/types'
 
 function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   return Promise.race([
@@ -12,6 +13,7 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
 }
 
 interface Props {
+  mode: Mode
   result: ScoreResult
   serial: string
   captureRef: RefObject<HTMLDivElement>
@@ -20,27 +22,29 @@ interface Props {
   onRetake: () => void
 }
 
-function shareText(result: ScoreResult, serial: string): string {
-  const { type } = result
+export function shareText(result: ScoreResult, serial: string, locale: Locale, mode: Mode): string {
+  const type = localizeResult(result.type, locale)
   return [
-    `【科研牛马人格鉴定证书】`,
-    `型号：${type.name}（${result.code}）`,
+    '【' + message(locale, 'certificate') + '】',
+    message(locale, 'model') + ': ' + type.name + ' (' + result.code + ')',
     `「${type.tagline}」`,
     ``,
     type.portrait,
     ``,
-    `${serial} · 课题组牛马人格鉴定所`,
-    disclaimer,
+    serial + ' · ' + message(locale, 'station'),
+    message(locale, 'disclaimer'),
+    'https://research-bti.pages.dev/?lang=' + locale + '&v=' + mode,
   ].join('\n')
 }
 
-export default function ShareBar({ result, serial, captureRef, onPrepareExport, onRetake }: Props) {
+export default function ShareBar({ result, serial, captureRef, onPrepareExport, onRetake, mode }: Props) {
+  const { locale, t } = useLocale()
   const [status, setStatus] = useState<string>('')
 
   async function handleSave() {
     const node = captureRef.current
     if (!node) return
-    setStatus('生成中…')
+    setStatus(t('generating'))
     onPrepareExport(true)
     try {
       // 等两帧让折叠区展开渲染完，再等字体就绪，避免导出掉字/缺内容
@@ -57,12 +61,12 @@ export default function ShareBar({ result, serial, captureRef, onPrepareExport, 
         20000,
       )
       const link = document.createElement('a')
-      link.download = `科研牛马鉴定证书-${result.code}.png`
+      link.download = t('imageName') + '-' + result.code + '.png'
       link.href = dataUrl
       link.click()
-      setStatus('已保存 ✓')
+      setStatus(t('saved'))
     } catch {
-      setStatus('保存失败，可长按证书截图')
+      setStatus(t('saveFailed'))
     } finally {
       onPrepareExport(false)
       window.setTimeout(() => setStatus(''), 2600)
@@ -71,10 +75,10 @@ export default function ShareBar({ result, serial, captureRef, onPrepareExport, 
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(shareText(result, serial))
-      setStatus('文案已复制 ✓')
+      await navigator.clipboard.writeText(shareText(result, serial, locale, mode))
+      setStatus(t('copied'))
     } catch {
-      setStatus('复制失败，可手动选择文字')
+      setStatus(t('copyFailed'))
     }
     window.setTimeout(() => setStatus(''), 2600)
   }
@@ -87,32 +91,32 @@ export default function ShareBar({ result, serial, captureRef, onPrepareExport, 
           onClick={handleSave}
           className="border-2 border-ink bg-stamp px-3 py-2.5 font-display text-sm font-bold text-white active:translate-y-px"
         >
-          保存图片
+          {t('save')}
         </button>
         <button
           type="button"
           onClick={handleCopy}
           className="border-2 border-ink bg-paper px-3 py-2.5 font-display text-sm font-bold active:translate-y-px"
         >
-          复制文案
+          {t('copy')}
         </button>
         <button
           type="button"
           onClick={onRetake}
           className="border-2 border-ink bg-paper px-3 py-2.5 font-display text-sm font-bold active:translate-y-px"
         >
-          重新鉴定
+          {t('retake')}
         </button>
       </div>
       <a
-        href={`${import.meta.env.BASE_URL}preview.html`}
+        href={urlFor(locale, true)}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-2 block w-full border-2 border-ink bg-paper px-3 py-2.5 text-center font-display text-sm font-bold transition-transform active:translate-y-px hover:bg-paper-2"
       >
-        📖 查看其它 15 型人格
+        📖 {t('otherTypes')}
       </a>
-      <p className="mt-2 h-4 text-center font-mono text-xs text-ink/60" aria-live="polite">
+      <p className="mt-2 min-h-4 text-center font-mono text-xs text-ink/60" aria-live="polite">
         {status}
       </p>
     </div>

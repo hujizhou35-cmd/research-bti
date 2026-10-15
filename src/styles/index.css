@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../assets/fonts/noto-jp-variable.woff2') format('woff2');
+}
+
+html:lang(ja) body, html:lang(ja) .font-display {
+  font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+
+html:lang(en) body, html:lang(en) .font-display {
+  font-family: 'Noto Sans SC', system-ui, sans-serif;
+}
+
 /* §7.3 自托管字体（子集化，零外链 CDN）。
    Noto Sans SC：CJK 用子集（U+1100+），拉丁/数字用小体积原片（U+0000-10FF），
    按 unicode-range 分工，互不重叠；缺字符自动逐字回退到系统字体栈。

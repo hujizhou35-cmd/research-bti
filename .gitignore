@@ -4,7 +4,7 @@ dist
 *.tsbuildinfo
 
 # Cloudflare 本地 dev 状态（含本地 D1）
-.wrangler
+.wrangler*
 
 # tsc 误emit（构建已改为 --noEmit）
 vite.config.js
@@ -27,3 +27,9 @@ question database/
 *.log
 test-results/
 playwright-report/
+__pycache__/
+*.pyc
+*.csv
+*.db
+*.sqlite
+*.sqlite3

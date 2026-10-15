@@ -1,3 +1,4 @@
+import { useLocale } from '../lib/LocaleContext'
 // 结尾认真度自评（防污染信号，不计分、不影响结果）+ GeeTest v4（防机器人）。
 // 答完所有题后、出证书前出现。GeeTest 仅在配置了 CAPTCHA_ID 时加载（否则无感跳过）。
 import { useEffect, useRef } from 'react'
@@ -7,10 +8,10 @@ interface Props {
   onSelect: (sr: SelfReport, turnstileToken: string) => void
 }
 
-const OPTIONS: { value: SelfReport; label: string }[] = [
-  { value: 'serious', label: '认真完成的' },
-  { value: 'partial', label: '大致认真，个别题随便选了' },
-  { value: 'careless', label: '基本是随便选的' },
+const OPTIONS: { value: SelfReport; label: 'serious' | 'partial' | 'careless' }[] = [
+  { value: 'serious', label: 'serious' },
+  { value: 'partial', label: 'partial' },
+  { value: 'careless', label: 'careless' },
 ]
 
 const CAPTCHA_ID = import.meta.env.VITE_GEETEST_CAPTCHA_ID as string | undefined
@@ -38,6 +39,7 @@ function getGt4(): InitGeetest4 | undefined {
 }
 
 export default function EffortCheck({ onSelect }: Props) {
+  const { locale, t } = useLocale()
   const boxRef = useRef<HTMLDivElement>(null)
   const tokenRef = useRef<string>('')
   const captchaRef = useRef<Gt4Object | null>(null)
@@ -63,6 +65,7 @@ export default function EffortCheck({ onSelect }: Props) {
         init(
           {
             captchaId: CAPTCHA_ID,
+            language: locale === 'zh-CN' ? 'zho' : locale === 'ja' ? 'jpn' : 'eng',
             product: 'bind', // bind 模式：不自动弹出，由代码调用 showCaptcha()
           },
           (obj: Gt4Object) => {
@@ -102,12 +105,12 @@ export default function EffortCheck({ onSelect }: Props) {
   return (
     <div className="mx-auto flex min-h-screen max-w-xl flex-col justify-center px-5 py-8">
       <div className="border-2 border-ink bg-paper p-6 sm:p-7">
-        <p className="font-mono text-xs text-ink/55">最后一步 · 不影响你的结果</p>
+        <p className="font-mono text-xs text-ink/55">{t('lastStep')}</p>
         <h2 className="mt-2 font-display text-xl font-black leading-snug">
-          为保证研究质量，请如实选择：你刚才的作答是——
+          {t('effortTitle')}
         </h2>
         <p className="mt-2 text-[13px] text-ink/60">
-          无论选哪项都会照常出具鉴定证书，此项仅用于数据质量核查、不计入结果。
+          {t('effortNote')}
         </p>
 
         <div className="mt-5 space-y-2.5">
@@ -118,7 +121,7 @@ export default function EffortCheck({ onSelect }: Props) {
               onClick={() => handleSelect(o.value)}
               className="flex w-full items-center border-2 border-ink bg-paper px-4 py-3 text-left text-[15px] font-bold transition-colors hover:bg-stamp hover:text-white"
             >
-              {o.label}
+              {t(o.label)}
             </button>
           ))}
         </div>

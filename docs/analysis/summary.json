@@ -1,0 +1,512 @@
+{
+  "extracted_at": "2026-10-15T05:49:26.311Z",
+  "last_response_at": "2026-07-01T12:17:48.151Z",
+  "snapshot_sha256": "b02a69b69f925a04a8771dff2c9b641535fd434e093b9be3e962fa55c1b36ea0",
+  "snapshot_rows": 83,
+  "known_test_removed_before_snapshot": 1,
+  "seed": 20261015,
+  "bootstrap_replicates": 2000,
+  "language_status": "Historical language unrecorded; recruitment context was Chinese-language, not individually verified.",
+  "revision_status": "Inferred deployment eras; not respondent-level proof of which cached frontend was used. Sessions spanning the revision boundary remain unknown.",
+  "modes": {
+    "fun": {
+      "received": 10,
+      "main": {
+        "n": 6,
+        "types": {
+          "CAPT": 1,
+          "COPT": 4,
+          "XAPT": 1
+        },
+        "dimensions": {
+          "CX": {
+            "mean": 6.916666666666667,
+            "sd": 1.3197221929886103,
+            "median": 7.25,
+            "q1": 6.0,
+            "q3": 7.9375
+          },
+          "OA": {
+            "mean": 5.333333333333333,
+            "sd": 0.408248290463863,
+            "median": 5.375,
+            "q1": 5.0625,
+            "q3": 5.6875
+          },
+          "PR": {
+            "mean": 8.125,
+            "sd": 1.751784804135485,
+            "median": 8.375,
+            "q1": 7.0625,
+            "q3": 9.5
+          },
+          "TW": {
+            "mean": 7.958333333333333,
+            "sd": 1.4527273201350164,
+            "median": 8.25,
+            "q1": 6.875,
+            "q3": 8.875
+          }
+        }
+      },
+      "revision_counts": {
+        "pre-June-30-deployment": 6
+      },
+      "exclusion_flags_overlapping": {
+        "speed_two_or_more": 4
+      },
+      "straight_main_flagged": 0,
+      "notes_overlapping": {
+        "captcha_absent": 6,
+        "language_unrecorded": 6
+      },
+      "sensitivity": {
+        "legacy_straight_thresholds": {
+          "n": 6,
+          "types": {
+            "CAPT": 1,
+            "COPT": 4,
+            "XAPT": 1
+          },
+          "dimensions": {
+            "CX": {
+              "mean": 6.916666666666667,
+              "sd": 1.3197221929886103,
+              "median": 7.25,
+              "q1": 6.0,
+              "q3": 7.9375
+            },
+            "OA": {
+              "mean": 5.333333333333333,
+              "sd": 0.408248290463863,
+              "median": 5.375,
+              "q1": 5.0625,
+              "q3": 5.6875
+            },
+            "PR": {
+              "mean": 8.125,
+              "sd": 1.751784804135485,
+              "median": 8.375,
+              "q1": 7.0625,
+              "q3": 9.5
+            },
+            "TW": {
+              "mean": 7.958333333333333,
+              "sd": 1.4527273201350164,
+              "median": 8.25,
+              "q1": 6.875,
+              "q3": 8.875
+            }
+          }
+        },
+        "remove_absent": {
+          "n": 0,
+          "types": {},
+          "dimensions": {
+            "CX": {
+              "mean": null,
+              "sd": null,
+              "median": null,
+              "q1": null,
+              "q3": null
+            },
+            "OA": {
+              "mean": null,
+              "sd": null,
+              "median": null,
+              "q1": null,
+              "q3": null
+            },
+            "PR": {
+              "mean": null,
+              "sd": null,
+              "median": null,
+              "q1": null,
+              "q3": null
+            },
+            "TW": {
+              "mean": null,
+              "sd": null,
+              "median": null,
+              "q1": null,
+              "q3": null
+            }
+          }
+        },
+        "remove_partial": {
+          "n": 6,
+          "types": {
+            "CAPT": 1,
+            "COPT": 4,
+            "XAPT": 1
+          },
+          "dimensions": {
+            "CX": {
+              "mean": 6.916666666666667,
+              "sd": 1.3197221929886103,
+              "median": 7.25,
+              "q1": 6.0,
+              "q3": 7.9375
+            },
+            "OA": {
+              "mean": 5.333333333333333,
+              "sd": 0.408248290463863,
+              "median": 5.375,
+              "q1": 5.0625,
+              "q3": 5.6875
+            },
+            "PR": {
+              "mean": 8.125,
+              "sd": 1.751784804135485,
+              "median": 8.375,
+              "q1": 7.0625,
+              "q3": 9.5
+            },
+            "TW": {
+              "mean": 7.958333333333333,
+              "sd": 1.4527273201350164,
+              "median": 8.25,
+              "q1": 6.875,
+              "q3": 8.875
+            }
+          }
+        }
+      },
+      "reliability_by_revision": {
+        "pre-June-30-deployment": {
+          "n": 6,
+          "dimensions": {
+            "CX": {
+              "items": 10,
+              "alpha": 0.45188729399255706,
+              "ci95": null,
+              "bootstrap_valid": 1999,
+              "bootstrap_total": 2000,
+              "reason": "At least one bootstrap replicate had zero/invalid total-score variance; interval not reported."
+            },
+            "OA": {
+              "items": 10,
+              "alpha": -0.5555555555555554,
+              "ci95": null,
+              "bootstrap_valid": 1997,
+              "bootstrap_total": 2000,
+              "reason": "At least one bootstrap replicate had zero/invalid total-score variance; interval not reported."
+            },
+            "PR": {
+              "items": 10,
+              "alpha": 0.9097080787508487,
+              "ci95": null,
+              "bootstrap_valid": 1999,
+              "bootstrap_total": 2000,
+              "reason": "At least one bootstrap replicate had zero/invalid total-score variance; interval not reported."
+            },
+            "TW": {
+              "items": 10,
+              "alpha": 0.8270264341340354,
+              "ci95": null,
+              "bootstrap_valid": 1999,
+              "bootstrap_total": 2000,
+              "reason": "At least one bootstrap replicate had zero/invalid total-score variance; interval not reported."
+            }
+          }
+        },
+        "post-June-30-deployment": {
+          "n": 0,
+          "dimensions": {
+            "CX": {
+              "items": 10,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            },
+            "OA": {
+              "items": 10,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            },
+            "PR": {
+              "items": 10,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            },
+            "TW": {
+              "items": 10,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            }
+          }
+        }
+      }
+    },
+    "strict": {
+      "received": 73,
+      "main": {
+        "n": 45,
+        "types": {
+          "CAPT": 9,
+          "COPT": 20,
+          "COPW": 1,
+          "CORT": 2,
+          "XAPT": 3,
+          "XART": 1,
+          "XARW": 1,
+          "XOPT": 8
+        },
+        "dimensions": {
+          "CX": {
+            "mean": 5.794444444444444,
+            "sd": 1.5351366618992168,
+            "median": 5.875,
+            "q1": 5.0,
+            "q3": 6.375
+          },
+          "OA": {
+            "mean": 5.475,
+            "sd": 1.2370350366170644,
+            "median": 5.5,
+            "q1": 4.75,
+            "q3": 6.0
+          },
+          "PR": {
+            "mean": 7.522222222222222,
+            "sd": 1.5642692003977867,
+            "median": 7.625,
+            "q1": 6.625,
+            "q3": 8.5
+          },
+          "TW": {
+            "mean": 6.563888888888889,
+            "sd": 1.0957764416618063,
+            "median": 6.125,
+            "q1": 5.875,
+            "q3": 7.0
+          }
+        }
+      },
+      "revision_counts": {
+        "pre-June-30-deployment": 44,
+        "post-June-30-deployment": 1
+      },
+      "exclusion_flags_overlapping": {
+        "speed_two_or_more": 27,
+        "self_report_careless": 2
+      },
+      "straight_main_flagged": 0,
+      "notes_overlapping": {
+        "captcha_absent": 39,
+        "language_unrecorded": 45,
+        "self_report_partial": 6
+      },
+      "sensitivity": {
+        "legacy_straight_thresholds": {
+          "n": 45,
+          "types": {
+            "CAPT": 9,
+            "COPT": 20,
+            "COPW": 1,
+            "CORT": 2,
+            "XAPT": 3,
+            "XART": 1,
+            "XARW": 1,
+            "XOPT": 8
+          },
+          "dimensions": {
+            "CX": {
+              "mean": 5.794444444444444,
+              "sd": 1.5351366618992168,
+              "median": 5.875,
+              "q1": 5.0,
+              "q3": 6.375
+            },
+            "OA": {
+              "mean": 5.475,
+              "sd": 1.2370350366170644,
+              "median": 5.5,
+              "q1": 4.75,
+              "q3": 6.0
+            },
+            "PR": {
+              "mean": 7.522222222222222,
+              "sd": 1.5642692003977867,
+              "median": 7.625,
+              "q1": 6.625,
+              "q3": 8.5
+            },
+            "TW": {
+              "mean": 6.563888888888889,
+              "sd": 1.0957764416618063,
+              "median": 6.125,
+              "q1": 5.875,
+              "q3": 7.0
+            }
+          }
+        },
+        "remove_absent": {
+          "n": 6,
+          "types": {
+            "COPT": 2,
+            "CORT": 1,
+            "XAPT": 1,
+            "XART": 1,
+            "XARW": 1
+          },
+          "dimensions": {
+            "CX": {
+              "mean": 4.5625,
+              "sd": 2.0807901143556022,
+              "median": 5.3125,
+              "q1": 4.53125,
+              "q3": 5.8125
+            },
+            "OA": {
+              "mean": 4.416666666666667,
+              "sd": 1.9213710382606133,
+              "median": 4.9375,
+              "q1": 4.65625,
+              "q3": 5.3125
+            },
+            "PR": {
+              "mean": 6.458333333333333,
+              "sd": 2.373903255540686,
+              "median": 5.8125,
+              "q1": 4.4375,
+              "q3": 8.125
+            },
+            "TW": {
+              "mean": 6.125,
+              "sd": 1.2196310917650468,
+              "median": 6.0,
+              "q1": 5.65625,
+              "q3": 7.0
+            }
+          }
+        },
+        "remove_partial": {
+          "n": 39,
+          "types": {
+            "CAPT": 8,
+            "COPT": 19,
+            "COPW": 1,
+            "CORT": 2,
+            "XAPT": 3,
+            "XARW": 1,
+            "XOPT": 5
+          },
+          "dimensions": {
+            "CX": {
+              "mean": 5.923076923076923,
+              "sd": 1.5703396445324442,
+              "median": 5.875,
+              "q1": 5.1875,
+              "q3": 6.5
+            },
+            "OA": {
+              "mean": 5.503205128205129,
+              "sd": 1.3070806599257587,
+              "median": 5.5,
+              "q1": 4.75,
+              "q3": 6.0
+            },
+            "PR": {
+              "mean": 7.551282051282051,
+              "sd": 1.468338533830848,
+              "median": 7.625,
+              "q1": 6.8125,
+              "q3": 8.4375
+            },
+            "TW": {
+              "mean": 6.528846153846154,
+              "sd": 1.0249605008682436,
+              "median": 6.25,
+              "q1": 5.875,
+              "q3": 7.0
+            }
+          }
+        }
+      },
+      "reliability_by_revision": {
+        "pre-June-30-deployment": {
+          "n": 44,
+          "dimensions": {
+            "CX": {
+              "items": 20,
+              "alpha": 0.8690387070014587,
+              "ci95": [
+                0.7074278761950066,
+                0.9298300436703039
+              ],
+              "bootstrap_valid": 2000,
+              "bootstrap_total": 2000,
+              "reason": null
+            },
+            "OA": {
+              "items": 20,
+              "alpha": 0.8761935221646976,
+              "ci95": [
+                0.5984597984946586,
+                0.9428928191869479
+              ],
+              "bootstrap_valid": 2000,
+              "bootstrap_total": 2000,
+              "reason": null
+            },
+            "PR": {
+              "items": 20,
+              "alpha": 0.919503984437848,
+              "ci95": [
+                0.875541098400239,
+                0.9450340319581632
+              ],
+              "bootstrap_valid": 2000,
+              "bootstrap_total": 2000,
+              "reason": null
+            },
+            "TW": {
+              "items": 20,
+              "alpha": 0.8277000392028087,
+              "ci95": [
+                0.6383976321940065,
+                0.8998918782114272
+              ],
+              "bootstrap_valid": 2000,
+              "bootstrap_total": 2000,
+              "reason": null
+            }
+          }
+        },
+        "post-June-30-deployment": {
+          "n": 1,
+          "dimensions": {
+            "CX": {
+              "items": 20,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            },
+            "OA": {
+              "items": 20,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            },
+            "PR": {
+              "items": 20,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            },
+            "TW": {
+              "items": 20,
+              "alpha": null,
+              "ci95": null,
+              "reason": "Fewer than two complete responses, or zero/invalid total-score variance."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "name": "gradbti",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "fonts": "node scripts/subset-fonts.mjs"
+    "fonts": "node scripts/subset-fonts.mjs",
+    "test:browser": "node scripts/check-browser.mjs",
+    "docs:assets": "node scripts/build-doc-assets.mjs",
+    "docs:readmes": "node scripts/build-readmes.mjs"
   },
   "dependencies": {
     "html-to-image": "^1.11.13",
@@ -21,14 +24,19 @@
     "@fontsource/noto-sans-sc": "^5.2.9",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-react": "^6.1.2",
     "autoprefixer": "^10.4.20",
+    "playwright": "^1.62.1",
     "postcss": "^8.4.49",
     "subset-font": "^2.5.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3",
-    "vite": "^5.4.11",
-    "vitest": "^2.1.8",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.4",
     "wrangler": "^4.105.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

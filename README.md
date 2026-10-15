@@ -1,89 +1,78 @@
-# 研究生BTI · 课题组牛马人格鉴定所
+# Research BTI
 
-> 40 道题，照出你在课题组的原形。
+**Meet your lab alter ego.**
 
-一个 MBTI 式的科研人格趣味自评（纯前端静态站）。答完情境题，你会被盖章鉴定为
-16 种「科研牛马型号」之一，并领到一张可截图分享的《科研牛马人格鉴定证书》。
+[English](README.md) · [简体中文](README.zh-CN.md) · [日本語](README.ja.md)
 
-**生产地址：<https://research-bti.pages.dev/>**
+A playful self-assessment of how you work, communicate and cope in a research team. Pick a language, answer 40 or 80 situational questions, and take home a shareable certificate.
 
----
+**[Take the test →](https://research-bti.pages.dev/?lang=en)** · [Explore the types](https://research-bti.pages.dev/?lang=en&gallery=1) · [Download source](https://github.com/hujizhou35-cmd/research-bti/releases/latest)
 
-## 技术栈
+<p align="center"><img src="docs/assets/certificate-en.png" width="380" alt="Example certificate from demo answers, rendered by the application."></p>
 
-- Vite + React 18 + TypeScript + Tailwind CSS
-- 数据为 JSON import，**无后端、无数据库**
-- 导出证书：`html-to-image` 的 `toPng`；雷达图用 SVG（非 canvas）
-- 字体**全部自托管**于 `public/fonts/`，`@font-face` 本地引用，**禁止任何运行时 CDN**（国内访问约束）
+*Example certificate from demo answers, rendered by the application.*
 
-## 本地开发
+## Choose your pace
+
+| | Questions | Time |
+|---|---:|---|
+| Quick mode | 40 | About 5 minutes |
+| Full mode | 80 | About 12 minutes |
+
+Both modes use the same four dimensions and sixteen fictional archetypes. Results include an eight-pole radar, strengths, quirks and collaboration tips. English, 中文 and 日本語 are available throughout.
+
+## Why I built this
+
+While leading competition teams, I repeatedly ran into teammates who passed responsibility to others or failed to show up for the defense. It was frustrating, and it left me wondering: could team leaders and supervisors get an earlier sense of how people handle responsibility, communication and pressure?
+
+Research BTI grew out of that question. Today it is an exploratory self-assessment and conversation starter. It has not demonstrated reliable prediction of team performance and should not determine who gets selected or excluded.
+
+## Sixteen ways to show up in the lab
+
+![All sixteen illustrated Research BTI archetypes, with type codes and short descriptions](docs/assets/types-en.png)
+
+The characters are fictional, deliberately exaggerated and meant for reflection—not a ranking of ability or character.
+
+## How the questions evolved
+
+During development, AI simulated sixteen behavioral profiles over three rounds. Those responses were used to spot ambiguous scenarios, awkward answer gradients and options that made one answer too obviously desirable. The documented revision included 18 rewritten questions, 3 topic changes and 4 softened extreme options, while preserving the scoring framework.
+
+These simulations were an editing aid, not independent human validation. Later revisions to questions 66, 71 and 77 are tracked separately in the pilot analysis. [Development notes](docs/methodology.md).
+
+## An initial pilot, with limits
+
+The production snapshot was extracted on **15 October 2026**; the latest stored response was **1 July 2026**. After one known automated test was removed, 83 responses remained in storage. Quality checks retained the following analysis samples:
+
+| | Retained responses | Mean first-pole strength · CX / OA / PR / TW |
+|---|---:|---|
+| Quick mode | 6 | 6.92 / 5.33 / 8.13 / 7.96 |
+| Full mode | 45 | 5.79 / 5.48 / 7.52 / 6.56 |
+
+![Type counts and dimension scores (mean ± SD)](docs/analysis/pilot-summary.png)
+
+According to the initiator, early recruitment mainly targeted undergraduates at China Medical University. That background was not verified per response, and the university does not endorse this project. Samples are small and self-selected; CAPTCHA evidence is often absent. Preliminary reliability mainly concerns the older Chinese wording, and the quick mode has an adverse internal-consistency finding. Current revised and translated versions remain unvalidated.
+
+[Read the full findings, exclusions and sensitivity analyses](docs/analysis/README.md).
+
+## Run it locally
+
+Node.js 22.12+ or 24 LTS. The default local frontend lets you explore the test and export certificates; collection requires a configured local or Cloudflare backend.
 
 ```bash
-npm install
-npm run dev        # 开发服务器
-npm test           # vitest 单测（计分 / 雷达判别性）
-npm run build      # tsc 类型检查 + vite 生产构建（输出 dist/）
-npm run preview    # 预览 dist/ 产物
+npm ci
+npm run dev
 ```
 
-## 题库与计分（V2.0）
+[Development and deployment](docs/development.md)
 
-- 题库：`data/questionsv5.json`（**唯一题库源**，80 题，`version 2.1`，`scoringModel polarity-graded-5`）。
-  v2.1 基于 R1–R16 AI 虚拟测试做了 18 题重写 / 3 题改主题 / 4 项软化，详见 `docs/题库优化报告-v2.1.md`。
-  `data/questionsv4.json`（v2.0）保留作回滚；旧的 `data/questions.json`（V1.3 双极迫选）已弃用并重命名为 `data/_deprecated.questions_v1.3.json`，禁止再引用。
-- 每题 **5 选项极性五级量表**，选项带 `value ∈ {0,1,2,3,4}`（指向该维第一极 C/O/P/T 的分值）。
-- 计分（`src/lib/scoring.ts` 的 `computeResult`）：每维 `strength = raw/(4*n)*10`，
-  `picked = strength>5 ? 第一极 : 第二极`，`borderline = |strength-5| <= 0.75`。
-  公式对娱乐版（每维 10 题）与严谨版（每维 20 题）**通用**。
-- 选项呈现为**整组方向翻转随机化（block-reverse）**：每题随机决定整组按
-  「第一极→第二极」或反向呈现，**不打乱相对顺序**，记 `value` 不记屏幕位置。
+## Privacy and responsible use
 
-## 双版本
+Completed responses are collected with consent through Cloudflare Pages Functions and stored in D1. No name or student ID is requested. Responses include answers, timings, a random browser identifier and quality signals; new submissions also record language and translation version. Only aggregate findings are public. No automatic deletion period is configured.
 
-| 版本 | 题量 | 取题 | 流水号位 |
-|---|---|---|---|
-| 🎢 娱乐版 | 40 题（每维 10） | `priority === 1` | `NO. GB-<code>-F####` |
-| 🔬 严谨版 | 80 题（每维 20） | 全部题 | `NO. GB-<code>-S####` |
+[Privacy details](docs/privacy.en.md) · For self-reflection and team communication, not psychological diagnosis or a validated personnel-selection tool.
 
-两版共用同一结果页、雷达图、16 型结果与证书模板（计分已归一化）。版本通过全局 state +
-URL query（`?v=fun` / `?v=strict`）保存，刷新与分享可复现。
+## License
 
----
+Project-owned code, question text and illustrations are available under the MIT License. Bundled fonts and third-party dependencies retain their own licenses.
 
-## 部署 / 迁移（Cloudflare Pages）
-
-部署在 **Cloudflare Pages**：构建命令 `npm run build`，输出目录 `dist`，push 自动构建。
-
-### ⚠ 历史拼写修正：`resarch` → `research`（手动步骤）
-
-仓库与线上子域曾有拼写错误 `resarch`。代码内已全部修正为 `research`；下列**仓库与平台操作需手动执行**：
-
-**1. GitHub 仓库改名**
-
-1. GitHub → 仓库 `resarch-bti` → Settings → Repository name → 改为 `research-bti` → Rename（旧链接自动 301）。
-2. 本地更新 remote：
-   ```bash
-   git remote set-url origin git@github.com:<user>/research-bti.git   # 或 https 形式
-   git remote -v                                                       # 确认
-   ```
-
-**2. Cloudflare Pages 删旧建新（关键：`*.pages.dev` 子域无法重命名）**
-
-> Cloudflare 官方已知限制：Pages 项目的 `*.pages.dev` 子域**不能改名**，必须删旧建新。
-
-1. Cloudflare Dashboard → Workers & Pages → 删除旧项目 `resarch-bti`。
-2. 新建 Pages 项目，**项目名填 `research-bti`**，连接改名后的 GitHub 仓库；
-   构建命令 `npm run build`、输出目录 `dist`，保留原构建环境变量与自定义构建配置。
-3. 部署完成后访问 <https://research-bti.pages.dev/> 验证。
-4. 如有自定义域名，把它指向新项目即可；旧项目删除后旧址自然失效。
-
----
-
-## 红线（不可破）
-
-- 全站零真实人名；每个结果出口带免责声明。
-- 不引导退学/自伤等自毁行为；涉及经济/情感/师生否定等题，消极极只到「回避/拖延」。
-- 中间项（`value=2`）是**健康边界 / 健康止损**的正当出口，结果页对 `borderline` 文案解释为
-  「倾向辩证、不极端」，而非「被迫落临界」。
-
-仅供娱乐，不构成任何心理学诊断或职业建议。
+[MIT](LICENSE) · [Third-party notices](docs/third-party-notices.md)

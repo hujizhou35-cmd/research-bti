@@ -1,3 +1,4 @@
+import { useLocale } from '../lib/LocaleContext'
 // 一维条码（装饰性）：从 code 字符串确定性地生成竖条，承载型号 code 的「检验单数据感」。
 interface Props {
   value: string
@@ -18,6 +19,7 @@ function bars(value: string): number[] {
 }
 
 export default function Barcode({ value, height = 34, className }: Props) {
+  const { t } = useLocale()
   const seq = bars(value)
   const unit = 2
   const width = seq.reduce((a, w) => a + w * unit, 0)
@@ -29,7 +31,7 @@ export default function Barcode({ value, height = 34, className }: Props) {
       viewBox={`0 0 ${width} ${height}`}
       className={className}
       role="img"
-      aria-label={`条码 ${value}`}
+      aria-label={t('barcode') + ' ' + value}
     >
       {seq.map((w, i) => {
         const rectX = x

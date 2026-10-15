@@ -1,3 +1,4 @@
+import { useLocale } from '../lib/LocaleContext'
 // §7.4 签名元素：钢印落章。出结果时一枚正红检验钢印盖到证书上。
 // 章面 = 4 字母 code + 「QC PASSED / 牛马型号」。
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export default function Stamp({ code, size = 116, animate = true, className }: Props) {
+  const { t } = useLocale()
   const r = size / 2
   const arcR = r - 16
   return (
@@ -36,13 +38,13 @@ export default function Stamp({ code, size = 116, animate = true, className }: P
           {/* 上弧：QC PASSED */}
           <text fontFamily='"DM Mono","Courier New",monospace' fontSize={size * 0.115} fontWeight={500} letterSpacing="2">
             <textPath href={`#arc-top-${code}`} startOffset="50%" textAnchor="middle">
-              QC · PASSED · 检验合格
+              {t('stampTop')}
             </textPath>
           </text>
           {/* 下弧：牛马型号 */}
           <text fontFamily='"Noto Sans SC",sans-serif' fontSize={size * 0.1} fontWeight={700} letterSpacing="3">
             <textPath href={`#arc-bottom-${code}`} startOffset="50%" textAnchor="middle">
-              牛 马 型 号
+              {t('stampBottom')}
             </textPath>
           </text>
           {/* 中央五角星 + code */}

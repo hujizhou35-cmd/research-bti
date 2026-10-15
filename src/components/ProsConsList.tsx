@@ -1,3 +1,4 @@
+import { useLocale } from '../lib/LocaleContext'
 // 优点 / 缺点两栏。优点偏正色，缺点偏钢印红（§7.5）。
 interface Props {
   pros: string[]
@@ -5,11 +6,12 @@ interface Props {
 }
 
 export default function ProsConsList({ pros, cons }: Props) {
+  const { t } = useLocale()
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
       <section className="border-2 border-ink bg-paper">
         <h3 className="border-b-2 border-ink bg-paper-2 px-3 py-1.5 font-display text-sm font-bold tracking-wide">
-          <span className="font-mono">[+]</span> 出厂优点
+          <span className="font-mono">[+]</span> {t('pros')}
         </h3>
         <ul className="space-y-2 p-3">
           {pros.map((p, i) => (
@@ -23,7 +25,7 @@ export default function ProsConsList({ pros, cons }: Props) {
 
       <section className="border-2 border-ink bg-paper">
         <h3 className="border-b-2 border-ink bg-paper-2 px-3 py-1.5 font-display text-sm font-bold tracking-wide">
-          <span className="font-mono text-stamp">[!]</span> 已知缺陷
+          <span className="font-mono text-stamp">[!]</span> {t('cons')}
         </h3>
         <ul className="space-y-2 p-3">
           {cons.map((c, i) => (

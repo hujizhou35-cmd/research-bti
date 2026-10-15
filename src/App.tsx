@@ -1,4 +1,8 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { LocaleProvider, useLocale } from './lib/LocaleContext'
+import { isLocale, localizeQuestions, message, TRANSLATION_VERSION, type Locale } from './lib/locale'
+import LanguagePicker from './components/LanguagePicker'
+import Gallery from './components/Gallery'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { questions, funQuestions } from './lib/data'
 import { computeResult } from './lib/scoring'
 import { submitResponse } from './lib/submitClient'
@@ -17,8 +21,8 @@ type View = 'intro' | 'quiz' | 'effort' | 'result'
 const STORAGE_KEY = 'gradbti.session.v2'
 
 // 知情同意：硬门槛（点击开始测试后弹出）。改文案时升版本号即可让所有人重新同意。
-const CONSENT_KEY = 'gradbti.consent.v1'
-const CONSENT_VERSION = 'v1'
+const CONSENT_KEY = 'gradbti.consent.v2'
+const CONSENT_VERSION = 'v2'
 
 interface ConsentRecord {
   version: string
@@ -31,6 +35,7 @@ type Flips = Record<number, boolean>
 type Times = Record<number, number>
 
 interface SavedSession {
+  locale: Locale
   mode: Mode
   answers: Answers
   flips?: Flips
@@ -103,7 +108,7 @@ function loadSession(): SavedSession | null {
     if (!raw) return null
     const parsed = JSON.parse(raw) as SavedSession
     if (parsed && isMode(parsed.mode) && parsed.answers && typeof parsed.answers === 'object') {
-      return parsed
+      return { ...parsed, locale: isLocale(parsed.locale) ? parsed.locale : 'zh-CN' }
     }
     return null
   } catch {
@@ -139,8 +144,10 @@ function makeSerial(code: string, mode: Mode): string {
   return `NO. GB-${code}-${tag}${n}`
 }
 
-export default function App() {
-  const saved = useMemo(loadSession, [])
+function SessionApp({ onLanguage }: { onLanguage: (locale: Locale) => void }) {
+  const { locale, t } = useLocale()
+  const [privacyOpen, setPrivacyOpen] = useState(false)
+  const [saved, setSaved] = useState(loadSession)
   const [consent, setConsent] = useState<ConsentRecord | null>(loadConsent)
   const [pending, setPending] = useState<Pending | null>(null)
   const [view, setView] = useState<View>('intro')
@@ -159,7 +166,7 @@ export default function App() {
   const savedAnswered = saved ? answeredCountOf(saved.answers) : 0
   const hasSaved = !!saved && savedAnswered > 0 && savedAnswered < savedTotal
 
-  const items = itemsForMode(mode)
+  const items = useMemo(() => localizeQuestions(itemsForMode(mode), locale), [mode, locale])
 
   const firstUnanswered = useCallback(
     (its = items, ans = answers) => {
@@ -170,6 +177,7 @@ export default function App() {
   )
 
   function doStart(selected: Mode) {
+    setSaved(null)
     const fresh: Answers = {}
     const freshFlips = buildFlips(itemsForMode(selected))
     const freshTimes: Times = {}
@@ -178,7 +186,7 @@ export default function App() {
     setAnswers(fresh)
     setFlips(freshFlips)
     setTimes(freshTimes)
-    saveSession({ mode: selected, answers: fresh, flips: freshFlips, times: freshTimes })
+    saveSession({ locale, mode: selected, answers: fresh, flips: freshFlips, times: freshTimes })
     syncUrl(selected)
     setStartIndex(0)
     setView('quiz')
@@ -186,6 +194,7 @@ export default function App() {
 
   function doResume() {
     if (!saved) return
+    onLanguage(saved.locale)
     const resumeFlips = saved.flips ?? buildFlips(itemsForMode(saved.mode))
     const resumeTimes = saved.times ?? {}
     submittedRef.current = false
@@ -193,7 +202,7 @@ export default function App() {
     setAnswers(saved.answers)
     setFlips(resumeFlips)
     setTimes(resumeTimes)
-    saveSession({ mode: saved.mode, answers: saved.answers, flips: resumeFlips, times: resumeTimes })
+    saveSession({ locale: saved.locale, mode: saved.mode, answers: saved.answers, flips: resumeFlips, times: resumeTimes })
     syncUrl(saved.mode)
     setStartIndex(firstUnanswered(itemsForMode(saved.mode), saved.answers))
     setView('quiz')
@@ -207,6 +216,7 @@ export default function App() {
 
   function requestResume() {
     if (!saved) return
+    onLanguage(saved.locale)
     if (consent) doResume()
     else setPending({ mode: saved.mode, resume: true })
   }
@@ -233,13 +243,13 @@ export default function App() {
         const nextTimes = { ...prevTimes, [id]: ms }
         setAnswers((prev) => {
           const next = { ...prev, [id]: value }
-          saveSession({ mode, answers: next, flips, times: nextTimes })
+          saveSession({ locale, mode, answers: next, flips, times: nextTimes })
           return next
         })
         return nextTimes
       })
     },
-    [mode, flips],
+    [mode, flips, locale],
   )
 
   // 答完所有题 → 进入「认真度自评」步骤（此时还不计分、不上报）。
@@ -267,11 +277,14 @@ export default function App() {
             dimensions: r.dimensions,
             selfReport,
             turnstileToken,
+            locale,
+            translationVersion: TRANSLATION_VERSION,
             consentVersion: consent.version,
             consentAt: consent.at,
           })
         }
         clearSaved()
+        setSaved(null)
         setView('result')
         window.scrollTo(0, 0)
       } catch {
@@ -279,10 +292,11 @@ export default function App() {
         setView('quiz')
       }
     },
-    [items, answers, mode, flips, times, consent, firstUnanswered],
+    [items, answers, mode, flips, times, consent, firstUnanswered, locale],
   )
 
   function handleRetake() {
+    setSaved(null)
     submittedRef.current = false
     setAnswers({})
     setFlips({})
@@ -306,6 +320,7 @@ export default function App() {
           onAnswer={handleAnswer}
           onComplete={handleQuizComplete}
           onExit={() => {
+            setSaved(loadSession())
             syncUrl(null)
             setView('intro')
           }}
@@ -326,6 +341,7 @@ export default function App() {
             exporting={exporting}
           />
           <ShareBar
+            mode={mode}
             result={result}
             serial={serial}
             captureRef={captureRef}
@@ -340,20 +356,44 @@ export default function App() {
         onStart={requestStart}
         hasSaved={hasSaved}
         savedMode={saved?.mode}
+        savedLocale={saved?.locale}
+        onLanguage={onLanguage}
         savedAnswered={savedAnswered}
         savedTotal={savedTotal}
         onResume={requestResume}
       />
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [view, items, mode, answers, flips, startIndex, result, serial, exporting, hasSaved, consent, pending])
+  }, [view, items, mode, answers, flips, times, startIndex, result, serial, exporting, hasSaved, consent, pending, locale])
 
   return (
     <main className="paper-grid min-h-screen">
-      {content}
+      {new URLSearchParams(window.location.search).get('gallery') === '1' ? <Gallery onLanguage={onLanguage} /> : content}
+      <div className="px-5 pb-6 text-center"><button type="button" onClick={() => setPrivacyOpen(true)} className="bg-paper px-3 py-1 text-xs text-ink/75 underline">{t('privacy')}</button></div>
+      {privacyOpen && <ConsentModal privacyOnly onCancel={() => setPrivacyOpen(false)} />}
       {pending && !consent && (
         <ConsentModal onAgree={handleAgree} onCancel={handleCancelConsent} />
       )}
     </main>
   )
+}
+
+function preferredLocale(): Locale | null {
+  const query = new URLSearchParams(window.location.search).get('lang')
+  if (isLocale(query)) return query
+  try { const stored = localStorage.getItem('gradbti.locale.v1'); return isLocale(stored) ? stored : null } catch { return null }
+}
+
+export default function App() {
+  const [chosen, setChosen] = useState<Locale | null>(preferredLocale)
+  const locale = chosen ?? 'en'
+  function choose(next: Locale) {
+    setChosen(next)
+    try { localStorage.setItem('gradbti.locale.v1', next) } catch { /* memory-only choice */ }
+    const url = new URL(window.location.href)
+    url.searchParams.set('lang', next)
+    window.history.replaceState(null, '', url)
+  }
+  useEffect(() => { document.documentElement.lang = locale; document.title = message(locale, 'brand') + ' · ' + message(locale, 'station') }, [locale])
+  return <LocaleProvider locale={locale}>{chosen ? <SessionApp onLanguage={choose} /> : <main className="paper-grid"><LanguagePicker value={locale} initial onChange={choose} /></main>}</LocaleProvider>
 }

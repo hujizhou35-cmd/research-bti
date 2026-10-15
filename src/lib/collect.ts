@@ -1,6 +1,7 @@
 // 数据采集的「纯逻辑」层：构造上报载荷、服务端校验、导出 CSV。
 // 不依赖浏览器/Cloudflare/数据文件，故可被前端、Pages Functions 与 vitest 共用。
 import type { Answers, DimensionScore, Mode, Question } from './types'
+import type { Locale } from './locale'
 
 const MARKERS = ['A', 'B', 'C', 'D', 'E'] as const
 
@@ -27,6 +28,8 @@ export interface AnswerDetail {
 }
 
 export interface SubmitPayload {
+  locale?: Locale
+  translationVersion?: string
   questionsVersion: string
   /** 匿名浏览器随机串，用于去重 / 识别重复提交（非个人信息） */
   clientId: string
@@ -46,6 +49,8 @@ export interface SubmitPayload {
 
 /** 前端：把一次完整作答打包成上报载荷（纯函数，便于测试）。 */
 export function buildSubmitPayload(args: {
+  locale?: Locale
+  translationVersion?: string
   items: Question[]
   answers: Answers
   flips: Record<number, boolean>
@@ -83,6 +88,7 @@ export function buildSubmitPayload(args: {
   }
 
   return {
+    ...(args.locale ? { locale: args.locale, translationVersion: args.translationVersion } : {}),
     questionsVersion: args.questionsVersion,
     clientId: args.clientId,
     mode: args.mode,
@@ -104,6 +110,10 @@ const fail = (error: string): Validated => ({ ok: false, error })
 export function validatePayload(body: unknown): Validated {
   if (typeof body !== 'object' || body === null) return fail('payload 不是对象')
   const b = body as Record<string, unknown>
+
+  if (b.locale !== undefined && !['zh-CN', 'en', 'ja'].includes(b.locale as string)) return fail('locale invalid')
+  if (b.translationVersion !== undefined && (typeof b.translationVersion !== 'string' || !b.translationVersion || b.translationVersion.length > 64)) return fail('translationVersion invalid')
+  if ((b.locale === undefined) !== (b.translationVersion === undefined)) return fail('locale and translationVersion must be supplied together')
 
   if (b.mode !== 'fun' && b.mode !== 'strict') return fail('mode 非法')
   if (typeof b.questionsVersion !== 'string' || !b.questionsVersion) return fail('questionsVersion 缺失')
@@ -148,6 +158,8 @@ export function validatePayload(body: unknown): Validated {
 
 /** D1 行（与 schema.sql 对齐） */
 export interface ResponseRow {
+  locale?: string | null
+  translation_version?: string | null
   id: string
   client_id: string | null
   created_at: string
@@ -183,7 +195,7 @@ export function buildCsv(rows: ResponseRow[]): string {
     'strength_cx', 'strength_oa', 'strength_pr', 'strength_tw',
     'duration_ms', 'self_report', 'turnstile',
     ...qNums.map((n) => 'q' + n),
-    'answers_json',
+    'answers_json', 'locale', 'translation_version',
   ]
   const lines = [header.map(csvCell).join(',')]
 
@@ -203,7 +215,7 @@ export function buildCsv(rows: ResponseRow[]): string {
       r.strength_cx, r.strength_oa, r.strength_pr, r.strength_tw,
       r.duration_ms, r.self_report, r.turnstile,
       ...qVals,
-      r.answers,
+      r.answers, r.locale, r.translation_version,
     ]
     lines.push(row.map(csvCell).join(','))
   }

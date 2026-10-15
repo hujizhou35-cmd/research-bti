@@ -15,3 +15,15 @@ vite.config.d.ts
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Private configuration and research data belong outside the public checkout.
+.env
+.env.*
+!.env.example
+!.env.test
+.dev.vars*
+result/
+question database/
+*.log
+test-results/
+playwright-report/
